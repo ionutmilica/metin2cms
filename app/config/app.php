@@ -120,8 +120,10 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+        // Metin internal apis
         'Metin\Providers\RepositoryServiceProvider',
-	),
+        'Metin\Providers\MetinServiceProvider',
+    ),
 
 	/*
 	|--------------------------------------------------------------------------

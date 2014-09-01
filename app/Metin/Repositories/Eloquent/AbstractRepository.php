@@ -1,5 +1,7 @@
 <?php
 
+namespace Metin\Repositories\Eloquent;
+
 use Illuminate\Database\Eloquent\Model;
 
 class AbstractRepository {
@@ -15,4 +17,14 @@ class AbstractRepository {
 	{
 		return $this->model->newInstance($args);
 	}
+
+    public function toArray($data)
+    {
+        if (false != $data)
+        {
+            return $data->toArray();
+        }
+
+        return false;
+    }
 }

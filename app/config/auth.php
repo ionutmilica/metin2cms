@@ -11,11 +11,11 @@ return array(
 	| This driver manages the retrieval and authentication of the users
 	| attempting to get access to protected areas of your application.
 	|
-	| Supported: "database", "eloquent"
+	| Supported: "database", "eloquent", "metin"
 	|
 	*/
 
-	'driver' => 'eloquent',
+	'driver' => 'metin',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'model' => 'User',
+	'model' => 'Metin\Entities\User',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'table' => 'users',
+	'table' => 'account',
 
 	/*
 	|--------------------------------------------------------------------------

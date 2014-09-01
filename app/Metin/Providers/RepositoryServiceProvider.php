@@ -8,8 +8,9 @@ class RepositoryServiceProvider extends ServiceProvider {
 
     public function register()
     {
-
+        $this->app->bind(
+            'Metin\Repositories\AccountRepositoryInterface',
+            'Metin\Repositories\Eloquent\AccountRepository'
+        );
     }
-
-    public function boot() {}
 }
