@@ -11,4 +11,19 @@
 |
 */
 
+
 Route::get('/', 'HomeController@index');
+
+
+Route::group(array('prefix' => 'account'), function ()
+{
+    // Auth user
+    Route::get('auth', 'AccountController@auth');
+    Route::post('auth', 'AccountController@doAuth');
+
+    // Create user
+    Route::get('create', 'AccountController@create');
+    Route::get('create', 'AccountController@doCreate');
+
+    // User actions
+});

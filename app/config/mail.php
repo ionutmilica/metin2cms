@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => 'mail.ionutmilica.ro',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'port' => 587,
+	'port' => 25,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'no-reply@ionut-milica.ro', 'name' => 'Metin2CMS'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return array(
 	|
 	*/
 
-	'encryption' => 'tls',
+	'encryption' => '',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => 'metin2cms@ionutmilica.ro',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => 'oparola',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -119,6 +119,6 @@ return array(
 	|
 	*/
 
-	'pretend' => false,
+	'pretend' => true,
 
 );
