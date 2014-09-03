@@ -33,6 +33,11 @@ class MetinAuthProvider implements UserProviderInterface{
 
         foreach ($credentials as $key => $value)
 		{
+            if ($key == 'username')
+            {
+                $key = 'login';
+            }
+
             if ( ! str_contains($key, 'password'))
             {
                 $account = $account->where($key, $value);

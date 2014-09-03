@@ -25,7 +25,7 @@ class AccountRepository implements AccountRepositoryInterface {
 
     public function create(array $info)
     {
-        $account = $this->model->getNew();
+        $account = $this->getNew();
         $account->login = $info['username'];
         $account->password = $info['password'];
         $account->status = $info['status'];

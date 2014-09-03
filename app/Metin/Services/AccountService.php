@@ -2,6 +2,7 @@
 
 namespace Metin\Services;
 
+use Illuminate\Support\Facades\Auth;
 use Metin\Repositories\AccountRepositoryInterface;
 use App;
 
@@ -9,19 +10,19 @@ class AccountService {
 
     protected $account;
 
-    protected $app;
-
-    public function __construct(App $app,AccountRepositoryInterface $account)
+    public function __construct(AccountRepositoryInterface $account)
     {
         $this->account = $account;
-        $this->app = $app;
     }
 
     public function create(array $data)
     {
-        $validator = $this->app->make('Metin\Services\Forms\Registration');
+        App::make('Metin\Services\Forms\Registration')->validate($data);
 
-        $validator->validate($data);
+        $data['password'] = mysqlHash($data['password']);
+        $data['status'] = 'BLOCK';
+
+        /** Todo: Configuration for activation **/
 
         $account = $this->account->create($data);
 
@@ -31,5 +32,22 @@ class AccountService {
 
             return $account;
         }
+    }
+
+    public function authenticate(array $data)
+    {
+        App::make('Metin\Services\Forms\Login')->validate($data);
+
+        $auth = Auth::attempt(array(
+            'username' => $data['username'],
+            'password' => $data['password']
+        ));
+
+        if ( ! $auth)
+        {
+            throw new \Exception('Login failded');
+        }
+
+        return true;
     }
 }
