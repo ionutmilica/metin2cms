@@ -2,33 +2,37 @@
 
 namespace Metin\Services;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 use Metin\Repositories\AccountRepositoryInterface;
-use App;
 
 class AccountService {
 
     protected $account;
 
-    public function __construct(AccountRepositoryInterface $account)
+    protected $app;
+
+    public function __construct(AccountRepositoryInterface $account, Application $app)
     {
+        $this->app = $app;
         $this->account = $account;
     }
 
     public function create(array $data)
     {
-        App::make('Metin\Services\Forms\Registration')->validate($data);
-
         $data['password'] = mysqlHash($data['password']);
         $data['status'] = 'BLOCK';
 
         /** Todo: Configuration for activation **/
 
+        $this->app['events']->fire('account.creating', $data);
+
         $account = $this->account->create($data);
 
         if ($account)
         {
-            // send email
+            $this->app['events']->fire('account.created', $account);
 
             return $account;
         }
@@ -36,8 +40,6 @@ class AccountService {
 
     public function authenticate(array $data)
     {
-        App::make('Metin\Services\Forms\Login')->validate($data);
-
         $auth = Auth::attempt(array(
             'username' => $data['username'],
             'password' => $data['password']

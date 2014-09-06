@@ -6,7 +6,7 @@ use Illuminate\Auth\UserInterface;
 use Metin\Entities\Account;
 use Metin\Repositories\AccountRepositoryInterface;
 
-class AccountRepository implements AccountRepositoryInterface {
+class AccountRepository extends AbstractRepository implements AccountRepositoryInterface {
 
     public function __construct(Account $model)
     {
