@@ -25,6 +25,13 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
 
     public function create(array $info)
     {
-        return $this->toArray($this->model->create($account));
+        $account = $this->getNew();
+        $account->login = $info['username'];
+        $account->email = $info['email'];
+        $account->password = $info['password'];
+        $account->status = $info['status'];
+        $account->save();
+
+        return $this->toArray($account);
     }
 } 

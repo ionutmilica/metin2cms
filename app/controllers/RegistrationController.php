@@ -39,7 +39,7 @@ class RegistrationController extends Controller {
 
     public function store()
     {
-        $input = Input::only('username', 'password', 'password_confirm', 'email');
+        $input = Input::only('username', 'password', 'password_confirmation', 'email');
 
         $this->registrationForm->validate($input);
 

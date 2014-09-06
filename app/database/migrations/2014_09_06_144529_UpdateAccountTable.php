@@ -12,10 +12,20 @@ class UpdateAccountTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('account', function (Blueprint $table)
+        if ( ! Schema::hasTable('account'))
         {
+            /* We create the table more for testing reason, because every server should have a database */
 
-        });
+            $sql = file_get_contents(__DIR__ . '/sql/account.sql');
+            DB::statement($sql);
+        }
+        else
+        {
+            Schema::table('account', function (Blueprint $table)
+            {
+                // here add new fields if needed
+            });
+        }
 	}
 
 	/**
@@ -25,7 +35,12 @@ class UpdateAccountTable extends Migration {
 	 */
 	public function down()
 	{
+        Schema::table('account', function (Blueprint $table)
+        {
+            // here we delete the columns created in migration
+            // ex: $table->dropColumn('votes');
 
+        });
 	}
 
 }

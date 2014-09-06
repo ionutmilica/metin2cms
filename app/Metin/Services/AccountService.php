@@ -24,15 +24,13 @@ class AccountService {
         $data['password'] = mysqlHash($data['password']);
         $data['status'] = 'BLOCK';
 
-        /** Todo: Configuration for activation **/
-
-        $this->app['events']->fire('account.creating', $data);
+        $this->app['events']->fire('account.creating', array($data));
 
         $account = $this->account->create($data);
 
         if ($account)
         {
-            $this->app['events']->fire('account.created', $account);
+            $this->app['events']->fire('account.created', array($account));
 
             return $account;
         }
@@ -40,6 +38,8 @@ class AccountService {
 
     public function authenticate(array $data)
     {
+        $this->app['events']->fire('account.auth.before', array($data));
+
         $auth = Auth::attempt(array(
             'username' => $data['username'],
             'password' => $data['password']
@@ -47,8 +47,12 @@ class AccountService {
 
         if ( ! $auth)
         {
-            throw new \Exception('Login failded');
+            $this->app['events']->fire('account.auth.failed', array($data));
+
+            throw new \Exception('Login failed');
         }
+
+        $this->app['events']->fire('account.auth.successful', array($data));
 
         return true;
     }
