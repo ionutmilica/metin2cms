@@ -22,6 +22,15 @@ App::after(function($request, $response)
 	//
 });
 
+/**
+ * Handle all form validation errors and resend user to the original form
+ */
+
+App::error(function (\Metin\Validation\FormValidationException $e)
+{
+    return Redirect::back()->withInput()->withErrors($e->getErrors());
+});
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters
