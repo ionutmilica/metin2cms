@@ -23,11 +23,6 @@ class RegistrationController extends Controller {
     {
         $this->registrationForm = $registrationForm;
         $this->account = $account;
-
-        Event::listen('account.created', function($user) {
-            var_dump($user);
-
-        });
     }
 
     public function create()

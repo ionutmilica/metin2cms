@@ -34,4 +34,19 @@ class Account extends Model {
      */
 
     protected $hidden = array('password');
+
+    /**
+     * Let Eloquent take care of password field. Using game default hash method.
+     *
+     * @param $value
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = mysqlHash($value);
+    }
+
+    public function getDates()
+    {
+        return array('create_time');
+    }
 }

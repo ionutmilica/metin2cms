@@ -1,8 +1,30 @@
+@extends('layouts.default')
+
+@section('content')
 {{ var_dump(Session::get('errors')) }}
-<form action="{{ route('account.create') }}" method="POST">
-    Username: <input type="text" name="username"><br/>
-    Password: <input type="password" name="password"><br/>
-    Repeat password: <input type="password" name="password_confirmation"><br/>
-    Email: <input type="text" name="email"><br/>
-    <input type="submit" name="submit" value="Create">
+
+<form role="form" action="{{ route('account.create') }}" method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="username" class="form-control" name="username" id="username" placeholder="Enter username">
+    </div>
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="password_confirmation">Password Confirmation</label>
+        <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Password">
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> I accept the terms
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
 </form>
+@stop

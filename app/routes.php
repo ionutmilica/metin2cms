@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('/', 'HomeController@index');
 
 
@@ -20,8 +19,8 @@ Route::group(array('prefix' => 'account'), function ()
     Route::get('index', array('as' => 'account.index', 'uses' => 'AccountController@index'));
 
     // Auth user
-    Route::get('login', array('as' => 'account.auth', 'uses' => 'AccountController@auth'));
-    Route::post('login', 'AccountController@doAuth');
+    Route::get('login', array('as' => 'account.auth', 'uses' => 'SessionsController@index'));
+    Route::post('login', 'SessionsController@doAuth');
 
     // Create user
     Route::get('create', array('as' => 'account.create', 'uses' => 'RegistrationController@create'));

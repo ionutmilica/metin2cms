@@ -21,10 +21,10 @@ class AccountService {
 
     public function create(array $data)
     {
-        $data['password'] = mysqlHash($data['password']);
+        //@TODO: Make use of events for this kind of configurations
         $data['status'] = 'BLOCK';
 
-        $this->app['events']->fire('account.creating', array($data));
+        $this->app['events']->fire('account.creating', array(&$data));
 
         $account = $this->account->create($data);
 

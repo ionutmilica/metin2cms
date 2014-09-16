@@ -8,6 +8,6 @@ class HomeController extends BaseController {
 
 	public function index()
     {
-        echo 'Welcome !';
+        return View::make('layouts.default');
     }
 }
