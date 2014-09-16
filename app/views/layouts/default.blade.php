@@ -2,37 +2,37 @@
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title>Metin2CMS</title>
+        <title>
+         @section('title')
+            Metin2CMS
+         @show
+        </title>
         <meta name="generator" content="Bootply"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <!--
-        <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
-        -->
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <style type="text/css">
-            body {
-                padding-top: 70px;
-            }
-            .wrapper {
-                margin-left:0;
-                margin-right:0;
-            }
-        </style>
+        @section('style')
+            <!--
+            <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
+            -->
+            <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+            <!--[if lt IE 9]>
+            <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+            <style type="text/css">
+                body {
+                    padding-top: 70px;
+                }
+                .wrapper {
+                    margin-left:0;
+                    margin-right:0;
+                }
+            </style>
+        @show
 </head>
 <body>
 
 <!-- Start navigation -->
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
     <a class="navbar-brand" rel="home" href="{{ route('home') }}">Metin2CMS</a>
   </div>
   <div class="collapse navbar-collapse">
@@ -48,7 +48,7 @@
   <!--left-->
   <div class="col-sm-3">
     <div class="row">
-        @section('left')
+     @section('left')
       <div class="col-xs-12">
         <div class="list-group">
           <a class="list-group-item active">
@@ -71,7 +71,7 @@
         </div>
         <hr>
       </div>
-        @show
+     @show
     </div>
   </div>
   <!--/left-->
@@ -110,7 +110,7 @@
         </div>
         <hr>
           <!-- End login module -->
-          
+
           <!-- Download module -->
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -137,13 +137,15 @@
   <hr>
 </div>
 <!-- /.container -->
+@section('js')
 <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 <script type='text/javascript'>
-  $(document).ready(function() {
-      $('#highscore a:first').tab('show');
-  });
+    $(document).ready(function() {
+        $('#highscore a:first').tab('show');
+    });
 </script>
+@show
 </body>
 </html>
