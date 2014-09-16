@@ -27,7 +27,7 @@ class SessionsController extends BaseController {
         return $view;
     }
 
-    public function doAuth()
+    public function doLogin()
     {
         $input = Input::only('username', 'password');
 
@@ -40,7 +40,7 @@ class SessionsController extends BaseController {
         }
         catch (Exception $e)
         {
-            return Redirect::back()->withInput()->withErrors(array(
+            return Redirect::route('account.login')->withInput()->withErrors(array(
                 'credentials' => 'Username or password is incorrect.'
             ));
         }

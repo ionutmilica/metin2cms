@@ -19,12 +19,12 @@ Route::group(array('prefix' => 'account'), function ()
     Route::get('index', array('as' => 'account.index', 'uses' => 'AccountController@index'));
 
     // Auth user
-    Route::get('login', array('as' => 'account.auth', 'uses' => 'SessionsController@index'));
-    Route::post('login', 'SessionsController@doAuth');
+    Route::get('login', array('as' => 'account.login', 'uses' => 'SessionsController@index'));
+    Route::post('login', 'SessionsController@doLogin');
 
     // Create user
-    Route::get('create', array('as' => 'account.create', 'uses' => 'RegistrationController@create'));
-    Route::post('create', 'RegistrationController@store');
+    Route::get('register', array('as' => 'account.create', 'uses' => 'RegistrationController@create'));
+    Route::post('register', 'RegistrationController@store');
 
     // User account confirmation
 

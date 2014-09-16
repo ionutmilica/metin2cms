@@ -90,12 +90,12 @@
             Logare
           </div>
           <div class="panel-body">
-            <form class="form-signin" role="form">
+            <form class="form-signin" role="form" action="{{ route('account.login') }}" method="post">
               <div class="form-group">
-                <input type="email" class="form-control" placeholder="Username" required autofocus>
+                <input type="username" name="username" class="form-control" placeholder="Username" required autofocus>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required>
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
               </div>
               <div class="form-group">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>

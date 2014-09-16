@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-{{ var_dump(Session::get('errors')) }}
+@include('layouts.partials.alerts')
 
 <form role="form" action="{{ route('account.create') }}" method="post">
     <div class="form-group">
