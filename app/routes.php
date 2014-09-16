@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', array(
+    'as'   => 'home',
+    'uses' => 'HomeController@index',
+));
 
 
 Route::group(array('prefix' => 'account'), function ()
@@ -25,6 +28,10 @@ Route::group(array('prefix' => 'account'), function ()
     // Create user
     Route::get('register', array('as' => 'account.create', 'uses' => 'RegistrationController@create'));
     Route::post('register', 'RegistrationController@store');
+
+    // Create user
+    Route::get('recover', array('as' => 'account.recover', 'uses' => 'RegistrationController@recover'));
+    Route::post('recover', 'RegistrationController@doRecover');
 
     // User account confirmation
 

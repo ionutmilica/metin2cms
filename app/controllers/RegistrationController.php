@@ -27,8 +27,6 @@ class RegistrationController extends Controller {
 
     public function create()
     {
-
-
         return View::make('site.registration.index');
     }
 
@@ -42,12 +40,21 @@ class RegistrationController extends Controller {
 
         if ($this->account->create($input))
         {
-            echo 'Account created !';
+            return Redirect::route('home');
         }
     }
 
     public function confirm($token)
     {
         echo 'Your token is: ' . $token;
+    }
+
+    public function recover()
+    {
+        return View::make('site.registration.recover');
+    }
+
+    public function doRecover()
+    {
     }
 }

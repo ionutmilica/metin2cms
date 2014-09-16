@@ -25,6 +25,6 @@
             <input type="checkbox"> I accept the terms
         </label>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary">Create account</button>
 </form>
 @stop
