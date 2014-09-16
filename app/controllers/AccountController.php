@@ -26,13 +26,9 @@ class AccountController extends BaseController {
 
     public function doCreate()
     {
-        try
+        if ($this->account->create(Input::all()))
         {
-            $this->account->create(Input::all());
-        }
-        catch (FormValidationException $e)
-        {
-            return Redirect::back()->withInput()->withErrors($e->getErrors());
+            return Redirect::route('account.index');
         }
     }
 
@@ -45,16 +41,9 @@ class AccountController extends BaseController {
 
     public function doAuth()
     {
-        try
+        if ($this->account->authenticate(Input::all()))
         {
-            if ($this->account->authenticate(Input::all()))
-            {
-                return Redirect::route('account.index');
-            }
-        }
-        catch (FormValidationException $e)
-        {
-            return Redirect::back()->withInput()->withErrors($e->getErrors());
+            return Redirect::route('account.index');
         }
     }
 }
