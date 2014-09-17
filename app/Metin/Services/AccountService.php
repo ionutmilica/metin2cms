@@ -5,6 +5,7 @@ namespace Metin\Services;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Hash;
 use Metin\Repositories\AccountRepositoryInterface;
 
 class AccountService {
@@ -55,5 +56,21 @@ class AccountService {
         $this->app['events']->fire('account.auth.successful', array($data));
 
         return true;
+    }
+
+    public function remind(array $data)
+    {
+        $account = $this->account->findByName($data['username']);
+
+        if ( ! $account || $account['email'] != $data['email'])
+        {
+            throw new \Exception('Can\'t find account by this user and email.');
+        }
+
+        // Create token
+        $token = Hash::make($data['email'] . uniqid(microtime(0)));
+
+
+        // Send email - No email for now
     }
 }

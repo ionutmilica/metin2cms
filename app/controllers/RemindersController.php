@@ -22,6 +22,16 @@ class RemindersController extends BaseController {
 
         App::make('Metin\Services\Forms\Recovery')->validate($input);
 
+        try
+        {
+            $this->account->remind($input);
+        }
+        catch(Exception $e)
+        {
+            return Redirect::route('account.recover')->withInput()->withErrors(array(
+                'credentials' => 'Incorrect email or username for your account.'
+            ));
+        }
     }
 
     public function confirm($token)
