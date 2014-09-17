@@ -49,4 +49,9 @@ class Account extends Model {
     {
         return array('create_time');
     }
+
+    public function getReminderUsername()
+    {
+        return $this->username;
+    }
 }

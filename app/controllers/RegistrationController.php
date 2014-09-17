@@ -27,7 +27,7 @@ class RegistrationController extends Controller {
 
     public function create()
     {
-        return View::make('site.registration.index');
+        return View::make('site.register.index');
     }
 
     public function store()
@@ -47,14 +47,5 @@ class RegistrationController extends Controller {
     public function confirm($token)
     {
         echo 'Your token is: ' . $token;
-    }
-
-    public function recover()
-    {
-        return View::make('site.registration.recover');
-    }
-
-    public function doRecover()
-    {
     }
 }

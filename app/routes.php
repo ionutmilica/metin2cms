@@ -29,9 +29,24 @@ Route::group(array('prefix' => 'account'), function ()
     Route::get('register', array('as' => 'account.create', 'uses' => 'RegistrationController@create'));
     Route::post('register', 'RegistrationController@store');
 
-    // Create user
-    Route::get('recover', array('as' => 'account.recover', 'uses' => 'RegistrationController@recover'));
-    Route::post('recover', 'RegistrationController@doRecover');
+    // Password Reset
+    Route::get('password/reset', array(
+        'as' => 'account.recover',
+        'uses' => 'RemindersController@reminder'
+    ));
+    Route::post('password/reset', 'RemindersController@doReminder');
+
+    // New password confirm
+    Route::get('password/confirm/{token}', array(
+        'as' => 'account.reminder',
+        'uses' => 'RemindersController@confirm'
+    ));
+
+    Route::post('password/confirm', array(
+        'as' => 'account.reminder.confirm',
+        'uses' => 'RemindersController@doConfirm',
+    ));
+
 
     // User account confirmation
 
