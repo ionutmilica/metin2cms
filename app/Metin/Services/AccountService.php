@@ -81,8 +81,7 @@ class AccountService {
 
         if ($generate)
         {
-            // send email
-            return 'gata';
+            return true;
         }
         
     }
