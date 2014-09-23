@@ -5,16 +5,11 @@ use Illuminate\Database\Eloquent\Model;
 class Reminder extends Model {
 
     /**
-     * Account table name
-     *
      * @var string
      */
-
     protected $table = 'password_reminders';
 
     /**
-     * As we have pre-created table, we have no timestamps
-     *
      * @var bool
      */
     public $timestamps = true;
@@ -37,8 +32,8 @@ class Reminder extends Model {
         $this->attributes['password'] = mysqlHash($value);
     }
 
-    public function setUpdatedAtAttribute($value)
-    {
-        // Do nothing.
-    }
+    /**
+     * @param $value
+     */
+    public function setUpdatedAtAttribute($value) { }
 }

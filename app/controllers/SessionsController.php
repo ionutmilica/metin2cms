@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Redirect;
 use Metin\Services\AccountService;
 use Metin\Services\Forms\Login;
 
@@ -26,6 +27,10 @@ class SessionsController extends BaseController {
         return $view;
     }
 
+    /**
+     *
+     * @return Illuminate\Http\Response
+     */
     public function doLogin()
     {
         $input = Input::only('username', 'password');
@@ -35,12 +40,13 @@ class SessionsController extends BaseController {
         try
         {
             $this->account->authenticate($input);
+
             return Redirect::route('account.index');
         }
         catch (Exception $e)
         {
             return Redirect::route('account.login')->withInput()->withErrors(array(
-                'credentials' => 'Username or password is incorrect.'
+                'Username or password is incorrect.'
             ));
         }
     }

@@ -6,37 +6,45 @@ use Metin\Services\Forms\Registration;
 class RegistrationController extends Controller {
 
     /**
-     * Service that validates the input for registration
-     *
-     * @var
+     * @var Metin\Services\Forms\Registration
      */
     protected $registrationForm;
 
     /**
-     * With account service we can create the user account.
-     *
-     * @var
+     * @var Metin\Services\AccountService
      */
     protected $account;
 
+    /**
+     * @param Registration $registrationForm
+     * @param AccountService $account
+     */
     public function __construct(Registration $registrationForm, AccountService $account)
     {
         $this->registrationForm = $registrationForm;
         $this->account = $account;
     }
 
+    /**
+     * Display user creation form
+     *
+     * @return mixed
+     */
     public function create()
     {
         return View::make('site.register.index');
     }
 
+    /**
+     * Create the user
+     *
+     * @return mixed
+     */
     public function store()
     {
         $input = Input::only('username', 'password', 'password_confirmation', 'email');
 
         $this->registrationForm->validate($input);
-
-        // If the validation succeds this we'll go to the next operation
 
         if ($this->account->create($input))
         {
@@ -44,6 +52,11 @@ class RegistrationController extends Controller {
         }
     }
 
+    /**
+     * Confirm account creation
+     *
+     * @param $token
+     */
     public function confirm($token)
     {
         echo 'Your token is: ' . $token;

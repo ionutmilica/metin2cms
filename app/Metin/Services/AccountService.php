@@ -4,8 +4,6 @@ namespace Metin\Services;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Hash;
 use Metin\Repositories\AccountRepositoryInterface;
 use Metin\Repositories\ReminderRepositoryInterface;
 
@@ -24,6 +22,12 @@ class AccountService {
         $this->reminder = $reminder;
     }
 
+    /**
+     * Create user account
+     *
+     * @param array $data
+     * @return mixed
+     */
     public function create(array $data)
     {
         //@TODO: Make use of events for this kind of configurations
@@ -41,6 +45,13 @@ class AccountService {
         }
     }
 
+    /**
+     * Authenticate the user
+     *
+     * @param array $data
+     * @return bool
+     * @throws \Exception
+     */
     public function authenticate(array $data)
     {
         $this->app['events']->fire('account.auth.before', array($data));
@@ -62,6 +73,13 @@ class AccountService {
         return true;
     }
 
+    /**
+     * Generate a new password for the user
+     *
+     * @param array $data
+     * @return mixed
+     * @throws \Exception
+     */
     public function remind(array $data)
     {
         $account = $this->account->findByName($data['username']);
@@ -71,22 +89,20 @@ class AccountService {
             throw new \Exception('Can\'t find account by this user and email.');
         }
 
-        // Create token
-        //$token = Hash::make($data['email'] . uniqid(microtime(0)));
-
         $token    = str_random(64);
         $password = str_random(10);
 
-        $generate = $this->reminder->generatePassword($data, $token, $password);
-
-        if ($generate)
-        {
-            return true;
-        }
-        
+        return $this->reminder->generatePassword($data, $token, $password);
     }
 
-    public function confirm($token)
+    /**
+     * Confirm the generated user password
+     *
+     * @param $token
+     * @return bool
+     * @throws \Exception
+     */
+    public function confirmNewPassword($token)
     {
         $reminder = $this->reminder->findByToken($token);
 

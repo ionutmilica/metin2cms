@@ -4,18 +4,34 @@ use Metin\Services\AccountService;
 
 class RemindersController extends BaseController {
 
+    /**
+     * @var Metin\Services\AccountService
+     */
     protected $account;
 
+    /**
+     * @param AccountService $account
+     */
     public function __construct(AccountService $account)
     {
         $this->account = $account;
     }
 
+    /**
+     * Display password reset form
+     *
+     * @return mixed
+     */
     public function reminder()
     {
         return View::make('site.reminder.index');
     }
 
+    /**
+     * Generate a new password and send a confirmation email
+     *
+     * @return mixed
+     */
     public function doReminder()
     {
         $input = Input::all();
@@ -37,11 +53,17 @@ class RemindersController extends BaseController {
         }
     }
 
+    /**
+     * Confir the generated password
+     *
+     * @param $token
+     * @return mixed
+     */
     public function confirm($token)
     {
        try
        {
-           if ($this->account->confirm($token) === true)
+           if ($this->account->confirmNewPassword($token))
            {
                 return View::make('site.reminder.confirm');
            }
