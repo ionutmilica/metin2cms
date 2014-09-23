@@ -44,14 +44,4 @@ class Account extends Model {
     {
         $this->attributes['password'] = mysqlHash($value);
     }
-
-    public function getDates()
-    {
-        return array('create_time');
-    }
-
-    public function getReminderUsername()
-    {
-        return $this->username;
-    }
 }

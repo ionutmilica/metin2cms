@@ -6,7 +6,6 @@ use Illuminate\Auth\GenericUser;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\UserProviderInterface;
 use Metin\Entities\Account;
-use DB;
 
 class MetinAuthProvider implements UserProviderInterface{
 
@@ -23,7 +22,10 @@ class MetinAuthProvider implements UserProviderInterface{
 
         if ( ! is_null($account))
         {
-            return new GenericUser($account->toArray());
+            $accountArr = $account->toArray();
+            $accountArr['password'] = $account->password;
+
+            return new GenericUser($accountArr);
         }
     }
 

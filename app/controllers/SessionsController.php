@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Redirect;
 use Metin\Services\AccountService;
 use Metin\Services\Forms\Login;
+use Metin\Services\LoginFailedException;
 
 class SessionsController extends BaseController {
 
@@ -43,7 +44,7 @@ class SessionsController extends BaseController {
 
             return Redirect::route('account.index');
         }
-        catch (Exception $e)
+        catch (LoginFailedException $e)
         {
             return Redirect::route('account.login')->withInput()->withErrors(array(
                 'Username or password is incorrect.'

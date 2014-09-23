@@ -12,7 +12,7 @@ class AccountTableSeeder extends Seeder {
     protected $accounts = array(
         array(
             'username' => 'demo',
-            'password' => 'demo',
+            'password' => 'dev',
             'email'    => 'demo@demo.com',
             'status'   => 'OK'
         ),

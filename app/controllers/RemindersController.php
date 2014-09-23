@@ -1,6 +1,7 @@
 <?php
 
 use Metin\Services\AccountService;
+use Metin\Services\RemindFailedException;
 
 class RemindersController extends BaseController {
 
@@ -45,7 +46,7 @@ class RemindersController extends BaseController {
                 return View::make('site.reminder.sent');
             }
         }
-        catch(Exception $e)
+        catch(RemindFailedException $e)
         {
             return Redirect::route('account.recover')->withInput()->withErrors(array(
                 'credentials' => 'Incorrect email or username for your account.'

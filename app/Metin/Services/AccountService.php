@@ -2,6 +2,7 @@
 
 namespace Metin\Services;
 
+use Exception;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Metin\Repositories\AccountRepositoryInterface;
@@ -65,7 +66,7 @@ class AccountService {
         {
             $this->app['events']->fire('account.auth.failed', array($data));
 
-            throw new \Exception('Login failed');
+            throw new LoginFailedException('Login failed');
         }
 
         $this->app['events']->fire('account.auth.successful', array($data));
@@ -122,3 +123,7 @@ class AccountService {
         }
     }
 }
+
+// Exceptions - Considering about moving them in the futures
+class LoginFailedException extends Exception {}
+class RemindFailedException extends Exception {}
