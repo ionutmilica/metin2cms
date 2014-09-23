@@ -5,20 +5,25 @@
 @stop
 
 @section('content')
-@include('layouts.partials.alerts')
 <div class="panel panel-default">
     <div class="panel-heading">
         Login
     </div>
     <div class="panel-body">
         <form role="form" action="{{ route('account.login') }}" method="post">
-            <div class="form-group">
+            <div class="form-group @if ($errors->has('username')) has-error @endif">
                 <label for="username">Username</label>
                 <input type="username" class="form-control" name="username" id="username" placeholder="Enter username">
+                @if ($errors->has('username'))
+                    <span class="help-block">{{ $errors->first('username') }} </span>
+                @endif
             </div>
-            <div class="form-group">
+            <div class="form-group @if ($errors->has('password')) has-error @endif">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                @if ($errors->has('password'))
+                    <span class="help-block">{{ $errors->first('password') }} </span>
+                @endif
             </div>
             <div class="checkbox">
                 <label>
