@@ -88,6 +88,7 @@
     <div class="row">
         @section('rigt')
       <div class="col-xs-12">
+          @if ( ! Auth::check())
           <!-- Login module -->
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -110,7 +111,7 @@
         </div>
         <hr>
           <!-- End login module -->
-
+        @endif
           <!-- Download module -->
         <div class="panel panel-default">
           <div class="panel-heading">
