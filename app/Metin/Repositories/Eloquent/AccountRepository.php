@@ -51,9 +51,23 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
         $account->email = $info['email'];
         $account->password = $info['password'];
         $account->status = $info['status'];
+        $account->confirmation_token = $info['confirmation_token'];
+
         $account->save();
 
         return $this->toArray($account);
+    }
+
+    public function update($conditions, array $info)
+    {
+        $account = $this->getNew();
+
+        foreach ($conditions as $field => $value)
+        {
+            $account->where($field, $value);
+        }
+
+        return $this->toArray($account->update($info));
     }
 
     /**

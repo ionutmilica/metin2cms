@@ -7,7 +7,7 @@ use Metin\Validation\FormValidator;
 class Login extends FormValidator
 {
     protected $rules = array(
-        'username' => 'required',
+        'username' => 'required|alpha_num',
         'password' => 'required',
     );
 }

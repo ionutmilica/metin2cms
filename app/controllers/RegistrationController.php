@@ -55,10 +55,14 @@ class RegistrationController extends Controller {
     /**
      * Confirm account creation
      *
+     * @param $user
      * @param $token
+     * @return
      */
-    public function confirm($token)
+    public function confirm($user, $token)
     {
-        echo 'Your token is: ' . $token;
+        $this->account->confirmAccount($user, $token);
+
+        return View::make('site.register.confirm');
     }
 }

@@ -47,7 +47,7 @@ Route::group(array('prefix' => 'account'), function ()
 
     // User account confirmation
 
-    Route::get('confirm/{token}', array(
+    Route::get('confirm/{user}/{token}', array(
         'as'   => 'account.confirm',
         'uses' => 'RegistrationController@confirm'
     ));

@@ -7,7 +7,7 @@ use Metin\Validation\FormValidator;
 class Recovery extends FormValidator
 {
     protected $rules = array(
-        'username' => 'required',
+        'username' => 'required|alpha_num',
         'email'    => 'required|email',
     );
 }

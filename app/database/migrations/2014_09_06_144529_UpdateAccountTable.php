@@ -23,6 +23,7 @@ class UpdateAccountTable extends Migration {
         {
             Schema::table('account', function (Blueprint $table)
             {
+                $table->string('confirmation_token', 64);
                 // here add new fields if needed
             });
         }
@@ -39,7 +40,7 @@ class UpdateAccountTable extends Migration {
         {
             // here we delete the columns created in migration
             // ex: $table->dropColumn('votes');
-
+            $table->dropColumn('confirmation_token');
         });
 	}
 

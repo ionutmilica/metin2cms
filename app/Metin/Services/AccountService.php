@@ -33,6 +33,7 @@ class AccountService {
     {
         //@TODO: Make use of events for this kind of configurations
         $data['status'] = 'BLOCK';
+        $data['confirmation_token'] = str_random(64);
 
         $this->app['events']->fire('account.creating', array(&$data));
 
@@ -44,6 +45,21 @@ class AccountService {
 
             return $account;
         }
+    }
+
+    /**
+     * Confirm user account
+     *
+     * @param $user
+     * @param $token
+     * @return bool
+     */
+    public function confirmAccount($user, $token)
+    {
+        return (bool) $this->account->update(array('login' => $user, 'confirmation_token' => $token), array(
+            'confirmation_token' => '',
+            'status' => 'OK'
+        ));
     }
 
     /**
