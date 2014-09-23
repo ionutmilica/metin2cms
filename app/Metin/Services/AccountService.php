@@ -79,7 +79,8 @@ class AccountService {
 
         $generate = $this->reminder->generatePassword($data, $token, $password);
 
-        if ($generate) {
+        if ($generate)
+        {
             // send email
             return 'gata';
         }

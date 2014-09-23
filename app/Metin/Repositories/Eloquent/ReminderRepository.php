@@ -18,7 +18,7 @@ class ReminderRepository extends AbstractRepository implements ReminderRepositor
         $account           = $this->getNew();
         $account->username = $data['username'];
         $account->token    = $token;
-        $account->password = $passord;
+        $account->password = $password;
         $account->save();
     }
 } 
