@@ -24,11 +24,10 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
-
-	'local' => array('Ionut', 'blackburn1911'),
-
-));
+$env = $app->detectEnvironment(function ()
+{
+    return getenv('M2ENV') ?: 'local';
+});
 
 /*
 |--------------------------------------------------------------------------
