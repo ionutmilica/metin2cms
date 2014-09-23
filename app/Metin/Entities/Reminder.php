@@ -37,7 +37,7 @@ class Reminder extends Model {
         $this->attributes['password'] = mysqlHash($value);
     }
 
-    public function setUptadedAtAttribute($value)
+    public function setUpdatedAtAttribute($value)
     {
         // Do nothing.
     }
