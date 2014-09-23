@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Metin\Repositories\AccountRepositoryInterface;
+use Metin\Repositories\ReminderRepositoryInterface;
 
 class AccountService {
 
@@ -14,10 +15,13 @@ class AccountService {
 
     protected $app;
 
-    public function __construct(AccountRepositoryInterface $account, Application $app)
+    protected $reminder;
+
+    public function __construct(AccountRepositoryInterface $account, Application $app, ReminderRepositoryInterface $reminder)
     {
         $this->app = $app;
         $this->account = $account;
+        $this->reminder = $reminder;
     }
 
     public function create(array $data)
@@ -68,9 +72,17 @@ class AccountService {
         }
 
         // Create token
-        $token = Hash::make($data['email'] . uniqid(microtime(0)));
+        //$token = Hash::make($data['email'] . uniqid(microtime(0)));
 
+        $token    = str_random(64);
+        $password = str_random(10);
 
-        // Send email - No email for now
+        $generate = $this->reminder->generatePassword($data, $token, $password);
+
+        if ($generate) {
+            // send email
+            return 'gata';
+        }
+        
     }
 }
