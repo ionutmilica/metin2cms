@@ -8,7 +8,8 @@ class Registration extends FormValidator
 {
     protected $rules = array(
         'username' => 'required|alpha_num|between:4, 16',
-        'password' => 'required|confirmed',
-        'email'    => 'required|email'
+        'password' => 'required',
+        'email'    => 'required|email',
+        'password_confirmation' => 'required|same:password'
     );
 }
