@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('title')
+   Account creation - @parent
+@stop
+
 @section('content')
 @include('layouts.partials.alerts')
 <div class="panel panel-default">

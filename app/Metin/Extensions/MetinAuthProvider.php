@@ -50,7 +50,10 @@ class MetinAuthProvider implements UserProviderInterface{
 
 		if ( ! is_null($user))
         {
-            return new GenericUser($user->toArray());
+            $userArr = $user->toArray();
+            $userArr['password'] = $user->password;
+
+            return new GenericUser($userArr);
         }
     }
 

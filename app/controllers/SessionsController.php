@@ -42,7 +42,7 @@ class SessionsController extends BaseController {
         {
             $this->account->authenticate($input);
 
-            return Redirect::route('account.index');
+            return Redirect::route('home');
         }
         catch (LoginFailedException $e)
         {
@@ -50,5 +50,12 @@ class SessionsController extends BaseController {
                 'Username or password is incorrect.'
             ));
         }
+    }
+
+    public function logout()
+    {
+        $this->account->logout();
+
+        return Redirect::route('home');
     }
 }

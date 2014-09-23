@@ -25,6 +25,8 @@ Route::group(array('prefix' => 'account'), function ()
     Route::get('login', array('as' => 'account.login', 'uses' => 'SessionsController@index'));
     Route::post('login', 'SessionsController@doLogin');
 
+    Route::get('logout', array('as' => 'account.logout', 'uses' => 'SessionsController@logout'));
+
     // Create user
     Route::get('register', array('as' => 'account.create', 'uses' => 'RegistrationController@create'));
     Route::post('register', 'RegistrationController@store');

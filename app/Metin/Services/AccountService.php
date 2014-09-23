@@ -74,6 +74,11 @@ class AccountService {
         return true;
     }
 
+    public function logout()
+    {
+        return Auth::logout();
+    }
+
     /**
      * Generate a new password for the user
      *

@@ -32,15 +32,22 @@
 
 <!-- Start navigation -->
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="navbar-header">
-    <a class="navbar-brand" rel="home" href="{{ route('home') }}">Metin2CMS</a>
-  </div>
-  <div class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
-      <li><a href="{{ route('home') }}">Home</a></li>
-      <li><a href="/home">Download</a></li>
-    </ul>
-  </div>
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" rel="home" href="{{ route('home') }}">Metin2CMS</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="{{ route('home') }}">Home</a></li>
+              <li><a href="/home">Download</a></li>
+            </ul>
+            @if (Auth::check())
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ route('account.logout') }}">Logout</a></li>
+            </ul>
+            @endif
+        </div>
+    </div>
 </div>
 <!-- End navigation -->
 
