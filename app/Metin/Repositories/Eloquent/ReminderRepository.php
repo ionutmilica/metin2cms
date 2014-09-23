@@ -12,6 +12,10 @@ class ReminderRepository extends AbstractRepository implements ReminderRepositor
         $this->model = $model;
     }
 
+    public function findByToken($token)
+    {
+        return $this->toArray($this->model->where('token', $token)->first());
+    }
 
     public function generatePassword(array $data, $token, $password)
     {
@@ -22,5 +26,10 @@ class ReminderRepository extends AbstractRepository implements ReminderRepositor
         $account->save();
 
         return true;
+    }
+
+    public function deleteToken($token)
+    {
+        return $this->model->where('token', $token)->delete();
     }
 } 

@@ -39,11 +39,18 @@ class RemindersController extends BaseController {
 
     public function confirm($token)
     {
-        return View::make('site.reminder.confirm');
-    }
-
-    public function doConfirm()
-    {
-
+       try
+       {
+           if ($this->account->confirm($token) === true)
+           {
+                return View::make('site.reminder.confirm');
+           }
+       }
+       catch (Exception $e)
+       {
+           return Redirect::route('home')->withInput()->withErrors(array(
+                'credentials' => 'Incorrect token.'
+            ));
+       }
     }
 }

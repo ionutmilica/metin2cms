@@ -9,4 +9,6 @@ interface AccountRepositoryInterface {
 	public function findById($id);
 
 	public function findByName($login);
+
+	public function changePassword(array $data);
 }

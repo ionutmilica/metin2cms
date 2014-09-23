@@ -34,4 +34,18 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
 
         return $this->toArray($account);
     }
+
+    public function changePassword(array $data)
+    {
+        $account = $this->model->where('login', $data['username']);
+        
+        $update = $account->update(array(
+            'password' => $data['password']
+        ));
+
+        if ($update)
+        {
+            return true;
+        }
+    }
 } 

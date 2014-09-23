@@ -42,11 +42,6 @@ Route::group(array('prefix' => 'account'), function ()
         'uses' => 'RemindersController@confirm'
     ));
 
-    Route::post('password/confirm', array(
-        'as' => 'account.reminder.confirm',
-        'uses' => 'RemindersController@doConfirm',
-    ));
-
 
     // User account confirmation
 

@@ -85,4 +85,24 @@ class AccountService {
         }
         
     }
+
+    public function confirm($token)
+    {
+        $reminder = $this->reminder->findByToken($token);
+
+        if ( ! $reminder || $reminder['token'] != $token)
+        {
+            throw new \Exception('This token is invalid.');
+        }
+
+        $change = $this->account->changePassword($reminder);
+
+        if ($change)
+        {
+            // Delete token
+            $this->reminder->deleteToken($token);
+            
+            return true;
+        }
+    }
 }
