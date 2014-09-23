@@ -20,5 +20,7 @@ class ReminderRepository extends AbstractRepository implements ReminderRepositor
         $account->token    = $token;
         $account->password = $password;
         $account->save();
+
+        return true;
     }
 } 

@@ -24,9 +24,9 @@ class RemindersController extends BaseController {
 
         try
         {
-            if ($this->account->remind($input) == true) 
+            if ($this->account->remind($input) === true) 
             {
-                View::make('site.reminder.sent');
+                return View::make('site.reminder.sent');
             }
         }
         catch(Exception $e)
