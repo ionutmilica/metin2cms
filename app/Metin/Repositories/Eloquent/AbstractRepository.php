@@ -20,11 +20,11 @@ class AbstractRepository {
 
     public function toArray($data)
     {
-        if (false != $data)
+        if (is_object($data))
         {
             return $data->toArray();
         }
 
-        return false;
+        return $data;
     }
 }
