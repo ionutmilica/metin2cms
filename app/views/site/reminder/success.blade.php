@@ -1,12 +1,16 @@
 @extends('layouts.default')
 
+@section('title')
+Account creation - @parent
+@stop
+
 @section('content')
 <div class="panel panel-default">
     <div class="panel-heading">
-        Email sent with intructions
+        Password reset
     </div>
     <div class="panel-body">
-        <div class="alert alert-success">We sent an email confirmation with instructions for change the password!</div>
+        <p>An email confirmation with instructions for changing the password was sent ! </p>
     </div>
 </div>
 @stop

@@ -48,7 +48,7 @@ class RegistrationController extends Controller {
 
         if ($this->account->create($input))
         {
-            return Redirect::route('home');
+            return View::make('site.register.success');
         }
     }
 
