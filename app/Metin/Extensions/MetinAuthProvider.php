@@ -66,12 +66,20 @@ class MetinAuthProvider implements UserProviderInterface{
 
     public function retrieveByToken($identifier, $token)
     {
-        return new \Exception('not implemented');
+        $account = $this->account->newInstance();
+
+        $account->where($account->getKeyName(), $identifier)
+                ->where($account->getRememberTokenName(), $token)
+                ->first();
+
+        return new GenericUser($account->toArray());
     }
 
     public function updateRememberToken(UserInterface $user, $token)
     {
-        return new \Exception('not implemented');
+        $this->account->where('id', $user->id)->update(array(
+            $user->getRememberTokenName() => $token
+        ));
     }
 
 }

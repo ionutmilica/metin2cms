@@ -104,7 +104,10 @@ class AccountService {
 
     public function logout()
     {
-        return Auth::logout();
+        $this->app['auth']->logout();
+        $this->app['session.store']->flush();
+
+        return true;
     }
 
     /**
