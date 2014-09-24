@@ -66,13 +66,17 @@ class MetinAuthProvider implements UserProviderInterface{
 
     public function retrieveByToken($identifier, $token)
     {
-        $account = $this->account->newInstance();
-
-        $account->where($account->getKeyName(), $identifier)
-                ->where($account->getRememberTokenName(), $token)
+        $result = $this->account->where($this->account->getKeyName(), $identifier)
+                ->where($this->account->getRememberTokenName(), $token)
                 ->first();
 
-        return new GenericUser($account->toArray());
+        if ($result)
+        {
+            $account = $result->toArray();
+            $account['password'] = $result->password;
+        }
+
+        return new GenericUser($result->toArray());
     }
 
     public function updateRememberToken(UserInterface $user, $token)
