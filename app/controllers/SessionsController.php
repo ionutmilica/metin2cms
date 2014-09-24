@@ -47,7 +47,7 @@ class SessionsController extends BaseController {
         catch (LoginFailedException $e)
         {
             return Redirect::route('account.login')->withInput()->withErrors(array(
-                'Username or password is incorrect.'
+                'auth' => $e->getMessage()
             ));
         }
     }

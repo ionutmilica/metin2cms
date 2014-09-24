@@ -67,11 +67,21 @@ class AccountService {
      *
      * @param array $data
      * @return bool
-     * @throws \Exception
+     * @throws LoginFailedException
      */
     public function authenticate(array $data)
     {
         $this->app['events']->fire('account.auth.before', array($data));
+
+        if ($this->account->isBlocked($data['username']))
+        {
+            throw new LoginFailedException('Your account is blocked.');
+        }
+
+        if ($this->account->isDisabled($data['username']))
+        {
+            throw new LoginFailedException('Your account is not activated yet.');
+        }
 
         $auth = Auth::attempt(array(
             'username' => $data['username'],
@@ -82,7 +92,7 @@ class AccountService {
         {
             $this->app['events']->fire('account.auth.failed', array($data));
 
-            throw new LoginFailedException('Login failed');
+            throw new LoginFailedException('Username or password is incorrect.');
         }
 
         $this->app['events']->fire('account.auth.successful', array($data));

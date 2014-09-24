@@ -1,6 +1,5 @@
 <?php
 
-use Metin\Validation\FormValidationException;
 use Metin\Services\AccountService;
 
 class AccountController extends BaseController {
@@ -14,6 +13,5 @@ class AccountController extends BaseController {
 
     public function index()
     {
-        var_dump(Auth::user());
     }
 }

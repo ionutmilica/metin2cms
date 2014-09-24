@@ -2,6 +2,7 @@
 
 namespace Metin\Repositories\Eloquent;
 
+use Carbon\Carbon;
 use Illuminate\Auth\UserInterface;
 use Metin\Entities\Account;
 use Metin\Repositories\AccountRepositoryInterface;
@@ -36,6 +37,17 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
     public function findByName($name)
     {
         return $this->toArray($this->model->where('login', $name)->first());
+    }
+
+    /**
+     * Find an account by id if the provided value is integer
+     *
+     * @param $key
+     * @return bool
+     */
+    public function findByIdOrName($key)
+    {
+        return is_int($key) ? $this->findById($key) : $this->findByName($key);
     }
 
     /**
@@ -83,5 +95,50 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
         return $this->toArray($account->update(array(
             'password' => $data['password']
         )));
+    }
+
+    /**
+     * Check if an account is blocked for a given username/id
+     *
+     * @param $key
+     * @return mixed
+     */
+    public function isBlocked($key)
+    {
+        $account = $this->findByIdOrName($key);
+
+        if ( ! $account) return false;
+
+        $date = new Carbon($account['availDt']);
+
+        return $this->toArray($date->timestamp > Carbon::now()->timestamp);
+    }
+
+    /**
+     * Check if an account is disabled(not confirmed) for a given username/id
+     *
+     * @param $key
+     * @return mixed
+     */
+    public function isDisabled($key)
+    {
+        $account = $this->findByIdOrName($key);
+
+        if ( ! $account) return false;
+
+        return $this->toArray($account['status'] !== 'OK');
+    }
+
+    /**
+     * Helper method using to auto-detect username or id from the value
+     *
+     * @param $key
+     * @return mixed
+     */
+    protected function whereIdOrName($key)
+    {
+        $field = is_int($key) ? 'id' : 'login';
+
+        return $this->model->where($field, $key);
     }
 } 

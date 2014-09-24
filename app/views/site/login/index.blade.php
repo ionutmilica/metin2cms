@@ -10,6 +10,12 @@
         Login
     </div>
     <div class="panel-body">
+        @if ($errors->has('auth'))
+        <div class="alert alert-danger alert-error">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <ul><li>{{ $errors->first('auth') }}</li> </ul>
+        </div>
+        @endif
         <form role="form" action="{{ route('account.login') }}" method="post">
             <div class="form-group @if ($errors->has('username')) has-error @endif">
                 <label for="username">Username</label>
