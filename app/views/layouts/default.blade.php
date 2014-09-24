@@ -106,7 +106,7 @@
           <div class="panel-body">
             <form class="form-signin" role="form" action="{{ route('account.login') }}" method="post">
               <div class="form-group">
-                <input type="username" name="username" class="form-control" placeholder="Username" required autofocus>
+                <input type="username" name="username" class="form-control" placeholder="Username" required>
               </div>
               <div class="form-group">
                 <input type="password" name="password" class="form-control" placeholder="Password" required>
