@@ -34,7 +34,7 @@ class SessionsController extends BaseController {
      */
     public function doLogin()
     {
-        $input = Input::only('username', 'password');
+        $input = Input::only('username', 'password', 'remember');
 
         $this->loginForm->validate($input);
 

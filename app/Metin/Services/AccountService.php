@@ -73,6 +73,8 @@ class AccountService {
     {
         $this->app['events']->fire('account.auth.before', array($data));
 
+        $remember = isset($data['remember']) && $data['remember'] != null ? true : false;
+
         if ($this->account->isBlocked($data['username']))
         {
             throw new LoginFailedException('Your account is blocked.');
@@ -86,7 +88,7 @@ class AccountService {
         $auth = Auth::attempt(array(
             'username' => $data['username'],
             'password' => $data['password']
-        ));
+        ), $remember);
 
         if ( ! $auth)
         {

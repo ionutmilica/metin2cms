@@ -13,5 +13,6 @@ class AccountController extends BaseController {
 
     public function index()
     {
+        dd(Auth::user());
     }
 }
