@@ -7,14 +7,13 @@
             Metin2CMS
          @show
         </title>
-        <meta name="generator" content="Bootply"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         @section('style')
             <!--
             <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
             -->
-            <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-            <link href="http://todc.github.io/todc-bootstrap/dist/css/todc-bootstrap.min.css" rel="stylesheet">
+            <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('assets/css/todc-bootstrap.min.css') }}" rel="stylesheet">
             
             <!--[if lt IE 9]>
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -148,8 +147,8 @@
 </div>
 <!-- /.container -->
 @section('js')
-<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script type='text/javascript' src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
 <script type='text/javascript'>
     $(document).ready(function() {
