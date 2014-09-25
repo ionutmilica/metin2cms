@@ -115,7 +115,7 @@
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
               </div>
             </form>
-             {{ link_to_route('account.recover', 'Forgot password?') }}
+             {{ link_to_route('account.password-reset', 'Forgot password?') }}
           </div>
         </div>
         <hr>

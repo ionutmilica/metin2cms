@@ -24,7 +24,7 @@ class SessionsController extends BaseController {
 
     public function index()
     {
-        $view = View::make('site.login.index');
+        $view = View::make('account.login.form');
         return $view;
     }
 

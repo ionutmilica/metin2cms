@@ -25,7 +25,7 @@ class RemindersController extends BaseController {
      */
     public function reminder()
     {
-        return View::make('site.reminder.index');
+        return View::make('account.password-reset.form');
     }
 
     /**
@@ -43,12 +43,12 @@ class RemindersController extends BaseController {
         {
             if ($this->account->remind($input) === true) 
             {
-                return View::make('site.reminder.success');
+                return View::make('account.password-reset.success');
             }
         }
         catch(RemindFailedException $e)
         {
-            return Redirect::route('account.recover')->withInput()->withErrors(array(
+            return Redirect::route('account.password-reset')->withInput()->withErrors(array(
                 'credentials' => 'Incorrect email or username for your account.'
             ));
         }
@@ -66,7 +66,7 @@ class RemindersController extends BaseController {
        {
            if ($this->account->confirmNewPassword($token))
            {
-                return View::make('site.reminder.confirm');
+                return View::make('site.password-reset.confirm');
            }
        }
        catch (Exception $e)

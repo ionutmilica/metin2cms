@@ -3,7 +3,7 @@
 @section('content')
 <div class="jumbotron">
     <div class="span7 text-center">
-        <a href="{{ route('account.create') }}" class="btn btn-primary btn-lg" role="button">JOACA GRATIS</a>
+        <a href="{{ route('account.register') }}" class="btn btn-primary btn-lg" role="button">Create an account</a>
     </div>
 </div>
 <hr>

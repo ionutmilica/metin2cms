@@ -16,41 +16,61 @@ Route::get('/', array(
     'uses' => 'HomeController@index',
 ));
 
+// User authentication
+
+Route::get('login', array(
+    'as' => 'account.login',
+    'uses' => 'SessionsController@index'
+));
+Route::post('login', 'SessionsController@doLogin');
+Route::get('logout', array('as' => 'account.logout', 'uses' => 'SessionsController@logout'));
+
+// User registration
+Route::get('register', array(
+    'as' => 'account.register',
+    'uses' => 'RegistrationController@create'
+));
+Route::post('register', 'RegistrationController@store');
+Route::get('confirm/{user}/{token}', array(
+    'as'   => 'account.register.confirm',
+    'uses' => 'RegistrationController@confirm'
+));
+
+// Password reset
+Route::get('password-reset', array(
+    'as' => 'account.password-reset',
+    'uses' => 'RemindersController@reminder'
+));
+Route::post('password-reset', 'RemindersController@doReminder');
+
+// New password confirm
+Route::get('password-reset/confirm/{token}', array(
+    'as' => 'account.password-reset.confirm',
+    'uses' => 'RemindersController@confirm'
+));
+
+// Account panel
 
 Route::group(array('prefix' => 'account'), function ()
 {
-    Route::get('index', array('as' => 'account.index', 'uses' => 'AccountController@index'));
-
-    // Auth user
-    Route::get('login', array('as' => 'account.login', 'uses' => 'SessionsController@index'));
-    Route::post('login', 'SessionsController@doLogin');
-
-    Route::get('logout', array('as' => 'account.logout', 'uses' => 'SessionsController@logout'));
-
-    // Create user
-    Route::get('register', array('as' => 'account.create', 'uses' => 'RegistrationController@create'));
-    Route::post('register', 'RegistrationController@store');
-
-    // Password Reset
-    Route::get('password/reset', array(
-        'as' => 'account.recover',
-        'uses' => 'RemindersController@reminder'
+    Route::get('/', array(
+        'as' => 'account.index',
+        'uses' => 'AccountController@index'
     ));
-    Route::post('password/reset', 'RemindersController@doReminder');
-
-    // New password confirm
-    Route::get('password/confirm/{token}', array(
-        'as' => 'account.reminder',
-        'uses' => 'RemindersController@confirm'
+    Route::get('email', array(
+        'as' => 'account.email',
+        'uses' => 'AccountController@email'
     ));
-
-
-    // User account confirmation
-
-    Route::get('confirm/{user}/{token}', array(
-        'as'   => 'account.confirm',
-        'uses' => 'RegistrationController@confirm'
+    Route::get('password', array(
+        'as' => 'account.password',
+        'uses' => 'AccountController@password'
     ));
-
-    // User actions
+    Route::get('storage', array(
+        'as' => 'account.storage',
+        'uses' => 'AccountController@storage'
+    ));
+    Route::get('characters', array(
+        'as' => 'account.characters',
+        'uses' => 'AccountController@characters'
+    ));
 });

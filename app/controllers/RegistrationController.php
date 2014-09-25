@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\View;
 use Metin\Services\AccountService;
 use Metin\Services\Forms\Registration;
 
@@ -32,7 +33,7 @@ class RegistrationController extends Controller {
      */
     public function create()
     {
-        return View::make('site.register.index');
+        return View::make('account.register.form');
     }
 
     /**
@@ -48,7 +49,7 @@ class RegistrationController extends Controller {
 
         if ($this->account->create($input))
         {
-            return View::make('site.register.success');
+            return View::make('account.register.success');
         }
     }
 
@@ -63,6 +64,6 @@ class RegistrationController extends Controller {
     {
         $this->account->confirmAccount($user, $token);
 
-        return View::make('site.register.confirm');
+        return View::make('account.register.confirm');
     }
 }
