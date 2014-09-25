@@ -13,19 +13,19 @@ Account overview - @parent
         <div class="well account-overview">
             <table width="100%">
                 <tr>
-                    <th>Username</th>
+                    <th><strong>Username</strong></th>
                     <th>{{ $user->login }}</th>
                 </tr>
                 <tr>
-                    <td>Email</td>
+                    <td><strong>Email</strong></td>
                     <td>{{ $user->email }}</td>
                 </tr>
                 <tr>
-                    <td>Dragon coin</td>
+                    <td><strong>Dragon coin</strong></td>
                     <td>{{ $user->cash }}</td>
                 </tr>
                 <tr>
-                    <td>Dragon marks</td>
+                    <td><strong>Dragon marks</strong></td>
                     <td>{{ $user->mileage }}</td>
                 </tr>
             </table>
