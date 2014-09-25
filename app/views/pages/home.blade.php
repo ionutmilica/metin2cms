@@ -21,8 +21,8 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="page-header">
-            <h1>Metin2 - Acţiunea Orientală MMORPG</h1>
-            In vremuri străvechi răsuflarea Zeului Dragon veghea asupra regatelor Shinsoo, Chunjo şi Jinno. Dar aceasta lume fascinanta a magiei se afla în fata unui pericol imens: Impactul Pietrelor Metin care au cauzat haos şi distrugere pe continent şi intre locuitori. Au izbucnit războaie intre continente, animalele sălbatice s-au transformat în bestii terifiante. Lupta împotriva influentei negative a Pietrelor Metin în postura unui aliat al Zeului Dragon. Aduna-ţi toate puterile şi armele pentru a salva regatul.
+            <h1>Metin2 - Oriental Action MMORPG</h1>
+            For a long time now the Dragon God's breath has watched over the kingdoms of Shinsoo, Chunjo and Jinno. But this fascinating world of magic is facing a terrifying threat: The impact of the Metin Stones has not only torn wounds into the entire continent, but has also caused chaos and destruction throughout the land and its inhabitants. War has broken out between the kingdoms, wild animals have transformed into raging beasts and the dead have come back to life as blood-thirsty creatures. Fight the dark influence of the Metin Stones as one of the Dragon God's allies. Gather all your strength and seize your weapons to save your kingdom from a future filled with fear, suffering and destruction!
         </div>
     </div>
 </div>

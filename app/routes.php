@@ -23,7 +23,10 @@ Route::get('login', array(
     'uses' => 'SessionsController@index'
 ));
 Route::post('login', 'SessionsController@doLogin');
-Route::get('logout', array('as' => 'account.logout', 'uses' => 'SessionsController@logout'));
+Route::get('logout', array(
+    'as' => 'account.logout',
+    'uses' => 'SessionsController@logout'
+));
 
 // User registration
 Route::get('register', array(
@@ -47,6 +50,12 @@ Route::post('password-reset', 'RemindersController@doReminder');
 Route::get('password-reset/confirm/{token}', array(
     'as' => 'account.password-reset.confirm',
     'uses' => 'RemindersController@confirm'
+));
+
+// Download
+Route::get('download', array(
+    'as' => 'download',
+    'uses' => 'HomeController@download'
 ));
 
 // Account panel
@@ -74,3 +83,7 @@ Route::group(array('prefix' => 'account'), function ()
         'uses' => 'AccountController@characters'
     ));
 });
+
+// Include api routes
+
+require __DIR__ . '/routes/api.php';

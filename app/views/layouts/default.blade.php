@@ -41,11 +41,13 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="{{ route('home') }}">Home</a></li>
-              <li><a href="/home">Download</a></li>
+              <li><a href="{{ route('download') }}">Download</a></li>
             </ul>
             @if (Auth::check())
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ route('account.logout') }}">Logout</a></li>
+                <li>
+                    <a href="{{ route('account.logout') }}">Logout</a>
+                </li>
             </ul>
             @endif
         </div>
@@ -68,7 +70,7 @@
         <hr>
         <div class="list-group">
           <a class="list-group-item active">
-          Galerie </a>
+          Gallery </a>
           <a href="#" class="list-group-item">Screenshots</a>
           <a href="#" class="list-group-item">Wallpapers</a>
         </div>
@@ -128,7 +130,9 @@
           </div>
           <div class="panel-body">
             <div class="span7 text-center">
-              <a class="btn btn-primary btn-lg" role="button">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+              <a class="btn btn-primary btn-lg" role="button" href="{{ route('download') }}">
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+              </a>
             </div>
           </div>
         </div>
