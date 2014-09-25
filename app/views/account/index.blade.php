@@ -10,17 +10,53 @@ Account overview - @parent
         Your account
     </div>
     <div class="panel-body">
-        <p>Username: {{ $user->login }}</p>
-        <p>Email: {{ $user->email }}</p>
-        <p>Dragon coins: {{ $user->cash }}</p>
-        <p>Dragon marks: {{ $user->mileage }}</p>
-        <ul>
-            <!-- Make routes and controller actions -->
-            <li><a href="/account/characters">Character</a></li>
-            <li><a href="/account/email">Email</a></li>
-            <li><a href="/account/password">Password reset</a></li>
-            <li><a href="/account/storage">Storage password</a></li>
-        </ul>
+        <div class="well account-overview">
+            <table width="100%">
+                <tr>
+                    <th>Username</th>
+                    <th>{{ $user->login }}</th>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{ $user->email }}</td>
+                </tr>
+                <tr>
+                    <td>Dragon coin</td>
+                    <td>{{ $user->cash }}</td>
+                </tr>
+                <tr>
+                    <td>Dragon marks</td>
+                    <td>{{ $user->mileage }}</td>
+                </tr>
+            </table>
+        </div>
+    
+        <p>
+            <div class="list-group">
+                <a href="/account/characters" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Character</h4>
+                    <p class="list-group-item-text">Change character of your account</p>
+                </a>
+            </div>
+            <div class="list-group">
+                <a href="/account/email" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Email</h4>
+                    <p class="list-group-item-text">Change email of your account</p>
+                </a>
+            </div>
+            <div class="list-group">
+                <a href="/account/password" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Password reset</h4>
+                    <p class="list-group-item-text">Reset password of your account</p>
+                </a>
+            </div>
+            <div class="list-group">
+                <a href="/account/storage" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Storage password</h4>
+                    <p class="list-group-item-text">Storage password of your account</p>
+                </a>
+            </div>
+        </p>
     </div>
 </div>
 @stop
