@@ -175,9 +175,20 @@ class AccountService {
 
         return (bool) $this->account->changePassword($data);
     }
+
+    public function email(array $data, $user)
+    {
+        $data = array(
+            'email'    => $data['email'],
+            'username' => $user->login
+        );
+
+        return (bool) $this->account->changeEmail($data);
+    }
 }
 
 // Exceptions - Considering about moving them in the futures
 class LoginFailedException extends Exception {}
 class RemindFailedException extends Exception {}
 class PasswordFailedException extends Exception {}
+class EmailFailedException extends Exception {}

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\View;
 use Metin\Services\AccountService;
 use Metin\Services\Forms\Password;
+use Metin\Services\Forms\Email;
 use Metin\Services\PasswordFailedException;
 
 class AccountController extends BaseController {
@@ -17,10 +18,16 @@ class AccountController extends BaseController {
      */
     protected $passwordForm;
 
-    public function __construct(AccountService $account, Password $passwordForm)
+    /**
+     * @var Metin\Services\Forms\Password
+     */
+    protected $emailForm;
+
+    public function __construct(AccountService $account, Password $passwordForm, Email $emailForm)
     {
         $this->account      = $account;
         $this->passwordForm = $passwordForm;
+        $this->emailForm    = $emailForm;
     }
 
     public function index()
@@ -50,5 +57,30 @@ class AccountController extends BaseController {
         {
             return $this->redirectWithError('account.password', $e->getMessage());
         }
+    }
+
+    public function email()
+    {
+        return View::make('account.email.form');
+    }
+
+    public function doEmail()
+    {
+        $input = Input::only('email');
+
+        $this->emailForm->validate($input);
+
+        try
+        {
+            if ($this->account->email($input, Auth::user()))
+            {
+                return View::make('account.email.success');
+            }
+        }
+        catch (EmailFailedException $e)
+        {
+            return $this->redirectWithError('account.email', $e->getMessage());
+        }
+
     }
 }

@@ -146,4 +146,13 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
     {
         return $this->model->find($id)->getAuthPassword();
     }
+
+    public function changeEmail(array $data)
+    {
+        $account = $this->model->where('login', $data['username']);
+        
+        return $this->toArray($account->update(array(
+            'email' => $data['email']
+        )));
+    }
 } 

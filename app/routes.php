@@ -70,6 +70,8 @@ Route::group(array('prefix' => 'account'), function ()
         'as' => 'account.email',
         'uses' => 'AccountController@email'
     ));
+    Route::post('email', array('uses' => 'AccountController@doEmail'));
+    
     Route::get('password', array(
         'as' => 'account.password',
         'uses' => 'AccountController@password'
