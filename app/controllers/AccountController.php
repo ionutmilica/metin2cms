@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\View;
 use Metin\Services\AccountService;
 
 class AccountController extends BaseController {
@@ -13,6 +14,6 @@ class AccountController extends BaseController {
 
     public function index()
     {
-        dd(Auth::user());
+        return View::make('account.index')->withUser(Auth::user());
     }
 }
