@@ -74,6 +74,7 @@ Route::group(array('prefix' => 'account'), function ()
         'as' => 'account.password',
         'uses' => 'AccountController@password'
     ));
+    Route::post('password', array('uses' => 'AccountController@doPassword'));
     Route::get('storage', array(
         'as' => 'account.storage',
         'uses' => 'AccountController@storage'

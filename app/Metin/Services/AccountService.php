@@ -158,8 +158,17 @@ class AccountService {
             return true;
         }
     }
+
+    public function password(array $data, $user)
+    {
+        if (mysqlHash($data['old_password']) != $this->account->authPassword($user->id))
+        {
+            throw new PasswordFailedException('Your old password is incorect!');
+        }
+    }
 }
 
 // Exceptions - Considering about moving them in the futures
 class LoginFailedException extends Exception {}
 class RemindFailedException extends Exception {}
+class PasswordFailedException extends Exception {}
