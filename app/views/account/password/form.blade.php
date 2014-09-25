@@ -34,7 +34,7 @@
                     <span class="help-block">{{ $errors->first('new_password_again') }} </span>
                 @endif
             </div>
-            <button type="submit" class="btn btn-primary">Recover password</button>
+            <button type="submit" class="btn btn-primary">Change password</button>
         </form>
     </div>
 </div>

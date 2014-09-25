@@ -41,9 +41,10 @@ class AccountController extends BaseController {
 
         try
         {
-            $this->account->password($input, Auth::user());
-
-            return Redirect::route('account.password');
+            if($this->account->password($input, Auth::user()))
+            {
+            	return View::make('account.password.success');
+            }
         }
         catch (PasswordFailedException $e)
         {

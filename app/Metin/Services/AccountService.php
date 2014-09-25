@@ -167,6 +167,18 @@ class AccountService {
         {
             throw new PasswordFailedException('Your old password is incorect!');
         }
+
+        $data = array(
+            'password' => mysqlHash($data['new_password']),
+            'username' => $user->login
+        );
+
+        $change = $this->account->changePassword($data);
+
+        if ($change)
+        {
+            return true;
+        }
     }
 }
 
