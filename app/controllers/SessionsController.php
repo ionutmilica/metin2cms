@@ -42,7 +42,7 @@ class SessionsController extends BaseController {
         {
             $this->account->authenticate($input);
 
-            return Redirect::route('home');
+            return Redirect::route('account.index');
         }
         catch (LoginFailedException $e)
         {

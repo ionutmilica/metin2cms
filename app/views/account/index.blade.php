@@ -35,7 +35,7 @@ Account overview - @parent
             <div class="list-group">
                 <a href="{{ route('account.characters') }}" class="list-group-item active">
                     <h4 class="list-group-item-heading">Character</h4>
-                    <p class="list-group-item-text">Change character of your account</p>
+                    <p class="list-group-item-text">Display all you characters</p>
                 </a>
             </div>
             <div class="list-group">
@@ -46,14 +46,14 @@ Account overview - @parent
             </div>
             <div class="list-group">
                 <a href="{{ route('account.password') }}" class="list-group-item active">
-                    <h4 class="list-group-item-heading">Password reset</h4>
-                    <p class="list-group-item-text">Reset password of your account</p>
+                    <h4 class="list-group-item-heading">Change password</h4>
+                    <p class="list-group-item-text">Change password of your account</p>
                 </a>
             </div>
             <div class="list-group">
                 <a href="{{ route('account.storage') }}" class="list-group-item active">
                     <h4 class="list-group-item-heading">Storage password</h4>
-                    <p class="list-group-item-text">Storage password of your account</p>
+                    <p class="list-group-item-text">Recover your storage password</p>
                 </a>
             </div>
         </p>
