@@ -161,7 +161,9 @@ class AccountService {
 
     public function password(array $data, $user)
     {
-        if (mysqlHash($data['old_password']) != $this->account->authPassword($user->id))
+        $hashed_pass = mysqlHash($data['old_password']);
+
+        if ($hashed_pass !== $this->account->authPassword($user->id))
         {
             throw new PasswordFailedException('Your old password is incorect!');
         }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\View;
 use Metin\Services\AccountService;
 use Metin\Services\Forms\Password;
+use Metin\Services\PasswordFailedException;
 
 class AccountController extends BaseController {
 
@@ -44,7 +45,7 @@ class AccountController extends BaseController {
 
             return Redirect::route('account.password');
         }
-        catch (LoginFailedException $e)
+        catch (PasswordFailedException $e)
         {
             return Redirect::route('account.password')->withInput()->withErrors(array(
                 'password' => $e->getMessage()
