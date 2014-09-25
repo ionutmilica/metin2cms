@@ -123,7 +123,7 @@ class AccountService {
 
         if ( ! $account || $account['email'] != $data['email'])
         {
-            throw new \Exception('Can\'t find account by this user and email.');
+            throw new RemindFailedException('Can\'t find account by the provided user and email.');
         }
 
         $token    = str_random(64);
@@ -145,7 +145,7 @@ class AccountService {
 
         if ( ! $reminder || $reminder['token'] != $token)
         {
-            throw new \Exception('This token is invalid.');
+            throw new RemindFailedException('This token is invalid.');
         }
 
         $change = $this->account->changePassword($reminder);
@@ -165,7 +165,7 @@ class AccountService {
 
         if ($hashed_pass !== $this->account->authPassword($user->id))
         {
-            throw new PasswordFailedException('Your old password is incorect!');
+            throw new PasswordFailedException('Your old password is incorrect.');
         }
 
         $data = array(
@@ -173,12 +173,7 @@ class AccountService {
             'username' => $user->login
         );
 
-        $change = $this->account->changePassword($data);
-
-        if ($change)
-        {
-            return true;
-        }
+        return (bool) $this->account->changePassword($data);
     }
 }
 

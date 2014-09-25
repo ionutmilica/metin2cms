@@ -6,6 +6,7 @@
         Recover your password
     </div>
     <div class="panel-body">
+        @include('layouts.partials.global_error')
         <form role="form" action="{{ route('account.password-reset') }}" method="post">
             <div class="form-group @if ($errors->has('username')) has-error @endif">
                 <label for="username">Username</label>

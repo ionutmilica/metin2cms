@@ -14,4 +14,11 @@ class BaseController extends Controller {
 			$this->layout = View::make($this->layout);
 		}
 	}
+
+    public function redirectWithError($route, $error)
+    {
+        return Redirect::route($route)->withInput()->withErrors(array(
+            'global' => $error
+        ));
+    }
 }

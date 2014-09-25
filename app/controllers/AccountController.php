@@ -48,9 +48,7 @@ class AccountController extends BaseController {
         }
         catch (PasswordFailedException $e)
         {
-            return Redirect::route('account.password')->withInput()->withErrors(array(
-                'password' => $e->getMessage()
-            ));
+            return $this->redirectWithError('account.password', $e->getMessage());
         }
     }
 }

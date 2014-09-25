@@ -6,12 +6,7 @@
         Change you password
     </div>
     <div class="panel-body">
-        @if ($errors->has('password'))
-            <div class="alert alert-danger alert-error">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                <ul><li>{{ $errors->first('password') }}</li> </ul>
-            </div>
-        @endif
+        @include('layouts.partials.global_error')
         <form role="form" action="{{ route('account.password') }}" method="post">
             <div class="form-group @if ($errors->has('old_password')) has-error @endif">
                 <label for="old_password">Old password</label>

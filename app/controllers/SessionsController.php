@@ -24,8 +24,7 @@ class SessionsController extends BaseController {
 
     public function index()
     {
-        $view = View::make('account.login.form');
-        return $view;
+        return View::make('account.login.form');
     }
 
     /**
@@ -46,9 +45,7 @@ class SessionsController extends BaseController {
         }
         catch (LoginFailedException $e)
         {
-            return Redirect::route('account.login')->withInput()->withErrors(array(
-                'auth' => $e->getMessage()
-            ));
+            return $this->redirectWithError('account.login', $e->getMessage());
         }
     }
 

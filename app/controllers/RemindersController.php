@@ -48,9 +48,7 @@ class RemindersController extends BaseController {
         }
         catch(RemindFailedException $e)
         {
-            return Redirect::route('account.password-reset')->withInput()->withErrors(array(
-                'credentials' => 'Incorrect email or username for your account.'
-            ));
+            return $this->redirectWithError('account.password-reset', $e->getMessage());
         }
     }
 
@@ -69,11 +67,9 @@ class RemindersController extends BaseController {
                 return View::make('site.password-reset.confirm');
            }
        }
-       catch (Exception $e)
+       catch (RemindFailedException $e)
        {
-           return Redirect::route('home')->withInput()->withErrors(array(
-                'credentials' => 'Incorrect token.'
-            ));
+           return $this->redirectWithError('home', $e->getMessage());
        }
     }
 }
