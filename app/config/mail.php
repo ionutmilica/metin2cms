@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'mail.ionutmilica.ro',
+	'host' => '',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'no-reply@ionut-milica.ro', 'name' => 'Metin2CMS'),
+	'from' => array('address' => 'noreply@metin2cms.com', 'name' => 'Metin2CMS Support'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'metin2cms@ionutmilica.ro',
+	'username' => '',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'oparola',
+	'password' => '',
 
 	/*
 	|--------------------------------------------------------------------------

@@ -30,6 +30,9 @@ class AccountService {
      */
     protected $safebox;
 
+    /**
+     * @param Application $app
+     */
     public function __construct(Application $app)
     {
         $this->app = $app;
@@ -47,10 +50,11 @@ class AccountService {
     public function create(array $data)
     {
         //@TODO: Make use of events for this kind of configurations
+        $data['login'] = $data['username'];
         $data['status'] = 'BLOCK';
         $data['confirmation_token'] = str_random(64);
 
-        $this->app['events']->fire('account.creating', array(&$data));
+        $account = $this->app['events']->fire('account.creating', array(&$data));
 
         $account = $this->account->create($data);
 
@@ -60,6 +64,8 @@ class AccountService {
 
             return $account;
         }
+
+        return false;
     }
 
     /**
@@ -219,7 +225,7 @@ class AccountService {
             throw new SafeboxException('Your current account doesn\'t have a safebox.');
         }
 
-        // Send mail
+        // Send an email
 
         return true;
     }

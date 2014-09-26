@@ -52,7 +52,7 @@ Account overview - @parent
             </div>
             <div class="list-group">
                 <a href="{{ route('account.safebox') }}" class="list-group-item active">
-                    <h4 class="list-group-item-heading">StoreKeeper</h4>
+                    <h4 class="list-group-item-heading">Storekeeper</h4>
                     <p class="list-group-item-text">Request StoreKeeper password</p>
                 </a>
             </div>

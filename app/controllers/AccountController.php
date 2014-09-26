@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\View;
 use Metin\Services\AccountService;
 use Metin\Services\EmailFailedException;
 use Metin\Services\Forms\Password;
@@ -10,7 +9,7 @@ use Metin\Services\SafeboxException;
 
 class AccountController extends BaseController {
 
-	/**
+    /**
      * @var Metin\Services\AccountService
      */
     protected $account;
@@ -41,12 +40,12 @@ class AccountController extends BaseController {
 
     public function password()
     {
-    	return view('account.password.form');
+        return view('account.password.form');
     }
 
     public function doPassword()
     {
-    	$input = Input::only('old_password', 'new_password', 'new_password_again');
+        $input = Input::only('old_password', 'new_password', 'new_password_again');
 
         $this->passwordForm->validate($input);
 
@@ -54,7 +53,7 @@ class AccountController extends BaseController {
         {
             if($this->account->password($input, Auth::user()))
             {
-            	return view('account.password.success');
+                return view('account.password.success');
             }
         }
         catch (PasswordFailedException $e)
