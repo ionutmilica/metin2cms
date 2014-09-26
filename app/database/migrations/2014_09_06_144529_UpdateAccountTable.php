@@ -12,23 +12,21 @@ class UpdateAccountTable extends Migration {
 	 */
 	public function up()
 	{
+        /* We create the table more for testing reason, because every server should have a database */
+
         if ( ! Schema::hasTable('account'))
         {
-            /* We create the table more for testing reason, because every server should have a database */
+            DB::unprepared(file_get_contents(__DIR__ . '/sql/account.sql'));
+        }
 
-            $sql = file_get_contents(__DIR__ . '/sql/account.sql');
-            DB::statement($sql);
-        }
-        else
+        Schema::table('account', function (Blueprint $table)
         {
-            Schema::table('account', function (Blueprint $table)
-            {
-                $table->string('confirmation_token', 64)->nullable();
-                $table->string('remember_token')->nullable();
-                // here add new fields if needed
-            });
-        }
-	}
+            $table->string('confirmation_token', 64)->nullable();
+            $table->string('remember_token')->nullable();
+            // here add new fields if needed
+        });
+
+    }
 
 	/**
 	 * Reverse the migrations.
