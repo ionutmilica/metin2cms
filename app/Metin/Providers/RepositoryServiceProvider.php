@@ -17,5 +17,10 @@ class RepositoryServiceProvider extends ServiceProvider {
             'Metin\Repositories\ReminderRepositoryInterface',
             'Metin\Repositories\Eloquent\ReminderRepository'
         );
+
+        $this->app->bind(
+            'Metin\Repositories\SafeboxRepositoryInterface',
+            'Metin\Repositories\Eloquent\SafeboxRepository'
+        );
     }
 }

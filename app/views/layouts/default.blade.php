@@ -90,6 +90,22 @@
   <!--center-->
   <div class="col-sm-6">
       <div class="row">
+          @if ( ! Auth::check())
+          <div class="jumbotron">
+              <div class="span7 text-center">
+                  <a href="{{ route('account.register') }}" class="btn btn-primary btn-lg" role="button">Create an account</a>
+              </div>
+          </div>
+          @else
+          <div class="jumbotron">
+              <div class="span7 text-center">
+                  <a href="{{ route('account.index') }}" class="btn btn-primary btn-lg" role="button">Account info</a>
+                  <a href="#" class="btn btn-primary btn-lg" role="button">Item mall</a>
+                  <a href="{{ route('account.logout') }}" class="btn btn-primary btn-lg" role="button">Logout</a>
+              </div>
+          </div>
+          @endif
+          <hr>
         @yield('content')
       </div>
   </div>

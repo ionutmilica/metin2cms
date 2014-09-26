@@ -6,6 +6,7 @@ use Metin\Services\EmailFailedException;
 use Metin\Services\Forms\Password;
 use Metin\Services\Forms\Email;
 use Metin\Services\PasswordFailedException;
+use Metin\Services\SafeboxException;
 
 class AccountController extends BaseController {
 
@@ -83,5 +84,24 @@ class AccountController extends BaseController {
             return $this->redirectWithError('account.email', $e->getMessage());
         }
 
+    }
+
+    public function safebox()
+    {
+        return view('account.safebox.form');
+    }
+
+    public function doSafebox()
+    {
+        try
+        {
+            $this->account->safebox(Auth::user()->id);
+
+            return view('account.safebox.success');
+        }
+        catch (SafeboxException $e)
+        {
+            return view('account.safebox.fail');
+        }
     }
 }

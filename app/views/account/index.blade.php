@@ -51,9 +51,9 @@ Account overview - @parent
                 </a>
             </div>
             <div class="list-group">
-                <a href="{{ route('account.storage') }}" class="list-group-item active">
-                    <h4 class="list-group-item-heading">Storage password</h4>
-                    <p class="list-group-item-text">Recover your storage password</p>
+                <a href="{{ route('account.safebox') }}" class="list-group-item active">
+                    <h4 class="list-group-item-heading">StoreKeeper</h4>
+                    <p class="list-group-item-text">Request StoreKeeper password</p>
                 </a>
             </div>
         </p>

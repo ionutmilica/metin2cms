@@ -10,17 +10,32 @@ use Metin\Repositories\ReminderRepositoryInterface;
 
 class AccountService {
 
-    protected $account;
-
+    /**
+     * @var \Illuminate\Foundation\Application
+     */
     protected $app;
 
+    /**
+     * @var \Metin\Repositories\AccountRepositoryInterface
+     */
+    protected $account;
+
+    /**
+     * @var \Metin\Repositories\ReminderRepositoryInterface
+     */
     protected $reminder;
 
-    public function __construct(AccountRepositoryInterface $account, Application $app, ReminderRepositoryInterface $reminder)
+    /**
+     * @var \Metin\Repositories\SafeboxRepositoryInterface
+     */
+    protected $safebox;
+
+    public function __construct(Application $app)
     {
         $this->app = $app;
-        $this->account = $account;
-        $this->reminder = $reminder;
+        $this->account = $this->app->make('Metin\Repositories\AccountRepositoryInterface');
+        $this->reminder = $this->app->make('Metin\Repositories\ReminderRepositoryInterface');
+        $this->safebox = $this->app->make('Metin\Repositories\SafeboxRepositoryInterface');
     }
 
     /**
@@ -187,6 +202,27 @@ class AccountService {
 
         return (bool) $this->account->changeEmail($user['id'], $data['new_email']);
     }
+
+    /**
+     * Request safebox password
+     *
+     * @param $user
+     * @throws SafeboxException
+     * @return bool
+     */
+    public function safebox($user)
+    {
+        $safebox = $this->safebox->findByAccount($user);
+
+        if ( ! $safebox)
+        {
+            throw new SafeboxException('Your current account doesn\'t have a safebox.');
+        }
+
+        // Send mail
+
+        return true;
+    }
 }
 
 // Exceptions - Considering about moving them in the future
@@ -194,3 +230,4 @@ class LoginFailedException extends Exception {}
 class RemindFailedException extends Exception {}
 class PasswordFailedException extends Exception {}
 class EmailFailedException extends Exception {}
+class SafeboxException extends Exception {}

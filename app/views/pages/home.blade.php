@@ -1,12 +1,5 @@
 @extends('layouts.default')
-
 @section('content')
-<div class="jumbotron">
-    <div class="span7 text-center">
-        <a href="{{ route('account.register') }}" class="btn btn-primary btn-lg" role="button">Create an account</a>
-    </div>
-</div>
-<hr>
 <div class="jumbotron">
     <div class="row">
         <div class="col-xs-12">

@@ -77,10 +77,12 @@ Route::group(array('prefix' => 'account'), function ()
         'uses' => 'AccountController@password'
     ));
     Route::post('password', array('uses' => 'AccountController@doPassword'));
-    Route::get('storage', array(
-        'as' => 'account.storage',
-        'uses' => 'AccountController@storage'
+    Route::get('safebox', array(
+        'as' => 'account.safebox',
+        'uses' => 'AccountController@safebox'
     ));
+    Route::post('safebox', array('uses' => 'AccountController@doSafebox'));
+
     Route::get('characters', array(
         'as' => 'account.characters',
         'uses' => 'AccountController@characters'
