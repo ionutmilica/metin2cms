@@ -33,7 +33,7 @@ class RegistrationController extends Controller {
      */
     public function create()
     {
-        return View::make('account.register.form');
+        return view('account.register.form');
     }
 
     /**
@@ -49,7 +49,7 @@ class RegistrationController extends Controller {
 
         if ($this->account->create($input))
         {
-            return View::make('account.register.success');
+            return view('account.register.success');
         }
     }
 
@@ -64,6 +64,6 @@ class RegistrationController extends Controller {
     {
         $this->account->confirmAccount($user, $token);
 
-        return View::make('account.register.confirm');
+        return view('account.register.confirm');
     }
 }

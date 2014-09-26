@@ -15,3 +15,11 @@ function mysqlHash($password)
     // Slower but will work on every mysql versions.
     //return DB::selectOne("SELECT PASSWORD('".$password."') AS `password`;")->password;
 }
+
+if ( ! function_exists('view'))
+{
+    function view($name)
+    {
+        return View::make($name);
+    }
+}

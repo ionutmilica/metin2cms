@@ -33,12 +33,12 @@ class AccountController extends BaseController {
 
     public function index()
     {
-        return View::make('account.index')->withUser(Auth::user());
+        return view('account.index')->withUser(Auth::user());
     }
 
     public function password()
     {
-    	return View::make('account.password.form');
+    	return view('account.password.form');
     }
 
     public function doPassword()
@@ -51,7 +51,7 @@ class AccountController extends BaseController {
         {
             if($this->account->password($input, Auth::user()))
             {
-            	return View::make('account.password.success');
+            	return view('account.password.success');
             }
         }
         catch (PasswordFailedException $e)
@@ -62,7 +62,7 @@ class AccountController extends BaseController {
 
     public function email()
     {
-        return View::make('account.email.form');
+        return view('account.email.form');
     }
 
     public function doEmail()
@@ -75,7 +75,7 @@ class AccountController extends BaseController {
         {
             if ($this->account->email(Auth::user()->id, $input))
             {
-                return View::make('account.email.success');
+                return view('account.email.success');
             }
         }
         catch (EmailFailedException $e)

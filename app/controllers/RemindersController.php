@@ -25,7 +25,7 @@ class RemindersController extends BaseController {
      */
     public function reminder()
     {
-        return View::make('account.password-reset.form');
+        return view('account.password-reset.form');
     }
 
     /**
@@ -43,7 +43,7 @@ class RemindersController extends BaseController {
         {
             if ($this->account->remind($input) === true) 
             {
-                return View::make('account.password-reset.success');
+                return view('account.password-reset.success');
             }
         }
         catch(RemindFailedException $e)
@@ -64,7 +64,7 @@ class RemindersController extends BaseController {
        {
            if ($this->account->confirmNewPassword($token))
            {
-                return View::make('site.password-reset.confirm');
+                return view('account.password-reset.confirm');
            }
        }
        catch (RemindFailedException $e)
