@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\View;
 use Metin\Services\AccountService;
+use Metin\Services\EmailFailedException;
 use Metin\Services\Forms\Password;
 use Metin\Services\Forms\Email;
 use Metin\Services\PasswordFailedException;
@@ -66,13 +67,13 @@ class AccountController extends BaseController {
 
     public function doEmail()
     {
-        $input = Input::only('email');
+        $input = Input::only('old_email', 'new_email');
 
         $this->emailForm->validate($input);
 
         try
         {
-            if ($this->account->email($input, Auth::user()))
+            if ($this->account->email(Auth::user()->id, $input))
             {
                 return View::make('account.email.success');
             }

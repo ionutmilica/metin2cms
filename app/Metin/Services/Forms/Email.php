@@ -7,6 +7,7 @@ use Metin\Validation\FormValidator;
 class Email extends FormValidator
 {
     protected $rules = array(
-        'email' => 'required|email',
+        'new_email' => 'required|email',
+        'old_email' => 'required|email',
     );
 }

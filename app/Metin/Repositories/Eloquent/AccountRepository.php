@@ -130,6 +130,34 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
     }
 
     /**
+     * Get user hashed password
+     *
+     * @param $id
+     * @return string
+     */
+    public function authPassword($id)
+    {
+        return $this->model->find($id)->getAuthPassword();
+    }
+
+    /**
+     * Change email for a user
+     *
+     * @param $key
+     * @param $email
+     * @internal param array $data
+     * @return mixed
+     */
+    public function changeEmail($key, $email)
+    {
+        $account = $this->whereIdOrName($key);
+
+        return $this->toArray($account->update(array(
+            'email' => $email
+        )));
+    }
+
+    /**
      * Helper method using to auto-detect username or id from the value
      *
      * @param $key
@@ -140,19 +168,5 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
         $field = is_int($key) ? 'id' : 'login';
 
         return $this->model->where($field, $key);
-    }
-
-    public function authPassword($id)
-    {
-        return $this->model->find($id)->getAuthPassword();
-    }
-
-    public function changeEmail(array $data)
-    {
-        $account = $this->model->where('login', $data['username']);
-        
-        return $this->toArray($account->update(array(
-            'email' => $data['email']
-        )));
     }
 } 

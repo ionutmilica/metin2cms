@@ -176,18 +176,20 @@ class AccountService {
         return (bool) $this->account->changePassword($data);
     }
 
-    public function email(array $data, $user)
+    public function email($user, array $data)
     {
-        $data = array(
-            'email'    => $data['email'],
-            'username' => $user->login
-        );
+        $user = $this->account->findById($user);
 
-        return (bool) $this->account->changeEmail($data);
+        if ($data['old_email'] != $user['email'])
+        {
+            throw new EmailFailedException('Your old email doesn\'t match with your current account.');
+        }
+
+        return (bool) $this->account->changeEmail($user['id'], $data['new_email']);
     }
 }
 
-// Exceptions - Considering about moving them in the futures
+// Exceptions - Considering about moving them in the future
 class LoginFailedException extends Exception {}
 class RemindFailedException extends Exception {}
 class PasswordFailedException extends Exception {}
