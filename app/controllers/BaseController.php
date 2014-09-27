@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\View;
-
 class BaseController extends Controller {
 
     public function __construct()
     {
         $this->beforeFilter('csrf', array('on' => 'post'));
+
+        // This rank should be rendered on all pages
+        View::share('playersMini', App::make('Metin\Services\HighscoreService')->playersTopMini());
     }
 
     /**

@@ -8,6 +8,7 @@
     <div class="panel-body">
         @include('layouts.partials.global_error')
         <form role="form" action="{{ route('account.password') }}" method="post">
+            {{ Form::token() }}
             <div class="form-group @if ($errors->has('old_password')) has-error @endif">
                 <label for="old_password">Old password</label>
                 <input type="password" class="form-control" name="old_password" id="old_password" placeholder="Enter your old password">

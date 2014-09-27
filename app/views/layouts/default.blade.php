@@ -123,6 +123,7 @@
           </div>
           <div class="panel-body">
             <form class="form-signin" role="form" action="{{ route('account.login') }}" method="post">
+              {{ Form::token() }}
               <div class="form-group">
                 <input type="username" name="username" class="form-control" placeholder="Username" required>
               </div>

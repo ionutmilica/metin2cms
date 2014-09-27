@@ -15,6 +15,8 @@ class RemindersController extends BaseController {
      */
     public function __construct(AccountService $account)
     {
+        parent::__construct();
+
         $this->account = $account;
     }
 

@@ -18,6 +18,8 @@ class SessionsController extends BaseController {
 
     public function __construct(AccountService $account, Login $loginForm)
     {
+        parent::__construct();
+
         $this->account   = $account;
         $this->loginForm = $loginForm;
     }

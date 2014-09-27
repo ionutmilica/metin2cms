@@ -8,6 +8,7 @@
     <div class="panel-body">
         @include('layouts.partials.global_error')
         <form role="form" action="{{ route('account.password-reset') }}" method="post">
+            {{ Form::token() }}
             <div class="form-group @if ($errors->has('username')) has-error @endif">
                 <label for="username">Username</label>
                 <input type="username" class="form-control" name="username" id="username" placeholder="Enter username">

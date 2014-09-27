@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\View;
 use Metin\Services\AccountService;
 use Metin\Services\Forms\Registration;
 
-class RegistrationController extends Controller {
+class RegistrationController extends BaseController {
 
     /**
      * @var Metin\Services\Forms\Registration
@@ -22,6 +22,8 @@ class RegistrationController extends Controller {
      */
     public function __construct(Registration $registrationForm, AccountService $account)
     {
+        parent::__construct();
+
         $this->registrationForm = $registrationForm;
         $this->account = $account;
     }

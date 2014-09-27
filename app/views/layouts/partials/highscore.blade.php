@@ -19,31 +19,19 @@
                     <p>
                     <table class="table table-striped table-bordered">
                         <tbody>
+                        @for ($i = 0; $i < count($playersMini); $i++)
                         <tr>
-                            <td width="5">1</td>
-                            <td>Ionut</td>
-                            <td width="10">
-                                <img src="{{ asset('assets/img/kindoms/red.png') }}" alt="">
+                            <td class="position" width="5">{{ $i + 1 }}</td>
+                            <td class="name">{{ $playersMini[$i]['name'] }}</td>
+                            <td class="empire" width="10">
+                                <img src="{{ asset('assets/img/kindoms/'.$playersMini[$i]['empire'].'.png') }}" alt="">
                             </td>
                         </tr>
-                        <tr>
-                            <td width="5">2</td>
-                            <td>Gabi</td>
-                            <td width="10">
-                                <img src="{{ asset('assets/img/kindoms/blue.png') }}" alt="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="5">3</td>
-                            <td>Mihai</td>
-                            <td width="10">
-                                <img src="{{ asset('assets/img/kindoms/yellow.png') }}" alt="">
-                            </td>
-                        </tr>
+                        @endfor
                         </tbody>
                     </table>
                     <div class="span7 text-center">
-                        <a href="#" class="btn btn-primary btn-xs">TOP 100</a>
+                        <a href="/home/highscore/players" class="btn btn-primary btn-xs">TOP 100</a>
                     </div>
                     </p>
                 </div>
@@ -75,7 +63,7 @@
                         </tbody>
                     </table>
                     <div class="span7 text-center">
-                        <a href="#" class="btn btn-primary btn-xs">TOP 100</a>
+                        <a href="/home/highscore/guilds" class="btn btn-primary btn-xs">TOP 100</a>
                     </div>
                     </p>
                 </div>
