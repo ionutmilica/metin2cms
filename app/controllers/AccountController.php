@@ -26,6 +26,8 @@ class AccountController extends BaseController {
 
     public function __construct(AccountService $account, Password $passwordForm, Email $emailForm)
     {
+        parent::__construct();
+        
         $this->beforeFilter('auth');
 
         $this->account      = $account;
