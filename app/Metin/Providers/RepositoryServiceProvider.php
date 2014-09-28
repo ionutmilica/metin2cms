@@ -24,6 +24,11 @@ class RepositoryServiceProvider extends ServiceProvider {
         );
 
         $this->app->bind(
+            'Metin\Repositories\GuildRepositoryInterface',
+            'Metin\Repositories\Eloquent\GuildRepository'
+        );
+
+        $this->app->bind(
             'Metin\Repositories\SafeboxRepositoryInterface',
             'Metin\Repositories\Eloquent\SafeboxRepository'
         );

@@ -32,6 +32,12 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
         return $this->toArray($this->model->hydrateRaw($query));
     }
 
+    /**
+     * Generate a query for a specified limit
+     *
+     * @param int $limit
+     * @return string
+     */
     protected function getHighScoreQuery($limit = 100)
     {
         return "SELECT player.id, player.name, player.level, player_index.empire

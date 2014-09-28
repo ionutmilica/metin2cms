@@ -39,27 +39,15 @@
                     <p>
                     <table class="table table-striped table-bordered">
                         <tbody>
-                        <tr>
-                            <td width="5">1</td>
-                            <td>InStyle</td>
-                            <td width="10">
-                                <img src="{{ asset('assets/img/kindoms/blue.png') }}" alt="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="5">2</td>
-                            <td>7UP</td>
-                            <td width="10">
-                                <img src="{{ asset('assets/img/kindoms/red.png') }}" alt="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="5">3</td>
-                            <td>TheRulers</td>
-                            <td width="10">
-                                <img src="{{ asset('assets/img/kindoms/yellow.png') }}" alt="">
-                            </td>
-                        </tr>
+                        @for ($i = 0; $i < count($guildsMini); $i++)
+                            <tr>
+                                <td width="5">{{ $i + 1 }}</td>
+                                <td>{{ $guildsMini[$i]['guild_name'] }}</td>
+                                <td width="10">
+                                    <img src="{{ asset('assets/img/kindoms/'.$guildsMini[$i]['empire'].'.png') }}" alt="">
+                                </td>
+                            </tr>
+                        @endfor
                         </tbody>
                     </table>
                     <div class="span7 text-center">

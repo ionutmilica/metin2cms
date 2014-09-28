@@ -8,6 +8,7 @@ class BaseController extends Controller {
 
         // This rank should be rendered on all pages
         View::share('playersMini', App::make('Metin\Services\HighscoreService')->playersTopMini());
+        View::share('guildsMini', App::make('Metin\Services\HighscoreService')->guildsTopMini());
     }
 
     /**
