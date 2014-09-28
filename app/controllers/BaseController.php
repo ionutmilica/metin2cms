@@ -17,7 +17,7 @@ class BaseController extends Controller {
      * @param  array $data
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function redirectBack($data = [])
+    protected function redirectBack($data = array())
     {
         return Redirect::back()->withInput()->with($data);
     }
