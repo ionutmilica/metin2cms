@@ -7,8 +7,8 @@ class BaseController extends Controller {
         $this->beforeFilter('csrf', array('on' => 'post'));
 
         // This rank should be rendered on all pages
-        View::share('playersMini', App::make('Metin\Services\HighscoreService')->playersTopMini());
-        View::share('guildsMini', App::make('Metin\Services\HighscoreService')->guildsTopMini());
+        View::share('playersMini', app('Metin\Services\HighscoreService')->playersTopMini());
+        View::share('guildsMini', app('Metin\Services\HighscoreService')->guildsTopMini());
     }
 
     /**

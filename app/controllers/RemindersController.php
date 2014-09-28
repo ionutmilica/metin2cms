@@ -39,7 +39,7 @@ class RemindersController extends BaseController {
     {
         $input = Input::all();
 
-        App::make('Metin\Services\Forms\Recovery')->validate($input);
+        app('Metin\Services\Forms\Recovery')->validate($input);
 
         try
         {
