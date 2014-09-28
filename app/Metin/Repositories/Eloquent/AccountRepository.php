@@ -18,6 +18,16 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
     }
 
     /**
+     * Get all accounts
+     *
+     * @return mixed
+     */
+    public function all()
+    {
+        return $this->toArray($this->model->all());
+    }
+
+    /**
      * Find user by id
      *
      * @param $id
@@ -63,7 +73,12 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
         $account->email = $info['email'];
         $account->password = $info['password'];
         $account->status = $info['status'];
-        $account->confirmation_token = $info['confirmation_token'];
+
+        if (isset($info['confirmation_token'])) // Think about it
+        {
+            $account->confirmation_token = $info['confirmation_token'];
+        }
+
         $account->save();
 
         return $this->toArray($account);

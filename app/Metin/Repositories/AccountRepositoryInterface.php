@@ -4,13 +4,50 @@ namespace Metin\Repositories;
 
 interface AccountRepositoryInterface {
 
-	public function create(array $info);
+    /**
+     * Create account
+     *
+     * @param array $info
+     * @return mixed
+     */
+    public function create(array $info);
 
-	public function findById($id);
+    /**
+     * Get all accounts
+     *
+     * @return array
+     */
+    public function all();
 
-	public function findByName($login);
+    /**
+     * Find account by id
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id);
 
+    /**
+     * Find account by username
+     *
+     * @param $login
+     * @return mixed
+     */
+    public function findByName($login);
+
+    /**
+     * Find account by id or name checking if the key is int or string
+     *
+     * @param $key
+     * @return mixed
+     */
     public function findByIdOrName($key);
 
-	public function changePassword(array $data);
+    /**
+     * Change the password of an account
+     *
+     * @param array $data
+     * @return mixed
+     */
+    public function changePassword(array $data);
 }

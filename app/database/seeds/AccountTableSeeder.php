@@ -11,19 +11,19 @@ class AccountTableSeeder extends Seeder {
 
     protected $accounts = array(
         array(
-            'username' => 'demo',
+            'login' => 'demo',
             'password' => 'dev',
             'email'    => 'demo@demo.com',
             'status'   => 'OK'
         ),
         array(
-            'username' => 'ionut',
+            'login' => 'ionut',
             'password' => 'dev',
             'email'    => 'ionut.milica@gmail.com',
             'status'   => 'OK'
         ),
         array(
-            'username' => 'vlad',
+            'login' => 'vlad',
             'password' => 'dev',
             'email'    => 'no@email.com',
             'status'   => 'OK'

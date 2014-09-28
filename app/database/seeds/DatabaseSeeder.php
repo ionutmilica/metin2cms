@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
+        // Clear account table
+        DB::table('account')->truncate();
+
 		$this->call('AccountTableSeeder');
 	}
 
