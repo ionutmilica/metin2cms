@@ -21,6 +21,9 @@ class SiteServiceProvider extends ServiceProvider {
 	{
 		$this->package('metin2cms/site', 'metin2cms/site', __DIR__);
 
+        // Load default routes
+        require __DIR__ . '/routes.php';
+
         $this->bootAuthProvider();
     }
 
