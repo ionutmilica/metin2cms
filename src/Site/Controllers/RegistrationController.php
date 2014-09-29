@@ -7,12 +7,12 @@ use Metin2CMS\Site\Services\Forms\Registration;
 class RegistrationController extends BaseController {
 
     /**
-     * @var Metin2CMS\Site\Services\Forms\Registration
+     * @var \Metin2CMS\Site\Services\Forms\Registration
      */
     protected $registrationForm;
 
     /**
-     * @var Metin2CMS\Site\Services\AccountService
+     * @var \Metin2CMS\Site\Services\AccountService
      */
     protected $account;
 

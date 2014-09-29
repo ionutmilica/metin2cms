@@ -7,7 +7,7 @@ use Metin2CMS\Site\Services\RemindFailedException;
 class RemindersController extends BaseController {
 
     /**
-     * @var Metin2CMS\Site\Services\AccountService
+     * @var \Metin2CMS\Site\Services\AccountService
      */
     protected $account;
 
@@ -40,7 +40,7 @@ class RemindersController extends BaseController {
     {
         $input = Input::all();
 
-        app('Metin\Services\Forms\Recovery')->validate($input);
+        app('Metin2CMS\Site\Services\Forms\Recovery')->validate($input);
 
         try
         {

@@ -9,11 +9,11 @@ use Metin2CMS\Site\Services\LoginFailedException;
 class SessionsController extends BaseController {
 
     /**
-     * @var Metin2CMS\Site\Services\AccountService
+     * @var \Metin2CMS\Site\Services\AccountService
      */
     protected $account;
     /**
-     * @var Metin2CMS\Site\Services\Forms\Login
+     * @var \Metin2CMS\Site\Services\Forms\Login
      */
     protected $loginForm;
 

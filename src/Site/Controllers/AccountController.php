@@ -12,17 +12,17 @@ use Metin2CMS\Site\Services\SafeboxException;
 class AccountController extends BaseController {
 
     /**
-     * @var Metin2CMS\Site\Services\AccountService
+     * @var \Metin2CMS\Site\Services\AccountService
      */
     protected $account;
 
     /**
-     * @var Metin2CMS\Site\Services\Forms\Password
+     * @var \Metin2CMS\Site\Services\Forms\Password
      */
     protected $passwordForm;
 
     /**
-     * @var Metin2CMS\Site\Services\Forms\Password
+     * @var \Metin2CMS\Site\Services\Forms\Email
      */
     protected $emailForm;
 

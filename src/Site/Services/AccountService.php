@@ -1,6 +1,4 @@
-<?php
-
-namespace Metin2CMS\Site\Services;
+<?php namespace Metin2CMS\Site\Services;
 
 use Exception;
 use Illuminate\Foundation\Application;
