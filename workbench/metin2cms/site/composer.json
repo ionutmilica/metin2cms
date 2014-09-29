@@ -1,0 +1,31 @@
+{
+    "name": "metin2cms/site",
+    "description": "",
+    "authors": [
+        {
+            "name": "Ionut Milica",
+            "email": "ionut.milica@gmail.com"
+        },
+        {
+            "name": "Vlad Gabriel Marian",
+            "email": "blackburn1911@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+			"src/controllers"
+        ],
+        "files": [
+            "src/Metin2cms/Site/Helpers/Helpers.php"
+        ],
+        "psr-0": {
+            "Metin2cms\\Site\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
