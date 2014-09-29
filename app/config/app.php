@@ -120,7 +120,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-        'Metin2cms\Site\SiteServiceProvider'
+        'Metin2CMS\Site\SiteServiceProvider'
     ),
 
 	/*
