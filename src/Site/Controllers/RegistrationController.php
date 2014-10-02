@@ -49,10 +49,9 @@ class RegistrationController extends BaseController {
 
         $this->registrationForm->validate($input);
 
-        if ($this->account->create($input))
-        {
-            return $this->view('account.register.success');
-        }
+        $this->account->create($input);
+
+        return $this->view('account.register.success');
     }
 
     /**

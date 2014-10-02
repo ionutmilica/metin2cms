@@ -3,6 +3,11 @@
 use Exception;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
+use Metin2CMS\Site\Exceptions\EmailFailedException;
+use Metin2CMS\Site\Exceptions\LoginFailedException;
+use Metin2CMS\Site\Exceptions\PasswordFailedException;
+use Metin2CMS\Site\Exceptions\RemindFailedException;
+use Metin2CMS\Site\Exceptions\SafeboxException;
 
 class AccountService {
 
@@ -162,7 +167,7 @@ class AccountService {
 
         if ( ! $reminder || $reminder['token'] != $token)
         {
-            throw new RemindFailedException('This token is invalid.');
+            throw new RemindFailedException('This token is invalid.', 'home');
         }
 
         $change = $this->account->changePassword($reminder);
@@ -227,9 +232,3 @@ class AccountService {
     }
 }
 
-// Exceptions - Considering about moving them in the future
-class LoginFailedException extends Exception {}
-class RemindFailedException extends Exception {}
-class PasswordFailedException extends Exception {}
-class EmailFailedException extends Exception {}
-class SafeboxException extends Exception {}

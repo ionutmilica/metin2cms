@@ -42,37 +42,21 @@ class RemindersController extends BaseController {
 
         app('Metin2CMS\Site\Services\Forms\Recovery')->validate($input);
 
-        try
-        {
-            if ($this->account->remind($input) === true) 
-            {
-                return $this->view('account.password-reset.success');
-            }
-        }
-        catch(RemindFailedException $e)
-        {
-            return $this->redirectWithError('account.password-reset', $e->getMessage());
-        }
+        $this->account->remind($input);
+
+        return $this->view('account.password-reset.success');
     }
 
     /**
-     * Confir the generated password
+     * Confirm the generated password
      *
      * @param $token
      * @return mixed
      */
     public function confirm($token)
     {
-       try
-       {
-           if ($this->account->confirmNewPassword($token))
-           {
-                return $this->view('account.password-reset.confirm');
-           }
-       }
-       catch (RemindFailedException $e)
-       {
-           return $this->redirectWithError('home', $e->getMessage());
-       }
+       $this->account->confirmNewPassword($token);
+
+       return $this->view('account.password-reset.confirm');
     }
 }

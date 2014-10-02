@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Metin2CMS\Site\Services\AccountService;
 use Metin2CMS\Site\Services\Forms\Login;
-use Metin2CMS\Site\Services\LoginFailedException;
 
 class SessionsController extends BaseController {
 
@@ -17,6 +16,10 @@ class SessionsController extends BaseController {
      */
     protected $loginForm;
 
+    /**
+     * @param AccountService $account
+     * @param Login $loginForm
+     */
     public function __construct(AccountService $account, Login $loginForm)
     {
         parent::__construct();
@@ -31,8 +34,9 @@ class SessionsController extends BaseController {
     }
 
     /**
+     * Make auth
      *
-     * @return Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function doLogin()
     {
@@ -40,18 +44,16 @@ class SessionsController extends BaseController {
 
         $this->loginForm->validate($input);
 
-        try
-        {
-            $this->account->authenticate($input);
+        $this->account->authenticate($input);
 
-            return Redirect::route('account.index');
-        }
-        catch (LoginFailedException $e)
-        {
-            return $this->redirectWithError('account.login', $e->getMessage());
-        }
+        return Redirect::route('account.index');
     }
 
+    /**
+     * Clear sessions
+     *
+     * @return mixed
+     */
     public function logout()
     {
         $this->account->logout();

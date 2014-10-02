@@ -3,11 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Metin2CMS\Site\Services\AccountService;
-use Metin2CMS\Site\Services\EmailFailedException;
 use Metin2CMS\Site\Services\Forms\Password;
 use Metin2CMS\Site\Services\Forms\Email;
-use Metin2CMS\Site\Services\PasswordFailedException;
-use Metin2CMS\Site\Services\SafeboxException;
 
 class AccountController extends BaseController {
 
@@ -37,76 +34,73 @@ class AccountController extends BaseController {
         $this->emailForm    = $emailForm;
     }
 
+    /**
+     * @return mixed
+     */
     public function index()
     {
         return $this->view('account.index')->withUser(Auth::user());
     }
 
+    /**
+     * @return mixed
+     */
     public function password()
     {
         return $this->view('account.password.form');
     }
 
+    /**
+     * @return mixed
+     */
     public function doPassword()
     {
         $input = Input::only('old_password', 'new_password', 'new_password_again');
 
         $this->passwordForm->validate($input);
 
-        try
-        {
-            if($this->account->password($input, Auth::user()))
-            {
-                return $this->view('account.password.success');
-            }
-        }
-        catch (PasswordFailedException $e)
-        {
-            return $this->redirectWithError('account.password', $e->getMessage());
-        }
+        $this->account->password($input, Auth::user());
+
+        return $this->view('account.password.success');
     }
 
+    /**
+     * @return mixed
+     */
     public function email()
     {
         return $this->view('account.email.form');
     }
 
+    /**
+     * @return mixed
+     */
     public function doEmail()
     {
         $input = Input::only('old_email', 'new_email');
 
         $this->emailForm->validate($input);
 
-        try
-        {
-            if ($this->account->email(Auth::user()->id, $input))
-            {
-                return $this->view('account.email.success');
-            }
-        }
-        catch (EmailFailedException $e)
-        {
-            return $this->redirectWithError('account.email', $e->getMessage());
-        }
+        $this->account->email(Auth::user()->id, $input);
 
+        return $this->view('account.email.success');
     }
 
+    /**
+     * @return mixed
+     */
     public function safebox()
     {
         return $this->view('account.safebox.form');
     }
 
+    /**
+     * @return mixed
+     */
     public function doSafebox()
     {
-        try
-        {
-            $this->account->safebox(Auth::user()->id);
+        $this->account->safebox(Auth::user()->id);
 
-            return $this->view('account.safebox.success');
-        }
-        catch (SafeboxException $e)
-        {
-            return $this->view('account.safebox.fail');
-        }
+        return $this->view('account.safebox.success');
     }
 }
