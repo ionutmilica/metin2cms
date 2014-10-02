@@ -78,10 +78,24 @@ class AccountService {
      */
     public function confirmAccount($user, $token)
     {
-        return (bool) $this->account->update(array('login' => $user, 'confirmation_token' => $token), array(
+        // To make sure that the token it's not null
+
+        if (empty($token)) $token = '-1';
+
+        $confirmation = (bool) $this->account->update(array('login' => $user, 'confirmation_token' => $token), array(
             'confirmation_token' => '',
             'status' => 'OK'
         ));
+
+        if ($confirmation)
+        {
+            $this->app['events']->fire('account.confirmed', array(
+                'login' => $user,
+                'token' => $token,
+            ));
+        }
+
+        return false;
     }
 
     /**
