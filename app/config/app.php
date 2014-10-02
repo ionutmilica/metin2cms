@@ -118,7 +118,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-        'Metin2CMS\Site\SiteServiceProvider'
+        'Metin2CMS\Site\SiteServiceProvider',
+        'Metin2CMS\Api\ApiServiceProvider'
     ),
 
 	/*

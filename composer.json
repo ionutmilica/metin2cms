@@ -19,7 +19,8 @@
 			"src/Site/Helpers/Helpers.php"
 		],
 		"psr-4": {
-            "Metin2CMS\\Site\\": "src/Site/"
+            "Metin2CMS\\Site\\": "src/Site/",
+			"Metin2CMS\\Api\\": "src/Api/"
         }
 	},
 	"scripts": {
