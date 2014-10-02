@@ -22,6 +22,9 @@ class ApiServiceProvider extends ServiceProvider {
 		
         // Load default routes
         require __DIR__ . '/routes.php';
+
+        // Load default filters
+        require __DIR__ . '/filters.php';
     }
 
 	/**
