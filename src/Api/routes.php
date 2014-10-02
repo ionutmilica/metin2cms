@@ -1,6 +1,6 @@
 <?php
 
-Route::group(array('prefix' => 'api/v1', 'namespace' => 'Metin2CMS\Core\Controllers'), function()
+Route::group(array('prefix' => 'api/v1', 'namespace' => 'Metin2CMS\Api\Controllers'), function()
 {
     Route::get('/', function ()
     {
