@@ -29,6 +29,8 @@ class SiteServiceProvider extends ServiceProvider {
         require __DIR__ . '/filters.php';
 
         $this->bootAuthProvider();
+
+        $this->registerViews();
     }
 
 	/**
@@ -73,6 +75,16 @@ class SiteServiceProvider extends ServiceProvider {
 	{
 		return array();
 	}
+
+    /**
+     * Register a new path for theme usage
+     */
+    public function registerViews()
+    {
+        $theme = $this->app['config']->get('theme.current');
+
+        $this->app['view']->addLocation(__DIR__ . '/../../themes/'.$theme);
+    }
 
     /**
      * Boot the auth provider

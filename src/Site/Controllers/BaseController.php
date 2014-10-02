@@ -1,6 +1,7 @@
 <?php namespace Metin2CMS\Site\Controllers;
 
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
