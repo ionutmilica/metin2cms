@@ -12,8 +12,8 @@
             <!--
             <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
             -->
-            <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-            <link href="{{ asset('assets/css/todc-bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ assetTheme('css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ assetTheme('css/todc-bootstrap.min.css') }}" rel="stylesheet">
 
             <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -169,8 +169,8 @@
 </div>
 <!-- /.container -->
 @section('js')
-<script type='text/javascript' src="{{ asset('assets/js/jquery.min.js') }}"></script>
-<script type='text/javascript' src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script type='text/javascript' src="{{ assetTheme('js/jquery.min.js') }}"></script>
+<script type='text/javascript' src="{{ assetTheme('js/bootstrap.min.js') }}"></script>
 
 <script type='text/javascript'>
     $(document).ready(function() {

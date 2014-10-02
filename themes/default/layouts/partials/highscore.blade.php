@@ -5,12 +5,12 @@
             <ul id="highscore" class="nav nav-tabs">
                 <li class="">
                     <a href="#players" data-toggle="tab">
-                        <img src="{{ asset('assets/img/player.png') }}" alt="">
+                        <img src="{{ assetTheme('img/player.png') }}" alt="">
                     </a>
                 </li>
                 <li class="active">
                     <a href="#guilds" data-toggle="tab">
-                        <img src="{{ asset('assets/img/guild.png') }}" alt="">
+                        <img src="{{ assetTheme('img/guild.png') }}" alt="">
                     </a>
                 </li>
             </ul>
@@ -24,7 +24,7 @@
                             <td class="position" width="5">{{ $i + 1 }}</td>
                             <td class="name">{{ $playersMini[$i]['name'] }}</td>
                             <td class="empire" width="10">
-                                <img src="{{ asset('assets/img/kindoms/'.$playersMini[$i]['empire'].'.png') }}" alt="">
+                                <img src="{{ assetTheme('img/kindoms/'.$playersMini[$i]['empire'].'.png') }}" alt="">
                             </td>
                         </tr>
                         @endfor
@@ -44,7 +44,7 @@
                                 <td width="5">{{ $i + 1 }}</td>
                                 <td>{{ $guildsMini[$i]['guild_name'] }}</td>
                                 <td width="10">
-                                    <img src="{{ asset('assets/img/kindoms/'.$guildsMini[$i]['empire'].'.png') }}" alt="">
+                                    <img src="{{ assetTheme('img/kindoms/'.$guildsMini[$i]['empire'].'.png') }}" alt="">
                                 </td>
                             </tr>
                         @endfor
