@@ -110,13 +110,15 @@ return array(
 		'Illuminate\Database\MigrationServiceProvider',
 		'Illuminate\Pagination\PaginationServiceProvider',
 		'Illuminate\Queue\QueueServiceProvider',
-		'Illuminate\Remote\RemoteServiceProvider',
+		//'Illuminate\Remote\RemoteServiceProvider',
 		'Illuminate\Database\SeedServiceProvider',
 		'Illuminate\Session\SessionServiceProvider',
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-		'Illuminate\Workbench\WorkbenchServiceProvider',
+		//'Illuminate\Workbench\WorkbenchServiceProvider',
+
+        /** Metin2 Modules **/
 
         'Metin2CMS\Core\CoreServiceProvider',
         'Metin2CMS\Api\ApiServiceProvider',

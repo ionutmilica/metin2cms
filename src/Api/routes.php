@@ -6,4 +6,10 @@ Route::group(array('prefix' => 'api/v1', 'namespace' => 'Metin2CMS\Api\Controlle
     {
         return 'Hello to our api !';
     });
+
+    Route::group(array('prefix' => 'highscore'), function()
+    {
+        Route::get('players', 'HighScoreController@players');
+        Route::get('guilds', 'HighScoreController@guilds');
+    });
 });
