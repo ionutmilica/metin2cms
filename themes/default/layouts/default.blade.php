@@ -59,8 +59,8 @@
   <!--left-->
   <div class="col-sm-3">
     <div class="row">
+        <div class="col-xs-12">
      @section('left')
-      <div class="col-xs-12">
         <div class="list-group">
           <a class="list-group-item active">
           News </a>
@@ -81,8 +81,8 @@
           <a href="#" class="list-group-item">Tutorials</a>
         </div>
         <hr>
-      </div>
      @show
+        </div>
     </div>
   </div>
   <!--/left-->
@@ -113,55 +113,13 @@
   <!--right-->
   <div class="col-sm-3">
     <div class="row">
+        <div class="col-xs-12">
         @section('rigt')
-      <div class="col-xs-12">
-          @if ( ! Auth::check())
-          <!-- Login module -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Logare
-          </div>
-          <div class="panel-body">
-            <form class="form-signin" role="form" action="{{ route('account.login') }}" method="post">
-              {{ Form::token() }}
-              <div class="form-group">
-                <input type="username" name="username" class="form-control" placeholder="Username" required>
-              </div>
-              <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Password" required>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-              </div>
-            </form>
-             {{ link_to_route('account.password-reset', 'Forgot password?') }}
-          </div>
-        </div>
-        <hr>
-          <!-- End login module -->
-        @endif
-          <!-- Download module -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Download
-          </div>
-          <div class="panel-body">
-            <div class="span7 text-center">
-              <a class="btn btn-primary btn-lg" role="button" href="{{ route('download') }}">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-              </a>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <!-- End download module -->
-
-        <!-- Highscore module -->
-            @include('layouts.partials.highscore')
-            <hr>
-        <!-- End highscore module -->
-      </div>
+          @include('widgets.login')
+          @include('widgets.download')
+          @include('widgets.highscore')
         @show
+        </div>
     </div>
   </div>
   <!--/right-->
@@ -171,7 +129,6 @@
 @section('js')
 <script type='text/javascript' src="{{ assetTheme('js/jquery.min.js') }}"></script>
 <script type='text/javascript' src="{{ assetTheme('js/bootstrap.min.js') }}"></script>
-
 <script type='text/javascript'>
     $(document).ready(function() {
         $('#highscore a:first').tab('show');
