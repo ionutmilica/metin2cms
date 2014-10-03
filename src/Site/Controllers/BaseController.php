@@ -1,7 +1,6 @@
 <?php namespace Metin2CMS\Site\Controllers;
 
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
@@ -11,9 +10,9 @@ class BaseController extends Controller {
     {
         $this->beforeFilter('csrf', array('on' => 'post'));
 
-        // This rank should be rendered on all pages
-        View::share('playersMini', app('Metin2CMS\Site\Services\HighscoreService')->playersTopMini());
-        View::share('guildsMini', app('Metin2CMS\Site\Services\HighscoreService')->guildsTopMini());
+        // This should be moved. Think about a nice location
+        View::share('playersMini', app('Metin2CMS\Core\Services\HighscoreService')->playersTopMini());
+        View::share('guildsMini', app('Metin2CMS\Core\Services\HighscoreService')->guildsTopMini());
     }
 
     /**

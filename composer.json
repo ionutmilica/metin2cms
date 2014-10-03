@@ -16,12 +16,13 @@
 			"app/tests/TestCase.php"
 		],
 		"files": [
-			"src/Site/Helpers/Helpers.php"
+			"src/Core/Helpers/Helpers.php"
 		],
 		"psr-4": {
-            "Metin2CMS\\Site\\": "src/Site/",
-			"Metin2CMS\\Api\\": "src/Api/"
-        }
+			"Metin2CMS\\Core\\": "src/Core/",
+			"Metin2CMS\\Api\\": "src/Api/",
+            "Metin2CMS\\Site\\": "src/Site/"
+		}
 	},
 	"scripts": {
 		"post-install-cmd": [

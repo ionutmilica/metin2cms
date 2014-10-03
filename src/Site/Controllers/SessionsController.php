@@ -2,17 +2,17 @@
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use Metin2CMS\Site\Services\AccountService;
-use Metin2CMS\Site\Services\Forms\Login;
+use Metin2CMS\Core\Services\AccountService;
+use Metin2CMS\Core\Services\Forms\Login;
 
 class SessionsController extends BaseController {
 
     /**
-     * @var \Metin2CMS\Site\Services\AccountService
+     * @var \Metin2CMS\Core\Services\AccountService
      */
     protected $account;
     /**
-     * @var \Metin2CMS\Site\Services\Forms\Login
+     * @var \Metin2CMS\Core\Services\Forms\Login
      */
     protected $loginForm;
 

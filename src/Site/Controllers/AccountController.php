@@ -2,24 +2,24 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
-use Metin2CMS\Site\Services\AccountService;
-use Metin2CMS\Site\Services\Forms\Password;
-use Metin2CMS\Site\Services\Forms\Email;
+use Metin2CMS\Core\Services\AccountService;
+use Metin2CMS\Core\Services\Forms\Password;
+use Metin2CMS\Core\Services\Forms\Email;
 
 class AccountController extends BaseController {
 
     /**
-     * @var \Metin2CMS\Site\Services\AccountService
+     * @var \Metin2CMS\Core\Services\AccountService
      */
     protected $account;
 
     /**
-     * @var \Metin2CMS\Site\Services\Forms\Password
+     * @var \Metin2CMS\Core\Services\Forms\Password
      */
     protected $passwordForm;
 
     /**
-     * @var \Metin2CMS\Site\Services\Forms\Email
+     * @var \Metin2CMS\Core\Services\Forms\Email
      */
     protected $emailForm;
 

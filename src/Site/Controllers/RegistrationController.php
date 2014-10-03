@@ -1,18 +1,18 @@
 <?php namespace Metin2CMS\Site\Controllers;
 
 use Illuminate\Support\Facades\Input;
-use Metin2CMS\Site\Services\AccountService;
-use Metin2CMS\Site\Services\Forms\Registration;
+use Metin2CMS\Core\Services\AccountService;
+use Metin2CMS\Core\Services\Forms\Registration;
 
 class RegistrationController extends BaseController {
 
     /**
-     * @var \Metin2CMS\Site\Services\Forms\Registration
+     * @var \Metin2CMS\Core\Services\Forms\Registration
      */
     protected $registrationForm;
 
     /**
-     * @var \Metin2CMS\Site\Services\AccountService
+     * @var \Metin2CMS\Core\Services\AccountService
      */
     protected $account;
 
