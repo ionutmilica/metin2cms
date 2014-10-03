@@ -1,5 +1,6 @@
 <?php namespace Metin2CMS\Api\Controllers;
 
+use Illuminate\Support\Facades\Input;
 use Metin2CMS\Core\Services\HighscoreService;
 
 class HighScoreController extends ApiController {
@@ -15,13 +16,33 @@ class HighScoreController extends ApiController {
         $this->highscoreService = $highscoreService;
     }
 
+    /**
+     * Return players
+     *
+     * @return mixed
+     */
     public function players()
     {
-        return $this->highscoreService->playersTopMini();
+        $perPage = Input::get('perPage');
+        $page = Input::get('page');
+
+        $transformer = app('Metin2CMS\Api\Transformers\PlayerHighScoreTransformer');
+
+        return $transformer->transformPagination($this->highscoreService->players($perPage, $page));
     }
 
+    /**
+     * Return guilds
+     *
+     * @return array
+     */
     public function guilds()
     {
-        return $this->highscoreService->guildsTopMini();
+        $perPage = Input::get('perPage');
+        $page = Input::get('page');
+
+        $transformer = app('Metin2CMS\Api\Transformers\GuildHighScoreTransformer');
+
+        return $transformer->transformPagination($this->highscoreService->guilds($perPage, $page));
     }
 }

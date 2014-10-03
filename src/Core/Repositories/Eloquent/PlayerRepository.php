@@ -13,6 +13,19 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
         $this->model = $model;
     }
 
+    public function countAll()
+    {
+        return $this->model->count();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function all()
+    {
+        return $this->toArray($this->model->all());
+    }
+
     /**
      * Get players for page $page with a given number of players per page
      *

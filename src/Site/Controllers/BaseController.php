@@ -11,8 +11,8 @@ class BaseController extends Controller {
         $this->beforeFilter('csrf', array('on' => 'post'));
 
         // This should be moved. Think about a nice location
-        View::share('playersMini', app('Metin2CMS\Core\Services\HighscoreService')->playersTopMini());
-        View::share('guildsMini', app('Metin2CMS\Core\Services\HighscoreService')->guildsTopMini());
+        View::share('playersMini', app('Metin2CMS\Core\Services\HighscoreService')->players());
+        View::share('guildsMini', app('Metin2CMS\Core\Services\HighscoreService')->guilds());
     }
 
     /**

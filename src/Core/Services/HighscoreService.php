@@ -1,5 +1,7 @@
 <?php namespace Metin2CMS\Core\Services;
 
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Paginator;
 use Metin2CMS\Core\Repositories\GuildRepositoryInterface;
 use Metin2CMS\Core\Repositories\PlayerRepositoryInterface;
 
@@ -13,30 +15,77 @@ class HighscoreService {
      * @var \Metin2CMS\Core\Repositories\GuildRepositoryInterface
      */
     private $guild;
+    /**
+     * @var \Illuminate\Foundation\Application
+     */
+    private $app;
 
-    public function __construct(PlayerRepositoryInterface $player, GuildRepositoryInterface $guild)
+    /**
+     * @param Application $app
+     * @param PlayerRepositoryInterface $player
+     * @param GuildRepositoryInterface $guild
+     */
+    public function __construct(Application $app, PlayerRepositoryInterface $player, GuildRepositoryInterface $guild)
     {
         $this->player = $player;
         $this->guild = $guild;
+        $this->app = $app;
     }
 
     /**
      * Get players mini top
      *
+     * @param int $perPage
+     * @param int $page
+     * @internal param int $page
      * @return array
      */
-    public function playersTopMini()
+    public function players($perPage = 2, $page = null)
     {
-        return $this->player->highscoreForPage(1, 10);
+        if ($page == null)
+        {
+            return $this->player->highscoreForPage(1, 10);
+        }
+
+        $this->normalizePagination($page, $perPage);
+
+        $items = $this->player->highscoreForPage($page, $perPage);
+
+        $paginator = $this->app['paginator']->make($items, $this->player->countAll(), $perPage);
+
+        return $paginator->toArray();
     }
 
     /**
      * Get guilds mini top
      *
+     * @param int $page
+     * @param int $perPage
      * @return array
      */
-    public function guildsTopMini()
+    public function guilds($perPage = 2, $page = null)
     {
-        return $this->guild->highscoreForPage(1, 10);
+        if ($page == null)
+        {
+            return $this->guild->highscoreForPage(1, 10);
+        }
+
+        $this->normalizePagination($page, $perPage);
+
+        $items = $this->guild->highscoreForPage($page, $perPage);
+
+        $paginator = $this->app['paginator']->make($items, $this->guild->countAll(), $perPage);
+
+        return $paginator->toArray();
+    }
+
+    /**
+     * @param $perPage
+     * @param $page
+     */
+    protected function normalizePagination(&$page, &$perPage)
+    {
+        if ($perPage < 1 || $perPage > 20) $perPage = 10;
+        if ($page < 1) $page = 1;
     }
 }

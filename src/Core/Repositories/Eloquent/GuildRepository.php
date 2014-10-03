@@ -42,6 +42,13 @@ class GuildRepository extends AbstractRepository implements GuildRepositoryInter
     }
 
     /**
+     * @return mixed
+     */
+    public function countAll()
+    {
+        return $this->model->count();
+    }
+    /**
      * Get players for page $page with a given number of players per page
      *
      * @param $page
@@ -67,7 +74,7 @@ class GuildRepository extends AbstractRepository implements GuildRepositoryInter
     public function getHighScoreQuery($limit = 100)
     {
         return "SELECT
-        guild.name as guild_name, guild.level, guild.win, guild.ladder_point, player_index.empire as empire
+        guild.name as guild_name, guild.master, guild.level, guild.win, guild.ladder_point, player_index.empire as empire
         FROM player.guild
         LEFT JOIN player.player ON guild.master = player.id
         LEFT JOIN player.player_index ON player_index.id = player.account_id
