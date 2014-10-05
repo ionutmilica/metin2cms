@@ -1,7 +1,6 @@
 <?php namespace Metin2CMS\Core\Services;
 
 use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Paginator;
 use Metin2CMS\Core\Repositories\GuildRepositoryInterface;
 use Metin2CMS\Core\Repositories\PlayerRepositoryInterface;
 
@@ -40,7 +39,7 @@ class HighscoreService {
      * @internal param int $page
      * @return array
      */
-    public function players($perPage = 2, $page = null)
+    public function players($perPage = null, $page = null)
     {
         if ($page == null && $perPage == null)
         {
@@ -63,7 +62,7 @@ class HighscoreService {
      * @param int $perPage
      * @return array
      */
-    public function guilds($perPage = 2, $page = null)
+    public function guilds($perPage = null, $page = null)
     {
         if ($page == null && $perPage == null)
         {
