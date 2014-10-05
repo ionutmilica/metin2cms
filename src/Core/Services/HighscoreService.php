@@ -42,7 +42,7 @@ class HighscoreService {
      */
     public function players($perPage = 2, $page = null)
     {
-        if ($page == null)
+        if ($page == null && $perPage == null)
         {
             return $this->player->highscoreForPage(1, 10);
         }
@@ -65,7 +65,7 @@ class HighscoreService {
      */
     public function guilds($perPage = 2, $page = null)
     {
-        if ($page == null)
+        if ($page == null && $perPage == null)
         {
             return $this->guild->highscoreForPage(1, 10);
         }
