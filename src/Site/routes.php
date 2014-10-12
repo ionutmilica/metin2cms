@@ -49,6 +49,17 @@ Route::group(array('namespace' => 'Metin2CMS\Site\Controllers'), function()
         'uses' => 'HomeController@download'
     ));
 
+// Highscore
+
+    Route::get('highscore/players', array(
+        'as' => 'highscore.players',
+        'uses' => 'HighscoreController@players'
+    ));
+
+    Route::get('highscore/guilds', array(
+        'as' => 'highscore.guilds',
+        'uses' => 'HighscoreController@guilds'
+    ));
 // Account panel
 
     Route::group(array('prefix' => 'account'), function ()

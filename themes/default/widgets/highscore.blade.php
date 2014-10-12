@@ -31,7 +31,7 @@
                         </tbody>
                     </table>
                     <div class="span7 text-center">
-                        <a href="/home/highscore/players" class="btn btn-primary btn-xs">TOP 100</a>
+                        <a href="{{ route('highscore.players') }}" class="btn btn-primary btn-xs">TOP 100</a>
                     </div>
                     </p>
                 </div>
@@ -51,7 +51,7 @@
                         </tbody>
                     </table>
                     <div class="span7 text-center">
-                        <a href="/home/highscore/guilds" class="btn btn-primary btn-xs">TOP 100</a>
+                        <a href="{{ route('highscore.guilds') }}" class="btn btn-primary btn-xs">TOP 100</a>
                     </div>
                     </p>
                 </div>
