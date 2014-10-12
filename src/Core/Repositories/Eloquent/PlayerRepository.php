@@ -62,8 +62,8 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
                         LEFT JOIN common.gmlist ON gmlist.mName = player.name
                         WHERE account.status != 'BLOCK'
                         ORDER BY player.level DESC , player.exp DESC
-                    ) AS t1 WHERE mAuthority IS NULL or mAuthority = 'LOW_WIZARD'
-                ) AS t2
+                    ) AS t1
+                ) AS t2 WHERE perm IS NULL or perm = 'LOW_WIZARD'
                 LIMIT $limit";
     }
 }
