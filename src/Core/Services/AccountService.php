@@ -189,11 +189,13 @@ class AccountService {
         // Clear all reminders that are already created but not used
         $this->reminder->deleteByUser($data['username']);
 
+        // Generate a token and a password
         $token    = str_random(64);
         $password = str_random(10);
 
         $reminder = $this->reminder->create($data, $token, $password);
 
+        // Prepare data for the event trigger
         $reminder['email'] = $account['email'];
         $reminder['password'] = $password;
 
@@ -236,6 +238,14 @@ class AccountService {
         }
     }
 
+    /**
+     * Change password
+     *
+     * @param array $data
+     * @param $user
+     * @return bool
+     * @throws \Metin2CMS\Core\Exceptions\PasswordFailedException
+     */
     public function password(array $data, $user)
     {
         $hashed_pass = mysqlHash($data['old_password']);
@@ -248,6 +258,14 @@ class AccountService {
         return (bool) $this->account->changePassword($user->login, mysqlHash($data['new_password']));
     }
 
+    /**
+     * Change email
+     *
+     * @param $user
+     * @param array $data
+     * @return bool
+     * @throws \Metin2CMS\Core\Exceptions\EmailFailedException
+     */
     public function email($user, array $data)
     {
         $user = $this->account->findById($user);

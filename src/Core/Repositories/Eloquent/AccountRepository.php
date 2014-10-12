@@ -155,7 +155,7 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
      */
     public function authPassword($id)
     {
-        return $this->model->find($id)->getAuthPassword();
+        return $this->toArray($this->model->find($id)->getAuthPassword());
     }
 
     /**
