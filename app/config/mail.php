@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => '',
+	'host' => getenv('MAIL_HOST'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'port' => 25,
+	'port' => getenv('MAIL_PORT'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'noreply@metin2cms.com', 'name' => 'Metin2CMS Support'),
+	'from' => array('address' => getenv('SITE_MAIL'), 'name' => getenv('SITE_MAIL_NAME')),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => '',
+	'username' => getenv('MAIL_USER'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => '',
+	'password' => getenv('MAIL_PASS'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -119,6 +119,6 @@ return array(
 	|
 	*/
 
-	'pretend' => true,
+	'pretend' => getenv('MAIL_PRETEND'),
 
 );

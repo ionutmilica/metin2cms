@@ -9,9 +9,6 @@
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         @section('style')
-            <!--
-            <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
-            -->
             <link href="{{ assetTheme('css/bootstrap.min.css') }}" rel="stylesheet">
             <link href="{{ assetTheme('css/todc-bootstrap.min.css') }}" rel="stylesheet">
 
