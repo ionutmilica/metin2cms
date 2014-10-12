@@ -11,6 +11,15 @@ interface AccountRepositoryInterface {
     public function create(array $info);
 
     /**
+     * Update the account
+     *
+     * @param $conditions
+     * @param array $data
+     * @return mixed
+     */
+    public function update($conditions, array $data);
+    
+    /**
      * Get all accounts
      *
      * @return array
@@ -42,6 +51,22 @@ interface AccountRepositoryInterface {
     public function findByIdOrName($key);
 
     /**
+     * Check if an account is disabled
+     *
+     * @param $user
+     * @return mixed
+     */
+    public function isDisabled($user);
+
+    /**
+     * Check if an account is blocked
+     *
+     * @param $user
+     * @return mixed
+     */
+    public function isBlocked($user);
+
+    /**
      * Change the password of an account
      *
      * @param $user
@@ -50,4 +75,13 @@ interface AccountRepositoryInterface {
      * @return mixed
      */
     public function changePassword($user, $password);
+
+    /**
+     * Change the email
+     *
+     * @param $user
+     * @param $email
+     * @return mixed
+     */
+    public function changeEmail($user, $email);
 }
