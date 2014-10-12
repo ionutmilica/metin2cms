@@ -45,7 +45,7 @@ class BaseController extends Controller {
      * @param array $data
      * @return mixed
      */
-    protected function view($name, array $data = null)
+    protected function view($name, array $data = array())
     {
         return View::make($name, $data);
     }
