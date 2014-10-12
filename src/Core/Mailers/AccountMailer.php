@@ -4,7 +4,13 @@ class AccountMailer extends Mailer {
 
     public function confirmation(array $data)
     {
-        throw new \Exception('Not implemented');
+        $this->view = 'emails.account.confirm';
+        $this->subject = 'Account confirmation';
+        $this->to = $data['email'];
+        $this->email = $data['email'];
+        $this->data = $data;
+
+        return $this;
     }
 
     /**

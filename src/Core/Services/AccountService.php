@@ -80,6 +80,14 @@ class AccountService {
         {
             $this->app['events']->fire('account.created', array($account));
 
+            $data = array(
+                'login' => $data['login'],
+                'email' => $data['email'],
+                'token' => $data['confirmation_token']
+            );
+
+            $this->accountMailer->confirmation($data)->send();
+
             return $account;
         }
 
