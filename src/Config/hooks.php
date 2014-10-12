@@ -18,6 +18,17 @@ Event::listen('account.creating', function (&$data)
 });
 
 /**
+ * Closing registration for a specific reason
+ */
+Event::listen('account.creating', function (&$data)
+{
+    if (Config::get('register.closed') == true)
+    {
+        throw new \Metin2CMS\Core\Exceptions\LoginFailedException(Config::get('register.message'));
+    }
+});
+
+/**
  * If the site needs confirmation, we'll send an email with the token from this listener
  */
 Event::listen('account.created', function ($data)

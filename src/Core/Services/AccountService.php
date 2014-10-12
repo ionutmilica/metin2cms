@@ -125,7 +125,7 @@ class AccountService {
      */
     public function authenticate(array $data)
     {
-        $this->app['events']->fire('account.auth.before', array($data));
+        $this->app['events']->fire('account.login.before', array($data));
 
         $remember = isset($data['remember']) && $data['remember'] != null ? true : false;
 
@@ -146,12 +146,12 @@ class AccountService {
 
         if ( ! $auth)
         {
-            $this->app['events']->fire('account.auth.failed', array($data));
+            $this->app['events']->fire('account.login.fail', array($data));
 
             throw new LoginFailedException('Username or password is incorrect.');
         }
 
-        $this->app['events']->fire('account.auth.successful', array($data));
+        $this->app['events']->fire('account.login.success', array($data));
 
         return true;
     }
