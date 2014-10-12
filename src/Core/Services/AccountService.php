@@ -103,6 +103,8 @@ class AccountService {
             return false;
         }
 
+        $this->app['events']->fire('account.confirming', $account);
+
         $confirmation = (bool) $this->account->update(array('login' => $user,), array(
             'confirmation_token' => '',
             'status' => 'OK'
@@ -158,8 +160,12 @@ class AccountService {
 
     public function logout()
     {
+        $this->app['events']->fire('account.logout.before');
+
         $this->app['auth']->logout();
         $this->app['session.store']->flush();
+
+        $this->app['events']->fire('account.logout.after');
 
         return true;
     }
@@ -168,8 +174,8 @@ class AccountService {
      * Generate a new password for the user
      *
      * @param array $data
+     * @throws \Metin2CMS\Core\Exceptions\RemindFailedException
      * @return mixed
-     * @throws \Exception
      */
     public function remind(array $data)
     {
@@ -180,20 +186,33 @@ class AccountService {
             throw new RemindFailedException('Can\'t find account by the provided user and email.');
         }
 
+        // Clear all reminders that are already created but not used
+        $this->reminder->deleteByUser($data['username']);
+
         $token    = str_random(64);
         $password = str_random(10);
 
-        return $this->reminder->generatePassword($data, $token, $password);
+        $reminder = $this->reminder->create($data, $token, $password);
+
+        $reminder['email'] = $account['email'];
+        $reminder['password'] = $password;
+
+        $this->app['events']->fire('account.remind.after', $reminder);
+
+        $this->accountMailer->remanding($reminder)->send();
+
+        return true;
     }
 
     /**
      * Confirm the generated user password
      *
+     * @param $username
      * @param $token
+     * @throws \Metin2CMS\Core\Exceptions\RemindFailedException
      * @return bool
-     * @throws \Exception
      */
-    public function confirmNewPassword($token)
+    public function confirmNewPassword($username, $token)
     {
         $reminder = $this->reminder->findByToken($token);
 
@@ -202,12 +221,16 @@ class AccountService {
             throw new RemindFailedException('This token is invalid.', 'home');
         }
 
-        $change = $this->account->changePassword($reminder);
+        if ( $reminder['username'] !== $username)
+        {
+            throw new RemindFailedException('This user is invalid.', 'home');
+        }
+
+        $change = $this->account->changePassword($username, $reminder['password']);
 
         if ($change)
         {
-            // Delete token
-            $this->reminder->deleteToken($token);
+            $this->reminder->deleteByToken($token);
             
             return true;
         }

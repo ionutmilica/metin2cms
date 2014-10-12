@@ -38,7 +38,7 @@ Route::group(array('namespace' => 'Metin2CMS\Site\Controllers'), function()
     Route::post('password-reset', 'RemindersController@doReminder');
 
 // New password confirm
-    Route::get('password-reset/confirm/{token}', array(
+    Route::get('password-reset/confirm/{user}/{token}', array(
         'as' => 'account.password-reset.confirm',
         'uses' => 'RemindersController@confirm'
     ));

@@ -7,7 +7,7 @@
         Confirm password
     </div>
     <div class="panel-body">
-        <div class="alert alert-success">You password has been changed!</div>
+        <p>Your password has been changed ! </p>
     </div>
 </div>
 @stop

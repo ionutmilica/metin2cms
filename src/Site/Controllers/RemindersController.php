@@ -38,7 +38,7 @@ class RemindersController extends BaseController {
      */
     public function doReminder()
     {
-        $input = Input::all();
+        $input = Input::only('username', 'email');
 
         app('Metin2CMS\Core\Services\Forms\Recovery')->validate($input);
 
@@ -50,12 +50,13 @@ class RemindersController extends BaseController {
     /**
      * Confirm the generated password
      *
+     * @param $user
      * @param $token
      * @return mixed
      */
-    public function confirm($token)
+    public function confirm($user, $token)
     {
-       $this->account->confirmNewPassword($token);
+       $this->account->confirmNewPassword($user, $token);
 
        return $this->view('account.password-reset.confirm');
     }

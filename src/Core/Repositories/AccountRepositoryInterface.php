@@ -44,8 +44,10 @@ interface AccountRepositoryInterface {
     /**
      * Change the password of an account
      *
-     * @param array $data
+     * @param $user
+     * @param $password
+     * @internal param array $data
      * @return mixed
      */
-    public function changePassword(array $data);
+    public function changePassword($user, $password);
 }

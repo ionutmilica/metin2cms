@@ -81,6 +81,11 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
         return $this->toArray($account);
     }
 
+    /**
+     * @param $conditions
+     * @param array $info
+     * @return mixed
+     */
     public function update($conditions, array $info)
     {
         $account = $this->getNew();
@@ -96,15 +101,17 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
     /**
      * Change password for user
      *
-     * @param array $data
+     * @param array $username
+     * @param $password
+     * @internal param array $data
      * @return bool
      */
-    public function changePassword(array $data)
+    public function changePassword($username, $password)
     {
-        $account = $this->model->where('login', $data['username']);
+        $account = $this->model->where('login', $username);
         
         return $this->toArray($account->update(array(
-            'password' => $data['password']
+            'password' => $password
         )));
     }
 

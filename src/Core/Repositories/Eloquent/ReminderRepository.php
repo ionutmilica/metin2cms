@@ -25,6 +25,16 @@ class ReminderRepository extends AbstractRepository implements ReminderRepositor
     }
 
     /**
+     * Find reminder by account name
+     *
+     * @param $name
+     * @return mixed
+     */
+    public function findByUser($name)
+    {
+        return $this->toArray($this->model->where('username', $username)->first());
+    }
+    /**
      * Creates the password reminder
      *
      * @param array $data
@@ -32,7 +42,7 @@ class ReminderRepository extends AbstractRepository implements ReminderRepositor
      * @param $password
      * @return bool
      */
-    public function generatePassword(array $data, $token, $password)
+    public function create(array $data, $token, $password)
     {
         $account           = $this->getNew();
         $account->username = $data['username'];
@@ -40,7 +50,7 @@ class ReminderRepository extends AbstractRepository implements ReminderRepositor
         $account->password = $password;
         $account->save();
 
-        return true;
+        return $this->toArray($account);
     }
 
     /**
@@ -49,8 +59,19 @@ class ReminderRepository extends AbstractRepository implements ReminderRepositor
      * @param $token
      * @return mixed
      */
-    public function deleteToken($token)
+    public function deleteByToken($token)
     {
         return $this->model->where('token', $token)->delete();
+    }
+
+    /**
+     * Delete reminder by user
+     *
+     * @param $username
+     * @return mixed
+     */
+    public function deleteByUser($username)
+    {
+        return $this->model->where('username', $username)->delete();
     }
 } 
