@@ -1,11 +1,11 @@
 <?php
 
-use Metin\Repositories\AccountRepositoryInterface;
+use Metin2CMS\Core\Repositories\AccountRepositoryInterface;
 
 class AccountTableSeeder extends Seeder {
 
     /**
-     * @var Metin\Repositories\AccountRepositoryInterface
+     * @var Metin2CMS\Core\Repositories\AccountRepositoryInterface
      */
     private $account;
 
