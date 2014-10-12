@@ -4,9 +4,9 @@
     <meta charset="utf-8">
 </head>
 <body>
-<h2>Hello {{ $login }}</h2>
+<h3>Hello {{ $login }},</h3>
 <div>
-    Your storekeeper password is: <b> {{ $password }} </b>
+    Your storekeeper password is: <b> {{ $safebox }} </b>
 </div>
 </body>
 </html>

@@ -8,6 +8,7 @@ use Metin2CMS\Core\Exceptions\LoginFailedException;
 use Metin2CMS\Core\Exceptions\PasswordFailedException;
 use Metin2CMS\Core\Exceptions\RemindFailedException;
 use Metin2CMS\Core\Exceptions\SafeboxException;
+use Metin2CMS\Core\Mailers\AccountMailer;
 use Metin2CMS\Core\Repositories\AccountRepositoryInterface;
 use Metin2CMS\Core\Repositories\ReminderRepositoryInterface;
 use Metin2CMS\Core\Repositories\SafeboxRepositoryInterface;
@@ -33,22 +34,29 @@ class AccountService {
      * @var \Metin2CMS\Core\Repositories\SafeboxRepositoryInterface
      */
     protected $safebox;
+    /**
+     * @var \Metin2CMS\Core\Mailers\AccountMailer
+     */
+    private $accountMailer;
 
     /**
      * @param Application $app
      * @param \Metin2CMS\Core\Repositories\AccountRepositoryInterface $account
      * @param \Metin2CMS\Core\Repositories\ReminderRepositoryInterface $reminder
      * @param \Metin2CMS\Core\Repositories\SafeboxRepositoryInterface $safebox
+     * @param \Metin2CMS\Core\Mailers\AccountMailer $accountMailer
      */
     public function __construct(Application $app,
                                 AccountRepositoryInterface $account,
                                 ReminderRepositoryInterface $reminder,
-                                SafeboxRepositoryInterface $safebox)
+                                SafeboxRepositoryInterface $safebox,
+                                AccountMailer $accountMailer)
     {
         $this->app = $app;
         $this->account = $account;
         $this->reminder = $reminder;
         $this->safebox = $safebox;
+        $this->accountMailer = $accountMailer;
     }
 
     /**
@@ -242,14 +250,27 @@ class AccountService {
      */
     public function safebox($user)
     {
-        $safebox = $this->safebox->findByAccount($user);
+        $account = $this->account->findById($user);
+
+        if ( ! $account)
+        {
+            throw new SafeboxException('This account doesn\'t exists');
+        }
+
+        $safebox = $this->safebox->findByAccount($account['id']);
 
         if ( ! $safebox)
         {
             throw new SafeboxException('Your current account doesn\'t have a safebox.');
         }
 
-        // Send an email
+        $data = array(
+            'login'   => $account['login'],
+            'email'   => $account['email'],
+            'safebox' => $safebox['password']
+        );
+
+        $this->accountMailer->safebox($data)->send();
 
         return true;
     }
