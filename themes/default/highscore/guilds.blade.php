@@ -44,7 +44,7 @@ Highscore - @parent
             <tr>
                 <td>{{ $guild['rang'] }}</td>
                 <td>{{ $guild['guild_name'] }}</td>
-                <td>{{ $guild['master'] }}</td>
+                <td>{{ $guild['master_name'] }}</td>
                 <td>
                     <img src="{{ assetTheme('img/kindoms/'.$guild['empire'].'.png') }}" alt="">
                 </td>
