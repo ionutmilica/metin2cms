@@ -8,6 +8,9 @@ use Metin2CMS\Core\Exceptions\LoginFailedException;
 use Metin2CMS\Core\Exceptions\PasswordFailedException;
 use Metin2CMS\Core\Exceptions\RemindFailedException;
 use Metin2CMS\Core\Exceptions\SafeboxException;
+use Metin2CMS\Core\Repositories\AccountRepositoryInterface;
+use Metin2CMS\Core\Repositories\ReminderRepositoryInterface;
+use Metin2CMS\Core\Repositories\SafeboxRepositoryInterface;
 
 class AccountService {
 
@@ -33,13 +36,19 @@ class AccountService {
 
     /**
      * @param Application $app
+     * @param \Metin2CMS\Core\Repositories\AccountRepositoryInterface $account
+     * @param \Metin2CMS\Core\Repositories\ReminderRepositoryInterface $reminder
+     * @param \Metin2CMS\Core\Repositories\SafeboxRepositoryInterface $safebox
      */
-    public function __construct(Application $app)
+    public function __construct(Application $app,
+                                AccountRepositoryInterface $account,
+                                ReminderRepositoryInterface $reminder,
+                                SafeboxRepositoryInterface $safebox)
     {
         $this->app = $app;
-        $this->account = $this->app->make('Metin2CMS\Core\Repositories\AccountRepositoryInterface');
-        $this->reminder = $this->app->make('Metin2CMS\Core\Repositories\ReminderRepositoryInterface');
-        $this->safebox = $this->app->make('Metin2CMS\Core\Repositories\SafeboxRepositoryInterface');
+        $this->account = $account;
+        $this->reminder = $reminder;
+        $this->safebox = $safebox;
     }
 
     /**
