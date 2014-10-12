@@ -1,8 +1,8 @@
-<?php namespace Metin2CMS\Site;
+<?php namespace Metin2CMS\Config;
 
 use Illuminate\Support\ServiceProvider;
 
-class SiteServiceProvider extends ServiceProvider {
+class ConfigServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -18,14 +18,11 @@ class SiteServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('metin2cms/site', 'metin2cms/site', __DIR__);
+		$this->package('metin2cms/config', 'metin2cms/config', __DIR__);
 
-        // Load default routes
-        require __DIR__ . '/routes.php';
-
-        // Load default filters
-
-        require __DIR__ . '/filters.php';
+		$this->registerViews();
+		
+        require __DIR__ . '/hooks.php';
     }
 
 	/**
@@ -46,5 +43,15 @@ class SiteServiceProvider extends ServiceProvider {
 	{
 		return array();
 	}
+
+    /**
+     * Register a new path for theme usage
+     */
+    public function registerViews()
+    {
+        $theme = $this->app['config']->get('theme.current');
+
+        $this->app['view']->addLocation(__DIR__ . '/../../themes/'.$theme);
+    }
 
 }

@@ -65,10 +65,7 @@ class AccountService {
      */
     public function create(array $data)
     {
-        //@TODO: Make use of events for this kind of configurations
         $data['login'] = $data['username'];
-        $data['status'] = 'BLOCK';
-        $data['confirmation_token'] = str_random(64);
 
         $this->app['events']->fire('account.creating', array(&$data));
 
@@ -77,15 +74,6 @@ class AccountService {
         if ($account)
         {
             $this->app['events']->fire('account.created', array($account));
-
-            $data = array(
-                'login' => $data['login'],
-                'email' => $data['email'],
-                'token' => $data['confirmation_token']
-            );
-
-            $this->accountMailer->confirmation($data)->send();
-
             return $account;
         }
 
