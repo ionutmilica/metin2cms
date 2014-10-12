@@ -118,6 +118,8 @@ class AccountService {
                 'login' => $user,
                 'token' => $token,
             ));
+
+            return true;
         }
 
         return false;

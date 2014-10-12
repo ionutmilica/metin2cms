@@ -63,7 +63,7 @@ class RegistrationController extends BaseController {
      */
     public function confirm($user, $token)
     {
-        if ($this->account->confirmAccount($user, $token))
+        if ( ! $this->account->confirmAccount($user, $token))
         {
             return $this->view('account.register.fail');
         }
