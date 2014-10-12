@@ -18,7 +18,7 @@ interface AccountRepositoryInterface {
      * @return mixed
      */
     public function update($conditions, array $data);
-    
+
     /**
      * Get all accounts
      *

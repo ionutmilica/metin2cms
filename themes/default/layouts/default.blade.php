@@ -97,7 +97,6 @@
           <div class="jumbotron">
               <div class="span7 text-center">
                   <a href="{{ route('account.index') }}" class="btn btn-primary btn-lg" role="button">Account info</a>
-                  <a href="#" class="btn btn-primary btn-lg" role="button">Item mall</a>
                   <a href="{{ route('account.logout') }}" class="btn btn-primary btn-lg" role="button">Logout</a>
               </div>
           </div>
