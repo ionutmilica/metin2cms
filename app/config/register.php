@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'closed' => true,
+    'closed' => false,
     'message' => 'Registration is colosed for now due to high number of accounts.',
-    'confirmation' => true,
+    'confirmation' => false,
 );
