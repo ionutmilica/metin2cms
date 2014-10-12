@@ -22,6 +22,8 @@ class CoreServiceProvider extends ServiceProvider {
         $this->package('metin2cms/core', 'metin2cms/core', __DIR__);
 
         $this->bootAuthProvider();
+
+        $this->loadModules();
     }
 
     /**
@@ -78,5 +80,33 @@ class CoreServiceProvider extends ServiceProvider {
                 $this->app->make('Metin2CMS\Core\Entities\Account')
             );
         });
+    }
+
+    /**
+     * An module loader.
+     * We may extract a class for it in the future but for now it's ok
+     * a hack like this.
+     */
+    protected function loadModules()
+    {
+        $loader = require base_path() . '/vendor/autoload.php';
+        $modules = require base_path() . '/src/list.php';
+
+        foreach ($modules as $name => $module)
+        {
+            if ($module['status'] == true)
+            {
+                $nameSpace = $module['namespace'];
+
+                // Register the namespace to the composer
+
+                $loader->setPsr4($nameSpace . "\\", __DIR__ . "/../".$name);
+
+                // Register service provider
+                $serviceProviderClass = sprintf('\%s\%sServiceProvider', $nameSpace, $name);
+
+                $this->app->register(new $serviceProviderClass($this->app));
+            }
+        }
     }
 }
