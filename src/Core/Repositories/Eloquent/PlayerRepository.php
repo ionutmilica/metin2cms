@@ -51,17 +51,18 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
      */
     protected function getHighScoreQuery($limit = 100)
     {
-        return "SELECT id, name, level, exp, empire, job, rang
+        return "SELECT id, name, level, exp, empire, job, rang, perm
                 FROM (
-                    SELECT id, name, level, exp, empire, job, @num := @num +1 AS rang
+                    SELECT id, name, level, exp, empire, job, mAuthority as perm, @num := @num +1 AS rang
                     FROM (
-                        SELECT player.id, player.name, player.level, player.exp, player_index.empire, player.job, @num :=0
+                        SELECT player.id, player.name, player.level, player.exp, player_index.empire, player.job, gmlist.mAuthority, @num :=0
                         FROM player.player
                         LEFT JOIN player.player_index ON player_index.id = player.account_id
                         INNER JOIN account.account ON account.id=player.account_id
-                        WHERE player.name NOT LIKE '[%]%' AND account.status != 'BLOCK'
+                        LEFT JOIN common.gmlist ON gmlist.mName = player.name
+                        WHERE account.status != 'BLOCK'
                         ORDER BY player.level DESC , player.exp DESC
-                    ) AS t1
+                    ) AS t1 WHERE mAuthority IS NULL or mAuthority = 'LOW_WIZARD'
                 ) AS t2
                 LIMIT $limit";
     }
