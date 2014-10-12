@@ -1,6 +1,7 @@
 <?php namespace Metin2CMS\Core\Services;
 
 use Illuminate\Foundation\Application;
+use Metin2CMS\Core\Exceptions\ConfirmationFailedException;
 use Metin2CMS\Core\Exceptions\EmailFailedException;
 use Metin2CMS\Core\Exceptions\LoginFailedException;
 use Metin2CMS\Core\Exceptions\PasswordFailedException;
@@ -85,29 +86,34 @@ class AccountService {
      *
      * @param $user
      * @param $token
+     * @throws \Metin2CMS\Core\Exceptions\ConfirmationFailedException
      * @return bool
      */
     public function confirmAccount($user, $token)
     {
-        // To make sure that the token it's not null or \0
-        if (empty($token)) $token = '-1';
+        $account = $this->account->findByName($user);
 
-        $confirmation = (bool) $this->account->update(array('login' => $user, 'confirmation_token' => $token), array(
+        if ( ! $account)
+        {
+            throw new ConfirmationFailedException('Your account or token is invalid !');
+        }
+
+        if ($token === '' || $account['confirmation_token'] !== $token)
+        {
+            return false;
+        }
+
+        $confirmation = (bool) $this->account->update(array('login' => $user,), array(
             'confirmation_token' => '',
             'status' => 'OK'
         ));
 
         if ($confirmation)
         {
-            $this->app['events']->fire('account.confirmed', array(
-                'login' => $user,
-                'token' => $token,
-            ));
+            $this->app['events']->fire('account.confirmed', $account);
 
             return true;
         }
-
-        return false;
     }
 
     /**
