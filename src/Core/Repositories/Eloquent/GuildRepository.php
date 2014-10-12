@@ -73,12 +73,18 @@ class GuildRepository extends AbstractRepository implements GuildRepositoryInter
      */
     public function getHighScoreQuery($limit = 100)
     {
-        return "SELECT
-        guild.name as guild_name, guild.master, guild.level, guild.win, guild.ladder_point, player_index.empire as empire
-        FROM player.guild
-        LEFT JOIN player.player ON guild.master = player.id
-        LEFT JOIN player.player_index ON player_index.id = player.account_id
-        WHERE player.name NOT LIKE '[%]%'
-        ORDER BY guild.ladder_point DESC LIMIT ".$limit;
+        return "SELECT id, name as guild_name, level, win, ladder_point, master, empire, rang
+        FROM (
+            SELECT id, name, level, win, ladder_point, master, empire, @num := @num +1 AS rang
+            FROM (
+                SELECT player.id, guild.name, guild.level, guild.win, guild.ladder_point, guild.master, player_index.empire, @num :=0
+                FROM player.guild
+                LEFT JOIN player.player ON guild.master = player.id
+                LEFT JOIN player.player_index ON player_index.id = player.account_id
+                WHERE player.name NOT LIKE '[%]%'
+                ORDER BY guild.ladder_point DESC , guild.level DESC
+            ) AS t1
+        ) AS t2
+        LIMIT $limit";
     }
 }

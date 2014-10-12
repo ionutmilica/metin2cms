@@ -19,15 +19,15 @@
                     <p>
                     <table class="table table-striped table-bordered">
                         <tbody>
-                        @for ($i = 0; $i < count($playersMini); $i++)
+                        @foreach ($playersMini as $player)
                         <tr>
-                            <td class="position" width="5">{{ $i + 1 }}</td>
-                            <td class="name">{{ $playersMini[$i]['name'] }}</td>
+                            <td class="position" width="5">{{ $player['rang'] }}</td>
+                            <td class="name">{{ $player['name'] }}</td>
                             <td class="empire" width="10">
-                                <img src="{{ assetTheme('img/kindoms/'.$playersMini[$i]['empire'].'.png') }}" alt="">
+                                <img src="{{ assetTheme('img/kindoms/'.$player['empire'].'.png') }}" alt="">
                             </td>
                         </tr>
-                        @endfor
+                        @endforeach
                         </tbody>
                     </table>
                     <div class="span7 text-center">
@@ -39,15 +39,15 @@
                     <p>
                     <table class="table table-striped table-bordered">
                         <tbody>
-                        @for ($i = 0; $i < count($guildsMini); $i++)
+                        @foreach ($guildsMini as $guild)
                             <tr>
-                                <td width="5">{{ $i + 1 }}</td>
-                                <td>{{ $guildsMini[$i]['guild_name'] }}</td>
+                                <td width="5">{{ $guild['rang'] }}</td>
+                                <td>{{ $guild['guild_name'] }}</td>
                                 <td width="10">
-                                    <img src="{{ assetTheme('img/kindoms/'.$guildsMini[$i]['empire'].'.png') }}" alt="">
+                                    <img src="{{ assetTheme('img/kindoms/'.$guild['empire'].'.png') }}" alt="">
                                 </td>
                             </tr>
-                        @endfor
+                        @endforeach
                         </tbody>
                     </table>
                     <div class="span7 text-center">

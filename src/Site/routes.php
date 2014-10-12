@@ -56,9 +56,19 @@ Route::group(array('namespace' => 'Metin2CMS\Site\Controllers'), function()
         'uses' => 'HighscoreController@players'
     ));
 
+    Route::post('highscore/players', array(
+        'as' => 'highscore.players',
+        'uses' => 'HighscoreController@searchPlayer'
+    ));
+
     Route::get('highscore/guilds', array(
         'as' => 'highscore.guilds',
         'uses' => 'HighscoreController@guilds'
+    ));
+
+    Route::post('highscore/guilds', array(
+        'as' => 'highscore.guilds',
+        'uses' => 'HighscoreController@searchGuild'
     ));
 // Account panel
 
