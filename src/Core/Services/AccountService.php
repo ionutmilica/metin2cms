@@ -141,7 +141,7 @@ class AccountService {
             throw new LoginFailedException('Your account is not activated yet.');
         }
 
-        $auth = Auth::attempt(array(
+        $auth = $this->app['auth']->attempt(array(
             'username' => $data['username'],
             'password' => $data['password']
         ), $remember);
@@ -245,12 +245,7 @@ class AccountService {
             throw new PasswordFailedException('Your old password is incorrect.');
         }
 
-        $data = array(
-            'password' => mysqlHash($data['new_password']),
-            'username' => $user->login
-        );
-
-        return (bool) $this->account->changePassword($data);
+        return (bool) $this->account->changePassword($user->login, mysqlHash($data['new_password']));
     }
 
     public function email($user, array $data)
