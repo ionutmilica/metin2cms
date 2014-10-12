@@ -24,7 +24,7 @@ Event::listen('account.creating', function (&$data)
 {
     if (Config::get('register.closed') == true)
     {
-        throw new \Metin2CMS\Core\Exceptions\LoginFailedException(Config::get('register.message'));
+        throw new \Metin2CMS\Core\Exceptions\RegistrationFailedException(Config::get('register.message'));
     }
 });
 
