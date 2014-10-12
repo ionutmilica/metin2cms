@@ -33,12 +33,6 @@ Account overview - @parent
     
         <p>
             <div class="list-group">
-                <a href="{{ route('account.characters') }}" class="list-group-item active">
-                    <h4 class="list-group-item-heading">Character</h4>
-                    <p class="list-group-item-text">Display all you characters</p>
-                </a>
-            </div>
-            <div class="list-group">
                 <a href="{{ route('account.email') }}" class="list-group-item active">
                     <h4 class="list-group-item-heading">Email</h4>
                     <p class="list-group-item-text">Change email of your account</p>

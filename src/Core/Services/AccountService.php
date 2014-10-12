@@ -1,8 +1,6 @@
 <?php namespace Metin2CMS\Core\Services;
 
-use Exception;
 use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Auth;
 use Metin2CMS\Core\Exceptions\EmailFailedException;
 use Metin2CMS\Core\Exceptions\LoginFailedException;
 use Metin2CMS\Core\Exceptions\PasswordFailedException;
@@ -72,7 +70,7 @@ class AccountService {
         $data['status'] = 'BLOCK';
         $data['confirmation_token'] = str_random(64);
 
-        $account = $this->app['events']->fire('account.creating', array(&$data));
+        $this->app['events']->fire('account.creating', array(&$data));
 
         $account = $this->account->create($data);
 
@@ -103,8 +101,7 @@ class AccountService {
      */
     public function confirmAccount($user, $token)
     {
-        // To make sure that the token it's not null
-
+        // To make sure that the token it's not null or \0
         if (empty($token)) $token = '-1';
 
         $confirmation = (bool) $this->account->update(array('login' => $user, 'confirmation_token' => $token), array(
