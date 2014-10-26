@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\View;
 class BaseController extends Controller {
 
     /**
+     *
+     */
+    public function __construct()
+    {
+       $this->beforeFilter('admin.auth');
+    }
+
+    /**
      * Redirect back with old input and the specified data.
      *
      * @param  array $data
@@ -38,6 +46,6 @@ class BaseController extends Controller {
      */
     protected function view($name, array $data = array())
     {
-        return View::make($name, $data);
+        return View::make('admin::'.$name, $data);
     }
 }

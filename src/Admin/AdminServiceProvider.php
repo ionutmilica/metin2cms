@@ -35,7 +35,8 @@ class AdminServiceProvider extends ServiceProvider {
      */
     public  function registerViews()
     {
-        $this->app['view']->addLocation(__DIR__ . '/../../themes/admin');
+        //$this->app['view']->addLocation(__DIR__ . '/../../themes/admin');
+        $this->app['view.finder']->addNamespace('admin', array(__DIR__ . '/../../themes/admin'));
     }
 
 	/**

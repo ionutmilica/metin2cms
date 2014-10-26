@@ -11,4 +11,12 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
         'as'   => 'admin.logout',
         'uses' => 'HomeController@logout'
     ));
+
+    Route::group(array('prefix' => 'account'), function ()
+    {
+        Route::get('/', array(
+            'as'    => 'admin.account.index',
+            'uses'  => 'AccountController@index'
+        ));
+    });
 });
