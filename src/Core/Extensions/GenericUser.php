@@ -4,6 +4,10 @@ use \Illuminate\Auth\GenericUser as BaseGenericUser;
 
 class GenericUser extends BaseGenericUser {
 
+    const MOD = 1;
+    const GM = 2;
+    const ADMIN = 9;
+
     /**
      * Checks if an users is a GM
      *
@@ -11,7 +15,7 @@ class GenericUser extends BaseGenericUser {
      */
     public function isGameMaster()
     {
-        return $this->type == 2;
+        return self::GM == 2;
     }
 
     /**
@@ -21,7 +25,7 @@ class GenericUser extends BaseGenericUser {
      */
     public function isModerator()
     {
-        return $this->type == 1;
+        return self::MOD == 1;
     }
 
     /**
@@ -31,6 +35,6 @@ class GenericUser extends BaseGenericUser {
      */
     public function isAdmin()
     {
-        return $this->type == 9;
+        return self::ADMIN == 9;
     }
 }

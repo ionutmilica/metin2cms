@@ -16,8 +16,8 @@ App::error(function (\Metin2CMS\Core\Exceptions\AbstractException $e)
 
 Route::filter('admin.auth', function()
 {
-    if (Auth::check() || ! Auth::user()->isAdmin())
+    if ( ! Auth::check() || ! Auth::user()->isAdmin())
     {
-            return Redirect::route('home');
+        return Redirect::guest('/');
     }
 });

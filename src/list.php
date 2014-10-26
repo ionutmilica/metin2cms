@@ -15,7 +15,7 @@ return array(
 	),
     'Site' => array(
         'namespace' => 'Metin2CMS\Site',
-        'status'    => true
+        'status'    => true,
     ),
     'Admin' => array(
         'namespace' => 'Metin2CMS\Admin',
