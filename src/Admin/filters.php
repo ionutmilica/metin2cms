@@ -13,3 +13,11 @@ App::error(function (\Metin2CMS\Core\Exceptions\AbstractException $e)
         'global' => $e->getMessage()
     ));
 });
+
+Route::filter('admin.auth', function()
+{
+    if (Auth::check() || ! Auth::user()->isAdmin())
+    {
+            return Redirect::route('home');
+    }
+});

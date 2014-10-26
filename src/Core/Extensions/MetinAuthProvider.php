@@ -1,19 +1,30 @@
 <?php namespace Metin2CMS\Core\Extensions;
 
-use Illuminate\Auth\GenericUser;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\UserProviderInterface;
 use Metin2CMS\Core\Entities\Account;
 
 class MetinAuthProvider implements UserProviderInterface{
 
+    /**
+     * Account model
+     *
+     * @var Account
+     */
     protected $account;
 
+    /**
+     * @param Account $account
+     */
     public function __construct(Account $account)
     {
         $this->account = $account;
     }
 
+    /**
+     * @param mixed $id
+     * @return GenericUser|UserInterface|null
+     */
     public function retrieveById($id)
     {
         $account = $this->account->find($id);
@@ -25,8 +36,16 @@ class MetinAuthProvider implements UserProviderInterface{
 
             return new GenericUser($accountArr);
         }
+
+        return null;
     }
 
+    /**
+     * Retrieve user by credentials
+     *
+     * @param array $credentials
+     * @return GenericUser
+     */
     public function retrieveByCredentials(array $credentials)
     {
         $account = $this->account->newInstance();
@@ -53,8 +72,17 @@ class MetinAuthProvider implements UserProviderInterface{
 
             return new GenericUser($userArr);
         }
+
+        return null;
     }
 
+    /**
+     * Check user password
+     *
+     * @param UserInterface $user
+     * @param array $credentials
+     * @return bool
+     */
     public function validateCredentials(UserInterface $user, array $credentials)
     {
         $credentials['password'] = mysqlHash($credentials['password']);
@@ -62,6 +90,13 @@ class MetinAuthProvider implements UserProviderInterface{
         return $user->getAuthPassword() == $credentials['password'];
     }
 
+    /**
+     * Retrieve user by remember token
+     *
+     * @param mixed $identifier
+     * @param string $token
+     * @return GenericUser
+     */
     public function retrieveByToken($identifier, $token)
     {
         $result = $this->account->where($this->account->getKeyName(), $identifier)
@@ -72,11 +107,18 @@ class MetinAuthProvider implements UserProviderInterface{
         {
             $account = $result->toArray();
             $account['password'] = $result->password;
+            $result = $account;
         }
 
-        return new GenericUser($result->toArray());
+        return new GenericUser($result);
     }
 
+    /**
+     * Update the remember token
+     *
+     * @param UserInterface $user
+     * @param string $token
+     */
     public function updateRememberToken(UserInterface $user, $token)
     {
         $this->account->where('id', $user->id)->update(array(
