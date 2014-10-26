@@ -27,7 +27,7 @@
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="index.html" class="logo">
+            <a href="{{ route('admin.home') }}" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 Metin2CMS
             </a>
@@ -58,7 +58,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="{{ 'admin/logout' }}" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -74,7 +74,7 @@
                 <section class="sidebar">
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="index.html">
+                            <a href="{{ route('admin.home') }}">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
