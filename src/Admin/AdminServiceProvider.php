@@ -20,6 +20,8 @@ class AdminServiceProvider extends ServiceProvider {
 	{
 		$this->package('metin2cms/admin', 'metin2cms/admin', __DIR__);
 
+        $this->registerViews();
+
         // Load default routes
         require __DIR__ . '/routes.php';
 
