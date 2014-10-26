@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Redirect;
 
+/**
+ * Exceptions.
+ */
+
 App::error(function (\Metin2CMS\Core\Validation\FormValidationException $e)
 {
     return Redirect::back()->withInput()->withErrors($e->getErrors());
@@ -13,6 +17,24 @@ App::error(function (\Metin2CMS\Core\Exceptions\AbstractException $e)
         'global' => $e->getMessage()
     ));
 });
+
+/**
+ * Maintenance mode custom page
+ */
+
+App::down(function()
+{
+    if (Request::is('admin*'))
+    {
+        return null;
+    }
+
+    return View::make('pages.maintenance');
+});
+
+/**
+ * Admin auth filter
+ */
 
 Route::filter('admin.auth', function()
 {
