@@ -4,7 +4,7 @@ class HomeController extends BaseController {
 
     public function __construct()
     {
-        $this->beforeFilter('admin.auth');
+
     }
     /**
      * @return mixed
