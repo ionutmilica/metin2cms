@@ -95,7 +95,7 @@
 
                 <!-- Main content -->
                 <section class="content">
-                   
+
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
@@ -118,15 +118,7 @@
         <script src="{{ assetTheme('js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js', 'admin') }}" type="text/javascript"></script>
         <!-- iCheck -->
         <script src="{{ assetTheme('js/plugins/iCheck/icheck.min.js', 'admin') }}" type="text/javascript"></script>
-
         <!-- AdminLTE App -->
         <script src="{{ assetTheme('js/AdminLTE/app.js', 'admin') }}" type="text/javascript"></script>
-
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="{{ assetTheme('js/AdminLTE/dashboard.js', 'admin') }}" type="text/javascript"></script>
-
-        <!-- AdminLTE for demo purposes -->
-        <script src="{{ assetTheme('js/AdminLTE/demo.js', 'admin') }}" type="text/javascript"></script>
-
     </body>
 </html>
