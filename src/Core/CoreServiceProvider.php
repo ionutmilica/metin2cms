@@ -84,8 +84,9 @@ class CoreServiceProvider extends ServiceProvider {
 
     /**
      * An module loader.
-     * We may extract a class for it in the future but for now it's ok
-     * a hack like this.
+     * We may extract a class for it in the future but for now it's ok.
+     *
+     * @return bool
      */
     protected function loadModules()
     {
@@ -108,5 +109,7 @@ class CoreServiceProvider extends ServiceProvider {
                 $this->app->register(new $serviceProviderClass($this->app));
             }
         }
+
+        return true;
     }
 }

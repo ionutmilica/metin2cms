@@ -28,6 +28,14 @@ class AdminServiceProvider extends ServiceProvider {
         require __DIR__ . '/filters.php';
     }
 
+    /**
+     * Register admin views
+     */
+    public  function registerViews()
+    {
+        $this->app['view']->addLocation(__DIR__ . '/../../themes/admin');
+    }
+
 	/**
 	 * Register the service provider.
 	 *
