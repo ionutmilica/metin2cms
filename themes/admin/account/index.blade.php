@@ -35,7 +35,7 @@
                          <th>Status</th>
                          <th>Actions</th>
                      </tr>
-                     @foreach ($accounts['data'] as $account)
+                     @foreach ($accounts as $account)
                      <tr>
                          <td>{{ $account['id'] }}</td>
                          <td>{{ $account['username'] }}</td>
@@ -52,7 +52,7 @@
                  </table>
              </div><!-- /.box-body -->
              <div class="box-footer clearfix">
-                 {{ Paginator::make($accounts['data'], $accounts['total'], $accounts['perPage'])->links() }}
+                 {{ $accounts->links() }}
              </div>
          </div><!-- /.box -->
          </div>
