@@ -31,15 +31,3 @@ App::down(function()
 
     return View::make('pages.maintenance');
 });
-
-/**
- * Admin auth filter
- */
-
-Route::filter('admin.auth', function()
-{
-    if ( ! Auth::check() || ! Auth::user()->isAdmin())
-    {
-        return Redirect::guest('/');
-    }
-});

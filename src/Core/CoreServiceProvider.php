@@ -23,6 +23,8 @@ class CoreServiceProvider extends ServiceProvider {
 
         $this->bootAuthProvider();
 
+        $this->registerFilters();
+
         $this->loadModules();
     }
 
@@ -111,5 +113,20 @@ class CoreServiceProvider extends ServiceProvider {
         }
 
         return true;
+    }
+
+    public function registerFilters()
+    {
+
+        /**
+         * Admin auth filter
+         */
+        $this->app['router']->filter('admin.auth', function()
+        {
+            if ( ! $this->app['auth']->check() || ! $this->app['auth']->user()->isAdmin())
+            {
+                return $this->app['redirect']->guest('/');
+            }
+        });
     }
 }
