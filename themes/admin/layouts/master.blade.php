@@ -92,8 +92,10 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
+                        @section('navbar')
                         Dashboard
                         <small>Home</small>
+                        @show
                     </h1>
                 </section>
 

@@ -4,14 +4,18 @@
     @parent - Account list
 @stop
 
+@section('navbar')
+    Accounts
+    <small>List of accounts</small>
+@stop
+
 @section('scripts')
     @parent
     <script src="{{ assetTheme('js/plugins/datatables/jquery.dataTables.js', 'admin') }}" type="text/javascript"></script>
     <script src="{{ assetTheme('js/plugins/datatables/dataTables.bootstrap.js', 'admin') }}" type="text/javascript"></script>
     <script type="text/javascript">
         $('#accounts').dataTable({
-            "bPaginate": true,
-            "bInfo"    : true,
+            "bPaginate": true
         });
     </script>
 @stop
