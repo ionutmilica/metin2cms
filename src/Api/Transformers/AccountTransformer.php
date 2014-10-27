@@ -10,7 +10,7 @@ class AccountTransformer extends AbstractTransformer {
             'id'            => (int) $item['id'],
             'username'      => $item['login'],
             'deletion_code' => (int) $item['social_id'],
-            'email'         => (int) $item['email'],
+            'email'         => $item['email'],
             'created_at'    => $item['create_time'],
             'status'        => $item['status'],
             'coins'         => $item['cash'],

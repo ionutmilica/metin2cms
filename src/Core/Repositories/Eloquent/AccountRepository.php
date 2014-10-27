@@ -27,12 +27,35 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
     /**
      * Returns all accounts with pagination
      *
-     * @param int $perPage
+     * @param array $data
      * @return mixed
      */
-    public function paginate($perPage = 10)
+    public function search(array $data)
     {
-        return $this->toArray($this->model->paginate($perPage));
+        $perPage = 10;
+
+        $model = $this->getNew();
+
+        if (isset($data['perPage']))
+        {
+            $perPage = (int) $data['perPage'] < 1 || (int) $data['perPage'] > 10 ? 10 : $data['perPage'];
+        }
+
+        if (isset($data['username']))
+        {
+            $username = dbEscape($data['username']);
+
+            $model = $model->where('login', 'LIKE', '%'.$username.'%');
+        }
+
+        if (isset($data['email']))
+        {
+            $email = dbEscape($data['email']);
+
+            $model = $model->where('email', 'LIKE', '%'.$email.'%');
+        }
+
+        return $this->toArray($model->paginate($perPage));
     }
 
     /**

@@ -12,6 +12,17 @@ function mysqlHash($password)
 }
 
 /**
+ * Escape the string for search
+ *
+ * @param $string
+ * @return string
+ */
+function dbEscape($string)
+{
+    return trim(DB::getPdo()->quote($string), '\'');
+}
+
+/**
  * Get current theme
  *
  * @return mixed

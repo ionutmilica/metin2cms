@@ -28,7 +28,7 @@ class AccountController extends ApiController {
 
     public function all()
     {
-        $accounts = $this->account->all(Input::get('perPage'));
+        $accounts = $this->account->search(Input::all());
 
         return $this->transformer->transformPagination($accounts);
     }

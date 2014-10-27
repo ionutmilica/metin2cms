@@ -313,16 +313,14 @@ class AccountService {
     }
 
     /**
-     * Display with pagination
+     * Search in accounts
      *
-     * @param int $perPage
-     * @return array
+     * @param array $data
+     * @return mixed
      */
-    public function all($perPage = 10)
+    public function search(array $data)
     {
-        $perPage = (int) $perPage < 1 || (int) $perPage > 10 ? 10 : $perPage;
-
-        return $this->account->paginate($perPage);
+        return $this->account->search($data);
     }
 }
 
