@@ -1,7 +1,7 @@
 @extends('admin::layouts.master')
 
 @section('title')
- @parent - Account list
+    @parent - Account list
 @stop
 
 @section('scripts')
@@ -11,7 +11,7 @@
     <script type="text/javascript">
         $('#accounts').dataTable({
             "bPaginate": true,
-            "bInfo": true,
+            "bInfo"    : true,
         });
     </script>
 @stop
