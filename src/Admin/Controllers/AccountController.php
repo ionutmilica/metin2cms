@@ -51,7 +51,12 @@ class AccountController extends BaseController {
     {
         $account = $this->account->getAccountInformation($id);
 
-        return $this->view('account.edit', compact('account'));
+        if ($account) {
+            return $this->view('account.edit', compact('account'));
+        }
+
+        return Redirect::route('admin.account.index');
+
     }
 
     /**
