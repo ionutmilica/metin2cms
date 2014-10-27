@@ -10,9 +10,9 @@
     <script src="{{ assetTheme('js/plugins/datatables/dataTables.bootstrap.js', 'admin') }}" type="text/javascript"></script>
     <script type="text/javascript">
         $('#accounts').dataTable({
-        "bPaginate": true,
-        "bInfo": true,
-    });
+            "bPaginate": true,
+            "bInfo": true,
+        });
     </script>
 @stop
 
