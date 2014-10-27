@@ -22,7 +22,6 @@ class AccountController extends BaseController {
      */
     public function __construct(AccountService $account, AccountTransformer $transformer)
     {
-        parent::__construct();
         $this->account = $account;
         $this->transformer = $transformer;
     }
