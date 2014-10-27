@@ -334,6 +334,12 @@ class AccountService {
         return $this->account->findById($id);
     }
 
+    /**
+     * Edit account
+     *
+     * @param array $data
+     * @return bool
+     */
     public function editAccount(array $data)
     {
         return (bool) $this->account->update(array('login' => $data['username']), array(
