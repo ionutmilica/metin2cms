@@ -8,10 +8,12 @@
     @parent
     <script src="{{ assetTheme('js/plugins/datatables/jquery.dataTables.js', 'admin') }}" type="text/javascript"></script>
     <script src="{{ assetTheme('js/plugins/datatables/dataTables.bootstrap.js', 'admin') }}" type="text/javascript"></script>
-    $('#accounts').dataTable({
+    <script type="text/javascript">
+        $('#accounts').dataTable({
         "bPaginate": true,
         "bInfo": true,
     });
+    </script>
 @stop
 
 @section('content')
