@@ -1,4 +1,4 @@
-<?php namespace Metin2CMS\Api\Transformers;
+<?php namespace Metin2CMS\Core\Transformers;
 
 abstract class AbstractTransformer {
 
@@ -15,9 +15,15 @@ abstract class AbstractTransformer {
             return $this->transformCollection($items);
         }
 
-        $items['data'] = array_map(array($this, 'transform'), $items['data']);
-
-        return $items;
+        return array(
+            'total'   => $items['total'],
+            'perPage' => $items['per_page'],
+            'page'    => $items['current_page'],
+            'last'    => $items['last_page'],
+            'from'    => $items['from'],
+            'to'      => $items['to'],
+            'data'    => array_map(array($this, 'transform'), $items['data']),
+        );
     }
     /**
      * Transform an entire collection

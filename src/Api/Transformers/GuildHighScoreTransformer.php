@@ -1,5 +1,7 @@
 <?php namespace Metin2CMS\Api\Transformers;
 
+use Metin2CMS\Core\Transformers\AbstractTransformer;
+
 class GuildHighScoreTransformer extends AbstractTransformer {
 
     /**
