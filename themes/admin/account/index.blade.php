@@ -9,50 +9,52 @@
     <small>List of accounts</small>
 @stop
 
-@section('scripts')
-    @parent
-    <script src="{{ assetTheme('js/plugins/datatables/jquery.dataTables.js', 'admin') }}" type="text/javascript"></script>
-    <script src="{{ assetTheme('js/plugins/datatables/dataTables.bootstrap.js', 'admin') }}" type="text/javascript"></script>
-    <script type="text/javascript">
-        $('#accounts').dataTable({
-            "bPaginate": true
-        });
-    </script>
-@stop
-
 @section('content')
     <div class="row">
          <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Account list</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body table-responsive">
-                    <table id="accounts" class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>ionutxp</td>
-                                <td>ionut.milica@gmail.com</td>
-                                <td>OK</td>
-                                <td>
-                                    <a href="account/edit" class="btn btn-success">Edit</a>
-                                    <a href="account/block" class="btn btn-danger">Block</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+          <div class="box">
+             <div class="box-header">
+                 <h3 class="box-title">Conturi</h3>
+                 <div class="box-tools">
+                 <form action="{{ route('admin.account.index') }}" method="get">
+                     <div class="input-group">
+                         <input type="text" name="username" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                         <div class="input-group-btn">
+                             <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                         </div>
+                     </div>
+                  </form>
+                 </div>
+             </div><!-- /.box-header -->
+             <div class="box-body table-responsive no-padding">
+                 <table class="table table-hover">
+                     <tr>
+                         <th>Id</th>
+                         <th>Username</th>
+                         <th>Email</th>
+                         <th>Status</th>
+                         <th>Actions</th>
+                     </tr>
+                     @foreach ($accounts['data'] as $account)
+                     <tr>
+                         <td>{{ $account['id'] }}</td>
+                         <td>{{ $account['username'] }}</td>
+                         <td>{{ $account['email'] }}</td>
+                         <td>
+                            <span class="label label-@if ($account['status'] == 'OK')success @else danger @endif">{{ $account['status'] }}</span>
+                         </td>
+                         <td>
+                            <a class="btn btn-success" href="{{ route('admin.account.edit', array($account['id'])) }}">Edit</a>
+                            <a class="btn btn-danger" href="{{ route('admin.account.block', array($account['id'])) }}">Block</a>
+                         </td>
+                     </tr>
+                     @endforeach
+                 </table>
+             </div><!-- /.box-body -->
+             <div class="box-footer clearfix">
+                 {{ Paginator::make($accounts['data'], $accounts['total'], $accounts['perPage'])->links() }}
+             </div>
+         </div><!-- /.box -->
          </div>
     </div>
 @stop

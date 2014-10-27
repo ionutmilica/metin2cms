@@ -18,5 +18,13 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
             'as'    => 'admin.account.index',
             'uses'  => 'AccountController@index'
         ));
+        Route::get('/edit/{id}', array(
+            'as'    => 'admin.account.edit',
+            'uses'  => 'AccountController@edit'
+        ));
+        Route::get('/block/{id}', array(
+            'as'    => 'admin.account.block',
+            'uses'  => 'AccountController@block'
+        ));
     });
 });
