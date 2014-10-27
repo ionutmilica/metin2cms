@@ -22,6 +22,7 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
             'as'    => 'admin.account.edit',
             'uses'  => 'AccountController@edit'
         ));
+        Route::post('/edit/{id}', array('uses'  => 'AccountController@doEdit'));
         Route::get('/block/{id}', array(
             'as'    => 'admin.account.block',
             'uses'  => 'AccountController@block'

@@ -16,15 +16,21 @@
                 <h3 class="box-title">Edit <strong>{{ $account['login'] }}</strong> Account</h3>
             </div><!-- /.box-header -->
 
-            <form role="form">
+            <form role="form" method="post" action="{{ route('admin.account.edit', $id) }}">
                 <div class="box-body">
-                    <div class="form-group">
+                    <div class="form-group @if ($errors->has('username')) has-error @endif">
                         <label for="username">Username</label>
                         <input type="text" name="username" placeholder="Enter email" id="username" class="form-control" value="{{ $account['login'] }}">
+                        @if ($errors->has('username'))
+                            <span class="help-block">{{ $errors->first('username') }} </span>
+                        @endif
                     </div>
-                    <div class="form-group">
+                    <div class="form-group @if ($errors->has('email')) has-error @endif">
                         <label for="email">Email address</label>
                         <input type="email" name="email" placeholder="Enter email" id="email" class="form-control" value="{{ $account['email'] }}">
+                        @if ($errors->has('email'))
+                            <span class="help-block">{{ $errors->first('email') }} </span>
+                        @endif
                     </div>
                 </div><!-- /.box-body -->
 

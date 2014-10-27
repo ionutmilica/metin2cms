@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Paginator;
 use Illuminate\Support\Facades\Redirect;
 use Metin2CMS\Api\Transformers\AccountTransformer;
 use Metin2CMS\Core\Services\AccountService;
+use Metin2CMS\Core\Services\Forms\Edit;
 
 class AccountController extends BaseController {
     /**
@@ -17,13 +18,20 @@ class AccountController extends BaseController {
     private $transformer;
 
     /**
+     * @var \Metin2CMS\Core\Services\Forms\Edit
+     */
+    protected $editForm;
+
+    /**
      * @param AccountService $account
      * @param AccountTransformer $transformer
+     * @param Edit $editForm
      */
-    public function __construct(AccountService $account, AccountTransformer $transformer)
+    public function __construct(AccountService $account, AccountTransformer $transformer, Edit $editForm)
     {
-        $this->account = $account;
+        $this->account     = $account;
         $this->transformer = $transformer;
+        $this->editForm    = $editForm;
     }
     /**
      * Get all accounts
@@ -52,11 +60,28 @@ class AccountController extends BaseController {
         $account = $this->account->getAccountInformation($id);
 
         if ($account) {
-            return $this->view('account.edit', compact('account'));
+            return $this->view('account.edit', compact('account', 'id'));
         }
 
         return Redirect::route('admin.account.index');
 
+    }
+
+    /**
+     * Edit account
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function doEdit($id)
+    {
+        $input = Input::only('username', 'email');
+
+        $this->editForm->validate($input);
+
+        $this->account->editAccount($input);
+
+        return Redirect::route('admin.account.edit', compact($id));
     }
 
     /**

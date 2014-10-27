@@ -105,7 +105,7 @@ class AccountService {
 
         $this->app['events']->fire('account.confirming', $account);
 
-        $confirmation = (bool) $this->account->update(array('login' => $user,), array(
+        $confirmation = (bool) $this->account->update(array('login' => $user), array(
             'confirmation_token' => '',
             'status' => 'OK'
         ));
@@ -332,6 +332,14 @@ class AccountService {
     public function getAccountInformation($id)
     {
         return $this->account->findById($id);
+    }
+
+    public function editAccount(array $data)
+    {
+        return (bool) $this->account->update(array('login' => $data['username']), array(
+            'login' => $data['username'],
+            'email' => $data['email']
+        ));
     }
 }
 
