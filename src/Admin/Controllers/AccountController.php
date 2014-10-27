@@ -42,6 +42,19 @@ class AccountController extends BaseController {
     }
 
     /**
+     * View account data for edit
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function edit($id)
+    {
+        $account = $this->account->getAccountInformation($id);
+
+        return $this->view('account.edit', compact('account'));
+    }
+
+    /**
      * @return bool
      */
     public function logout()

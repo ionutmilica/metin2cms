@@ -322,5 +322,16 @@ class AccountService {
     {
         return $this->account->search($data);
     }
+
+    /**
+     * Get account information
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getAccountInformation($id)
+    {
+        return $this->account->findById($id);
+    }
 }
 
