@@ -25,6 +25,17 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
     }
 
     /**
+     * Returns all accounts with pagination
+     *
+     * @param int $perPage
+     * @return mixed
+     */
+    public function paginate($perPage = 10)
+    {
+        return $this->toArray($this->model->paginate($perPage));
+    }
+
+    /**
      * Find user by id
      *
      * @param $id

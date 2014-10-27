@@ -311,5 +311,18 @@ class AccountService {
 
         return true;
     }
+
+    /**
+     * Display with pagination
+     *
+     * @param int $perPage
+     * @return array
+     */
+    public function all($perPage = 10)
+    {
+        $perPage = (int) $perPage < 1 || (int) $perPage > 10 ? 10 : $perPage;
+
+        return $this->account->paginate($perPage);
+    }
 }
 
