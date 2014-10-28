@@ -12,7 +12,7 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
         'uses' => 'HomeController@logout'
     ));
 
-    Route::group(array('prefix' => 'account'), function ()
+    Route::group(array('prefix' => 'accounts'), function ()
     {
         Route::get('/', array(
             'as'    => 'admin.account.index',
@@ -31,6 +31,14 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
         Route::get('unblock/{id}', array(
             'as'    => 'admin.account.unblock',
             'uses'  => 'AccountController@doUnBlock'
+        ));
+    });
+
+    Route::group(array('prefix' => 'staff'), function ()
+    {
+        Route::get('/', array(
+            'as'   => 'admin.staff.index',
+            'uses' => 'StaffController@index'
         ));
     });
 });

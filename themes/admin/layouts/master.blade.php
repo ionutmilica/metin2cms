@@ -82,6 +82,11 @@
                                 <i class="fa fa-dashboard"></i> <span>Accounts</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.staff.index') }}">
+                                <i class="fa fa-dashboard"></i> <span>Ingame Staff</span>
+                            </a>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
