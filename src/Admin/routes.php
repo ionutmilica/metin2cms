@@ -18,16 +18,19 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
             'as'    => 'admin.account.index',
             'uses'  => 'AccountController@index'
         ));
-        Route::get('/edit/{id}', array(
+        Route::get('edit/{id}', array(
             'as'    => 'admin.account.edit',
             'uses'  => 'AccountController@editForm'
         ));
-        Route::post('/edit/{id}', array('uses'  => 'AccountController@doEdit'));
-        Route::get('/block/{id}', array(
+        Route::post('edit/{id}', array('uses'  => 'AccountController@doEdit'));
+        Route::get('block/{id}', array(
             'as'    => 'admin.account.block',
             'uses'  => 'AccountController@blockForm'
         ));
-        Route::post('/block/{id}', array('uses'  => 'AccountController@doBlock'));
-
+        Route::post('block/{id}', array('uses'  => 'AccountController@doBlock'));
+        Route::get('unblock/{id}', array(
+            'as'    => 'admin.account.unblock',
+            'uses'  => 'AccountController@doUnBlock'
+        ));
     });
 });

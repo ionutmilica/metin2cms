@@ -79,4 +79,12 @@ class AdminService {
             'availDt' => $until,
         ));
     }
+
+    public function unblockAccount($id)
+    {
+        return (bool) $this->account->update(array('id' => $id), array(
+            'status'  => 'OK',
+            'availDt' => '0000-00-00 00:00:00',
+        ));
+    }
 }

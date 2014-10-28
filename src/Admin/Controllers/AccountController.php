@@ -7,6 +7,7 @@ use Metin2CMS\Admin\Forms\Edit;
 use Metin2CMS\Admin\Forms\Block;
 use Metin2CMS\Admin\Services\AdminService;
 use Metin2CMS\Api\Transformers\AccountTransformer;
+use Metin2CMS\Core\Services\AccountService;
 
 class AccountController extends BaseController {
     /**
@@ -26,15 +27,20 @@ class AccountController extends BaseController {
      * @var Block
      */
     private $blockForm;
+    /**
+     * @var AccountService
+     */
+    private $account;
 
     /**
      * @param AdminService $admin
+     * @param AccountService $account
      * @param AccountTransformer $transformer
      * @param Edit $editForm
      * @param Block $blockForm
      * @internal param AccountService $account
      */
-    public function __construct(AdminService $admin, AccountTransformer $transformer,
+    public function __construct(AdminService $admin, AccountService $account, AccountTransformer $transformer,
                                 Edit $editForm,
                                 Block $blockForm)
     {
@@ -42,6 +48,7 @@ class AccountController extends BaseController {
         $this->transformer = $transformer;
         $this->editForm    = $editForm;
         $this->blockForm = $blockForm;
+        $this->account = $account;
     }
     /**
      * Get all accounts
@@ -126,6 +133,24 @@ class AccountController extends BaseController {
         $this->blockForm->validate($input);
 
         $this->admin->blockAccount($id, $input);
+
+        return Redirect::route('admin.account.index');
+    }
+
+    /**
+     * Unblock account
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function doUnblock($id)
+    {
+        $account = $this->admin->getAccountData($id);
+
+        if ($account)
+        {
+            $this->admin->unblockAccount($id);
+        }
 
         return Redirect::route('admin.account.index');
     }

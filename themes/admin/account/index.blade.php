@@ -45,7 +45,11 @@
                          </td>
                          <td>
                             <a class="btn btn-success" href="{{ route('admin.account.edit', array($account['id'])) }}">Edit</a>
-                            <a class="btn btn-danger" href="{{ route('admin.account.block', array($account['id'])) }}">Block</a>
+                            @if ($account['status'] !== 'BLOCK')
+                                <a class="btn btn-danger" href="{{ route('admin.account.block', array($account['id'])) }}">Block</a>
+                            @else
+                                <a class="btn btn-danger" href="{{ route('admin.account.unblock', array($account['id'])) }}">Unblock</a>
+                            @endif
                          </td>
                      </tr>
                      @endforeach
