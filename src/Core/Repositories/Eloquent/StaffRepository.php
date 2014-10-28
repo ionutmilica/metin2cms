@@ -42,6 +42,17 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
     }
 
     /**
+     * Find staff member by id
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id)
+    {
+        return $this->toArray($this->model->where('mID', $id)->first());
+    }
+
+    /**
      * Get safebox by account id
      *
      * @param $id
@@ -61,5 +72,16 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
     public function findByPlayer($name)
     {
         return $this->toArray($this->model->where('mName', $name)->first());
+    }
+
+    /**
+     * Delete an staff member
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function delete($id)
+    {
+        return $this->model->where('mID', $id)->delete();
     }
 }

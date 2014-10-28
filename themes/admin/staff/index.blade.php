@@ -25,14 +25,18 @@
                          <th>Grade</th>
                          <th>Actions</th>
                      </tr>
-                     <?php $accounts = []; ?>
-                     @foreach ($accounts as $account)
+                     @foreach ($staff as $member)
                      <tr>
-                         <td>{{ $account['id'] }}</td>
-                         <td>{{ $account['username'] }}</td>
-                         <td>{{ $account['email'] }}</td>
+                         <td>{{ $member['mID'] }}</td>
                          <td>
-
+                            <a href="{{ route('admin.account.edit', array($member['mAccount'])) }}">{{ $member['mAccount'] }}</a>
+                         </td>
+                         <td>{{ $member['mName'] }}</td>
+                         <td>{{ $member['mAuthority'] }}</td>
+                         <td>
+                              <a class="btn btn-danger" href="{{ route('admin.staff.delete', array($member['mID'])) }}">
+                                Remove
+                              </a>
                          </td>
                      </tr>
                      @endforeach

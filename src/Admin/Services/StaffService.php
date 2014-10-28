@@ -13,7 +13,35 @@ class StaffService {
      */
     public function __construct(StaffRepositoryInterface $staff)
     {
-
         $this->staff = $staff;
+    }
+
+    /**
+     * Get all staff members
+     *
+     * @param array $data
+     * @return mixed
+     */
+    public function search(array $data)
+    {
+        return $this->staff->all();
+    }
+
+    /**
+     * Delete staff member
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function delete($id)
+    {
+        $staff = $this->staff->findById($id);
+
+        if ($staff['mAuthority'] == 'IMPLEMENTOR')
+        {
+            return false;
+        }
+
+        return $this->staff->delete($id);
     }
 }

@@ -112,12 +112,11 @@ class CoreServiceProvider extends ServiceProvider {
         return true;
     }
 
+    /**
+     * Register the filters
+     */
     public function registerFilters()
     {
-
-        /**
-         * Admin auth filter
-         */
         $this->app['router']->filter('admin.auth', function()
         {
             if ( ! $this->app['auth']->check() || ! $this->app['auth']->user()->isAdmin())

@@ -10,6 +10,14 @@ interface StaffRepositoryInterface {
     public function all();
 
     /**
+     * Delete an staff member
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function delete($id);
+
+    /**
      * Add account & player to the staff list
      *
      * @param array $data
@@ -17,6 +25,14 @@ interface StaffRepositoryInterface {
      */
     public function create(array $data);
 
+    /**
+     * Find staff member by id
+     *
+     * @param $id
+     * @return mixed
+     */
+
+    public function findById($id);
     /**
      * Find staff member by account name
      *
