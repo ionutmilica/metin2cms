@@ -71,7 +71,7 @@
             <aside class="left-side sidebar-offcanvas">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
-                    <a href="{{ route('home') }}" class="btn btn-success btn-lg" style="margin: 10px 0 10px 50px; color: #ffffff;" target="_blank">View Site</a>
+                    <a href="{{ route('home') }}" class="btn btn-primary btn-lg" style="margin: 10px 0 10px 50px; color: #ffffff;" target="_blank">View Site</a>
                     <ul class="sidebar-menu">
                         <li class="active">
                             <a href="{{ route('admin.home') }}">
