@@ -100,7 +100,7 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
      *
      * @return mixed
      */
-    public function fluentQuery()
+    protected function fluentQuery()
     {
         $connection = $this->model->getConnectionName();
 
