@@ -1,6 +1,7 @@
 <?php namespace Metin2CMS\Core\Repositories\Eloquent;
 
 
+use Illuminate\Support\Facades\DB;
 use Metin2CMS\Core\Entities\Staff;
 use Metin2CMS\Core\Repositories\StaffRepositoryInterface;
 
@@ -21,7 +22,9 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
      */
     public function all()
     {
-        return $this->toArray($this->model->all());
+        $fluent = $this->fluentQuery();
+
+        return $this->model->hydrate($fluent->get())->toArray();
     }
 
     /**
@@ -49,18 +52,22 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
      */
     public function findById($id)
     {
-        return $this->toArray($this->model->where('mID', $id)->first());
+        $fluent = $this->fluentQuery();
+        $fluent->where('id', $id);
+
+        return $this->toArray($fluent->first());
     }
 
     /**
-     * Get safebox by account id
-     *
-     * @param $id
+     * @param $account
      * @return mixed
      */
-    public function findByAccount($id)
+    public function findByAccount($account)
     {
-        return $this->toArray($this->model->where('mAccount', $id)->first());
+        $fluent = $this->fluentQuery();
+        $fluent->where('mAccount', $account);
+
+        return $this->toArray($fluent->first());
     }
 
     /**
@@ -71,7 +78,10 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
      */
     public function findByPlayer($name)
     {
-        return $this->toArray($this->model->where('mName', $name)->first());
+        $fluent = $this->fluentQuery();
+        $fluent->where('mName', $name);
+
+        return $this->toArray($fluent->first());
     }
 
     /**
@@ -82,6 +92,20 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
      */
     public function delete($id)
     {
-        return $this->model->where('mID', $id)->delete();
+        return $this->toArray($this->model->where('mID', $id)->delete());
+    }
+
+    /**
+     * Generate an eloquent query
+     *
+     * @return mixed
+     */
+    public function fluentQuery()
+    {
+        $connection = $this->model->getConnectionName();
+
+        return DB::table($connection.'.gmlist')
+                    ->join('account.account', 'gmlist.mAccount', '=', 'account.login')
+                    ->select('id', 'account.id as account_id', 'login as username', 'mName as player_name', 'mAuthority as grade');
     }
 }

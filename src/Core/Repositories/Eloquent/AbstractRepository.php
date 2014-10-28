@@ -1,6 +1,7 @@
 <?php namespace Metin2CMS\Core\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
+use Metin2CMS\Core\Entities\Guild;
 
 class AbstractRepository {
 
@@ -40,6 +41,11 @@ class AbstractRepository {
     {
         if (is_object($data))
         {
+            if (($data instanceof \StdClass))
+            {
+                return (array) $data;
+            }
+
             return $data->toArray();
         }
 

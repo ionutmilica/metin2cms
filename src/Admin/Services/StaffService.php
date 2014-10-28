@@ -37,7 +37,7 @@ class StaffService {
     {
         $staff = $this->staff->findById($id);
 
-        if ($staff['mAuthority'] == 'IMPLEMENTOR')
+        if ($staff['grade'] == 'IMPLEMENTOR')
         {
             return false;
         }

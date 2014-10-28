@@ -27,14 +27,14 @@
                      </tr>
                      @foreach ($staff as $member)
                      <tr>
-                         <td>{{ $member['mID'] }}</td>
+                         <td>{{ $member['id'] }}</td>
                          <td>
-                            <a href="{{ route('admin.account.edit', array($member['mAccount'])) }}">{{ $member['mAccount'] }}</a>
+                            <a href="{{ route('admin.account.edit', array($member['account_id'])) }}">{{ $member['username'] }}</a>
                          </td>
-                         <td>{{ $member['mName'] }}</td>
-                         <td>{{ $member['mAuthority'] }}</td>
+                         <td>{{ $member['player_name'] }}</td>
+                         <td>{{ $member['grade'] }}</td>
                          <td>
-                              <a class="btn btn-danger" href="{{ route('admin.staff.delete', array($member['mID'])) }}">
+                              <a class="btn btn-danger" href="{{ route('admin.staff.delete', array($member['id'])) }}">
                                 Remove
                               </a>
                          </td>
