@@ -311,42 +311,5 @@ class AccountService {
 
         return true;
     }
-
-    /**
-     * Search in accounts
-     *
-     * @param array $data
-     * @return mixed
-     */
-    public function search(array $data)
-    {
-        return $this->account->search($data);
-    }
-
-    /**
-     * Get account information
-     *
-     * @param $id
-     * @return mixed
-     */
-    public function getAccountData($id)
-    {
-        return $this->account->findById($id);
-    }
-
-    /**
-     * Edit user account
-     *
-     * @param $id
-     * @param array $data
-     * @return bool
-     */
-    public function editAccount($id, array $data)
-    {
-        return (bool) $this->account->update(array('id' => $id), array(
-            'login' => $data['username'],
-            'email' => $data['email']
-        ));
-    }
 }
 

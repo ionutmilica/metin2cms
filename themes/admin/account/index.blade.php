@@ -41,7 +41,7 @@
                          <td>{{ $account['username'] }}</td>
                          <td>{{ $account['email'] }}</td>
                          <td>
-                            <span class="label label-@if ($account['status'] == 'OK')success @else danger @endif">{{ $account['status'] }}</span>
+                            <span class="label label-{{ $account['status'] == 'OK' ? 'success' : 'danger' }}">{{ $account['status'] }}</span>
                          </td>
                          <td>
                             <a class="btn btn-success" href="{{ route('admin.account.edit', array($account['id'])) }}">Edit</a>

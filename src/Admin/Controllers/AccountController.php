@@ -3,35 +3,45 @@
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Paginator;
 use Illuminate\Support\Facades\Redirect;
+use Metin2CMS\Admin\Forms\Edit;
+use Metin2CMS\Admin\Forms\Block;
+use Metin2CMS\Admin\Services\AdminService;
 use Metin2CMS\Api\Transformers\AccountTransformer;
-use Metin2CMS\Core\Services\AccountService;
-use Metin2CMS\Core\Services\Forms\Edit;
 
 class AccountController extends BaseController {
     /**
-     * @var AccountService
+     * @var AdminService
      */
-    private $account;
+    private $admin;
     /**
      * @var AccountTransformer
      */
     private $transformer;
 
     /**
-     * @var \Metin2CMS\Core\Services\Forms\Edit
+     * @var Edit
      */
     protected $editForm;
+    /**
+     * @var Block
+     */
+    private $blockForm;
 
     /**
-     * @param AccountService $account
+     * @param AdminService $admin
      * @param AccountTransformer $transformer
      * @param Edit $editForm
+     * @param Block $blockForm
+     * @internal param AccountService $account
      */
-    public function __construct(AccountService $account, AccountTransformer $transformer, Edit $editForm)
+    public function __construct(AdminService $admin, AccountTransformer $transformer,
+                                Edit $editForm,
+                                Block $blockForm)
     {
-        $this->account     = $account;
+        $this->admin     = $admin;
         $this->transformer = $transformer;
         $this->editForm    = $editForm;
+        $this->blockForm = $blockForm;
     }
     /**
      * Get all accounts
@@ -41,7 +51,7 @@ class AccountController extends BaseController {
      */
     public function index()
     {
-        $accounts = $this->account->search(Input::all());
+        $accounts = $this->admin->search(Input::all());
         $accounts = $this->transformer->transformPagination($accounts);
         $accounts = Paginator::make($accounts['data'], $accounts['total'], $accounts['perPage'])
                             ->appends(array('username' => Input::get('username')));
@@ -55,9 +65,9 @@ class AccountController extends BaseController {
      * @param $id
      * @return mixed
      */
-    public function edit($id)
+    public function editForm($id)
     {
-        $account = $this->account->getAccountData($id);
+        $account = $this->admin->getAccountData($id);
 
         if ($account)
         {
@@ -65,7 +75,6 @@ class AccountController extends BaseController {
         }
 
         return Redirect::route('admin.account.index');
-
     }
 
     /**
@@ -80,9 +89,45 @@ class AccountController extends BaseController {
 
         $this->editForm->validate($input);
 
-        $this->account->editAccount($id, $input);
+        $this->admin->editAccount($id, $input);
 
         return Redirect::route('admin.account.edit', compact($id));
+    }
+
+    /**
+     * Account block form
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function blockForm($id)
+    {
+        $account = $this->admin->getAccountData($id);
+
+        if ($account)
+        {
+            return $this->view('account.block', compact('account', 'id'));
+        }
+
+        return Redirect::route('admin.account.index');
+    }
+
+    /**
+     * Block an account
+     *
+     * @param $id
+     * @return mixed
+     * @throws \Metin2CMS\Core\Validation\FormValidationException
+     */
+    public function doBlock($id)
+    {
+        $input = Input::only('reason', 'expiration');
+
+        $this->blockForm->validate($input);
+
+        $this->admin->blockAccount($id, $input);
+
+        return Redirect::route('admin.account.index');
     }
 
     /**
@@ -90,7 +135,7 @@ class AccountController extends BaseController {
      */
     public function logout()
     {
-        $this->account->logout();
+        $this->admin->logout();
 
         return Redirect::guest('/');
     }
