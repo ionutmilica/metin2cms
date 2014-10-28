@@ -329,20 +329,21 @@ class AccountService {
      * @param $id
      * @return mixed
      */
-    public function getAccountInformation($id)
+    public function getAccountData($id)
     {
         return $this->account->findById($id);
     }
 
     /**
-     * Edit account
+     * Edit user account
      *
+     * @param $id
      * @param array $data
      * @return bool
      */
-    public function editAccount(array $data)
+    public function editAccount($id, array $data)
     {
-        return (bool) $this->account->update(array('login' => $data['username']), array(
+        return (bool) $this->account->update(array('id' => $id), array(
             'login' => $data['username'],
             'email' => $data['email']
         ));

@@ -57,9 +57,10 @@ class AccountController extends BaseController {
      */
     public function edit($id)
     {
-        $account = $this->account->getAccountInformation($id);
+        $account = $this->account->getAccountData($id);
 
-        if ($account) {
+        if ($account)
+        {
             return $this->view('account.edit', compact('account', 'id'));
         }
 
@@ -79,7 +80,7 @@ class AccountController extends BaseController {
 
         $this->editForm->validate($input);
 
-        $this->account->editAccount($input);
+        $this->account->editAccount($id, $input);
 
         return Redirect::route('admin.account.edit', compact($id));
     }

@@ -126,7 +126,7 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
 
         foreach ($conditions as $field => $value)
         {
-            $account->where($field, $value);
+            $account = $account->where($field, $value);
         }
 
         return $this->toArray($account->update($info));
