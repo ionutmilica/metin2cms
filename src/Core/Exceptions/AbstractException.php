@@ -4,11 +4,14 @@ use Exception;
 
 abstract class AbstractException extends Exception {
 
+    /**
+     * @var string
+     */
     protected $redirectTo;
 
     /**
      * @param string $message
-     * @param int $redirectTo
+     * @param null $redirectTo
      * @param int $code
      */
     public function __construct($message, $redirectTo = null, $code = 0)
@@ -24,7 +27,7 @@ abstract class AbstractException extends Exception {
      */
     public function setRedirection($redirectTo)
     {
-        if ($redirectTo != null)
+        if ($redirectTo !== null)
         {
             $this->redirectTo = $redirectTo;
 

@@ -30,7 +30,7 @@
             <div class="box-header">
                 <h3 class="box-title">Block <strong>{{ $account['login'] }}</strong></h3>
             </div><!-- /.box-header -->
-
+            @include('layouts.partials.global_error')
             <form role="form" method="post" action="{{ route('admin.account.block', $id) }}">
                 <div class="box-body">
                     <div class="form-group @if ($errors->has('reason')) has-error @endif">

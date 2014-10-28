@@ -71,7 +71,7 @@ class AdminService {
 
         if ($account['type'] == 9/** Admin */)
         {
-            throw new LowPermissionException('You cannot block this account.', 'admin.account.block');
+            throw new LowPermissionException('You cannot block this account.', '');
         }
 
         return (bool) $this->account->update(array('id' => $id), array(

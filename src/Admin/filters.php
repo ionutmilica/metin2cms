@@ -13,7 +13,18 @@ App::error(function (\Metin2CMS\Core\Validation\FormValidationException $e)
 
 App::error(function (\Metin2CMS\Core\Exceptions\AbstractException $e)
 {
-    return Redirect::route($e->getRedirection())->withInput()->withErrors(array(
+    $redirect = app('redirect');
+
+    if ($e->getRedirection() == '')
+    {
+        $redirect = $redirect->back();
+    }
+    else
+    {
+        $redirect->route($e->getRedirection());
+    }
+
+    return $redirect->withInput()->withErrors(array(
         'global' => $e->getMessage()
     ));
 });
