@@ -24,7 +24,7 @@ App::error(function (\Metin2CMS\Core\Exceptions\AbstractException $e)
         $redirect->route($e->getRedirection());
     }
 
-    return $redirect->withInput()->withErrors(array(
+    return $redirect->route($e->getRedirection())->withInput()->withErrors(array(
         'global' => $e->getMessage()
     ));
 });
