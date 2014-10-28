@@ -35,29 +35,26 @@ class CoreServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->bind(
-            'Metin2CMS\Core\Repositories\AccountRepositoryInterface',
-            'Metin2CMS\Core\Repositories\Eloquent\AccountRepository'
+        $repositories = array(
+            'Account', 'Player', 'Reminder', 'Guild', 'Safebox', 'Staff'
         );
 
-        $this->app->bind(
-            'Metin2CMS\Core\Repositories\PlayerRepositoryInterface',
-            'Metin2CMS\Core\Repositories\Eloquent\PlayerRepository'
-        );
+        foreach ($repositories as $repository)
+        {
+            $this->registerRepo($repository);
+        }
+    }
 
+    /**
+     * Helper for repository registration
+     *
+     * @param $name
+     */
+    public function registerRepo($name)
+    {
         $this->app->bind(
-            'Metin2CMS\Core\Repositories\ReminderRepositoryInterface',
-            'Metin2CMS\Core\Repositories\Eloquent\ReminderRepository'
-        );
-
-        $this->app->bind(
-            'Metin2CMS\Core\Repositories\GuildRepositoryInterface',
-            'Metin2CMS\Core\Repositories\Eloquent\GuildRepository'
-        );
-
-        $this->app->bind(
-            'Metin2CMS\Core\Repositories\SafeboxRepositoryInterface',
-            'Metin2CMS\Core\Repositories\Eloquent\SafeboxRepository'
+            'Metin2CMS\Core\Repositories\\'.$name.'RepositoryInterface',
+            'Metin2CMS\Core\Repositories\Eloquent\\'.$name.'Repository'
         );
     }
 
