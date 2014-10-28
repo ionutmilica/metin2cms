@@ -21,10 +21,10 @@ App::error(function (\Metin2CMS\Core\Exceptions\AbstractException $e)
     }
     else
     {
-        $redirect->route($e->getRedirection());
+        $redirect = $redirect->route($e->getRedirection());
     }
 
-    return $redirect->route($e->getRedirection())->withInput()->withErrors(array(
+    return $redirect->withInput()->withErrors(array(
         'global' => $e->getMessage()
     ));
 });
