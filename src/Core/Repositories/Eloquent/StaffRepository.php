@@ -53,7 +53,7 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
     public function findById($id)
     {
         $fluent = $this->fluentQuery();
-        $fluent->where('id', $id);
+        $fluent->where('mID', $id);
 
         return $this->toArray($fluent->first());
     }
