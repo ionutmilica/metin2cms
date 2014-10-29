@@ -25,7 +25,7 @@ function dbEscape($string)
 /**
  * Get current theme
  *
- * @return mixed
+ * @  mixed
  */
 function theme()
 {
