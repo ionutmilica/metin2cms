@@ -106,6 +106,6 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
 
         return DB::table($connection.'.gmlist')
                     ->join('account.account', 'gmlist.mAccount', '=', 'account.login')
-                    ->select('id', 'account.id as account_id', 'login as username', 'mName as player_name', 'mAuthority as grade');
+                    ->select('mID as id', 'account.id as account_id', 'login as username', 'mName as player_name', 'mAuthority as grade');
     }
 }
