@@ -27,6 +27,17 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
     }
 
     /**
+     * Find player by name
+     *
+     * @param $name
+     * @return bool
+     */
+    public function findByName($name)
+    {
+        return $this->toArray($this->model->where('name', $name)->first());
+    }
+
+    /**
      * Get players for page $page with a given number of players per page
      *
      * @param $page

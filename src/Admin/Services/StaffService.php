@@ -1,6 +1,9 @@
 <?php namespace Metin2CMS\Admin\Services;
 
 use Metin2CMS\Core\Repositories\StaffRepositoryInterface;
+use Metin2CMS\Core\Repositories\AccountRepositoryInterface;
+use Metin2CMS\Core\Repositories\PlayerRepositoryInterface;
+use Metin2CMS\Admin\Exceptions\CreateFailedException;
 
 class StaffService {
     /**
@@ -9,11 +12,23 @@ class StaffService {
     private $staff;
 
     /**
+     * @var AccountRepositoryInterfac
+     */
+    private $account;
+
+    /**
+     * @var PlayerRepositoryInterface
+     */
+    private $player;
+
+    /**
      * @param StaffRepositoryInterface $staff
      */
-    public function __construct(StaffRepositoryInterface $staff)
+    public function __construct(StaffRepositoryInterface $staff, AccountRepositoryInterface $account, PlayerRepositoryInterface $player)
     {
-        $this->staff = $staff;
+        $this->staff   = $staff;
+        $this->account = $account;
+        $this->player  = $player;
     }
 
     /**
@@ -43,5 +58,23 @@ class StaffService {
         }
 
         return $this->staff->delete($id);
+    }
+
+    public function create(array $data)
+    {
+        $account = $this->account->findByName($data['account']);
+        $player  = $this->player->findByName($data['player']);
+
+        if ( ! $account)
+        {
+            throw new CreateFailedException('This account does not exist!');
+        }
+
+        if ( ! $player)
+        {
+            throw new CreateFailedException('This player does not exist!');
+        }
+
+        return (bool) $this->staff->create($data);
     }
 }

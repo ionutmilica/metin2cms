@@ -10,4 +10,12 @@ interface PlayerRepositoryInterface {
      * @return array
      */
     public function highscoreForPage($page, $perPage = 10);
+
+    /**
+     * Find player by name
+     *
+     * @param $login
+     * @return mixed
+     */
+    public function findByName($login);
 }

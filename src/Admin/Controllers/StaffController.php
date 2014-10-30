@@ -52,6 +52,8 @@ class StaffController extends BaseController {
 
         $this->createForm->validate($input);
 
+        $this->staff->create($input);
+
         return Redirect::route('admin.staff.index');
     }
 
