@@ -52,7 +52,7 @@ class StaffService {
     {
         $staff = $this->staff->findById($id);
 
-        if ($staff['grade'] == 'IMPLEMENTOR') // Think about this
+        if ( ! $staff)
         {
             return false;
         }
@@ -60,6 +60,13 @@ class StaffService {
         return $this->staff->delete($id);
     }
 
+    /**
+     * Create a staff member
+     *
+     * @param array $data
+     * @return bool
+     * @throws CreateFailedException
+     */
     public function create(array $data)
     {
         $account = $this->account->findByName($data['account']);

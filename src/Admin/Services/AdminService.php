@@ -80,6 +80,12 @@ class AdminService {
         ));
     }
 
+    /**
+     * Unblock an account
+     *
+     * @param $id
+     * @return bool
+     */
     public function unblockAccount($id)
     {
         return (bool) $this->account->update(array('id' => $id), array(
