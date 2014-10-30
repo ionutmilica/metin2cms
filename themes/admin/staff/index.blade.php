@@ -34,7 +34,7 @@
                          <td>{{ $member['player_name'] }}</td>
                          <td>{{ $member['grade'] }}</td>
                          <td>
-                              <a class="btn btn-danger" href="{{ route('admin.staff.delete', array($member['id'])) }}">
+                              <a class="btn btn-danger" href="{{ route('admin.staff.delete', array($member['id'])) }}" onclick="return confirm('Are you sure you want to remove?');">
                                 Remove
                               </a>
                          </td>
