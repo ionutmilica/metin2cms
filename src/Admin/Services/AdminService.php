@@ -2,19 +2,26 @@
 
 use Metin2CMS\Admin\Exceptions\LowPermissionException;
 use Metin2CMS\Core\Repositories\AccountRepositoryInterface;
+use Metin2CMS\Core\Repositories\HistoryRepositoryInterface;
 
 class AdminService {
     /**
      * @var AccountRepositoryInterface
      */
     private $account;
+    /**
+     * @var HistoryRepositoryInterface
+     */
+    private $history;
 
     /**
      * @param AccountRepositoryInterface $account
+     * @param HistoryRepositoryInterface $history
      */
-    public function __construct(AccountRepositoryInterface $account)
+    public function __construct(AccountRepositoryInterface $account, HistoryRepositoryInterface $history)
     {
         $this->account = $account;
+        $this->history = $history;
     }
 
 
@@ -74,10 +81,22 @@ class AdminService {
             throw new LowPermissionException('You cannot block this account.', '');
         }
 
-        return (bool) $this->account->update(array('id' => $id), array(
+        $wasBanned = (bool) $this->account->update(array('id' => $id), array(
             'status'  => 'BLOCK',
             'availDt' => $until,
         ));
+
+        // Creates a new event in history for account that was banned
+        if ($wasBanned)
+        { // TO be extracted
+            $this->history->create(array(
+                'account' => $id,
+                'event'   => 'blocked',
+                'data'    => sprintf('Blocked until %s with the reason: %s', $until, $data['reason'])
+            ));
+        }
+
+        return $this;
     }
 
     /**
@@ -88,9 +107,20 @@ class AdminService {
      */
     public function unblockAccount($id)
     {
-        return (bool) $this->account->update(array('id' => $id), array(
+        $wasUnblocked = (bool) $this->account->update(array('id' => $id), array(
             'status'  => 'OK',
             'availDt' => '0000-00-00 00:00:00',
         ));
+
+        if ($wasUnblocked)
+        {
+            $this->history->create(array(
+                'account' => $id,
+                'event'   => 'unblocked',
+                'data'    => ''
+            ));
+        }
+
+        return $wasUnblocked;
     }
 }

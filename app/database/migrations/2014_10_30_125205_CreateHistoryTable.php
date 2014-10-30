@@ -17,7 +17,7 @@ class CreateHistoryTable extends Migration {
             $table->increments('id');
             $table->integer('account_id')->unsigned();
             $table->string('event_type');
-            $table->string('data');
+            $table->text('data');
             $table->datetime('created_at');
         });
 	}
