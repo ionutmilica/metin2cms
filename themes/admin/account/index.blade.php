@@ -50,6 +50,7 @@
                             @else
                                 <a class="btn btn-danger" href="{{ route('admin.account.unblock', array($account['id'])) }}">Unblock</a>
                             @endif
+                            <a class="btn btn-primary" href="{{ route('admin.account.history', array($account['id'])) }}">History</a>
                          </td>
                      </tr>
                      @endforeach

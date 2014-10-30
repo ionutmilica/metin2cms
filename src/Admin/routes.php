@@ -32,9 +32,9 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
             'as'    => 'admin.account.unblock',
             'uses'  => 'AccountController@doUnBlock'
         ));
-        Route::get('{id}/events', array(
-            'as'    => 'admin.account.events',
-            'uses'  => 'AccountController@events'
+        Route::get('{id}/history', array(
+            'as'    => 'admin.account.history',
+            'uses'  => 'AccountController@history'
         ));
     });
 

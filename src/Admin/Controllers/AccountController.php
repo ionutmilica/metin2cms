@@ -8,12 +8,19 @@ use Metin2CMS\Admin\Forms\Block;
 use Metin2CMS\Admin\Services\AdminService;
 use Metin2CMS\Api\Transformers\AccountTransformer;
 use Metin2CMS\Core\Services\AccountService;
+use Metin2CMS\Core\Extensions\History\History;
 
 class AccountController extends BaseController {
     /**
      * @var AdminService
      */
     private $admin;
+
+    /**
+     * @var History
+     */
+    private $history;
+
     /**
      * @var AccountTransformer
      */
@@ -42,13 +49,16 @@ class AccountController extends BaseController {
      */
     public function __construct(AdminService $admin, AccountService $account, AccountTransformer $transformer,
                                 Edit $editForm,
-                                Block $blockForm)
+                                Block $blockForm,
+                                History $history)
     {
-        $this->admin     = $admin;
+        $this->admin       = $admin;
         $this->transformer = $transformer;
         $this->editForm    = $editForm;
-        $this->blockForm = $blockForm;
-        $this->account = $account;
+        $this->blockForm   = $blockForm;
+        $this->account     = $account;
+        $this->account     = $account;
+        $this->history     = $history;
     }
     /**
      * Get all accounts
@@ -150,6 +160,18 @@ class AccountController extends BaseController {
         if ($account)
         {
             $this->admin->unblockAccount($id);
+        }
+
+        return Redirect::route('admin.account.index');
+    }
+
+    public function history($id)
+    {
+        $history = $this->history->find($id);
+
+        if ($history)
+        {
+            return $this->view('account.history', compact('history', 'id'));
         }
 
         return Redirect::route('admin.account.index');
