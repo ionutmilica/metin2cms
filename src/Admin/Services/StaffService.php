@@ -23,6 +23,8 @@ class StaffService {
 
     /**
      * @param StaffRepositoryInterface $staff
+     * @param AccountRepositoryInterface $account
+     * @param PlayerRepositoryInterface $player
      */
     public function __construct(StaffRepositoryInterface $staff, AccountRepositoryInterface $account, PlayerRepositoryInterface $player)
     {

@@ -1,5 +1,6 @@
 <?php namespace Metin2CMS\Admin\Services;
 
+use Illuminate\Foundation\Application;
 use Metin2CMS\Admin\Exceptions\LowPermissionException;
 use Metin2CMS\Core\Repositories\AccountRepositoryInterface;
 use Metin2CMS\Core\Repositories\HistoryRepositoryInterface;
@@ -13,13 +14,19 @@ class AdminService {
      * @var HistoryRepositoryInterface
      */
     private $history;
+    /**
+     * @var
+     */
+    private $app;
 
     /**
+     * @param Application $app
      * @param AccountRepositoryInterface $account
      * @param HistoryRepositoryInterface $history
      */
-    public function __construct(AccountRepositoryInterface $account, HistoryRepositoryInterface $history)
+    public function __construct(Application $app, AccountRepositoryInterface $account, HistoryRepositoryInterface $history)
     {
+        $this->app = $app;
         $this->account = $account;
         $this->history = $history;
     }
@@ -72,8 +79,6 @@ class AdminService {
      */
     public function blockAccount($id, array $data)
     {
-        $until = $data['expiration'];
-
         $account = $this->account->findById($id);
 
         if ($account['type'] == 9/** Admin */)
@@ -81,22 +86,19 @@ class AdminService {
             throw new LowPermissionException('You cannot block this account.', '');
         }
 
-        $wasBanned = (bool) $this->account->update(array('id' => $id), array(
+        $data['account'] = $id;
+
+        $wasBanned = $this->account->update(array('id' => $id), array(
             'status'  => 'BLOCK',
-            'availDt' => $until,
+            'availDt' => $data['expiration'],
         ));
 
-        // Creates a new event in history for account that was banned
         if ($wasBanned)
-        { // TO be extracted
-            $this->history->create(array(
-                'account' => $id,
-                'event'   => 'blocked',
-                'data'    => sprintf('Blocked until %s with the reason: %s', $until, $data['reason'])
-            ));
+        {
+            $this->app['events']->fire('account.blocked', array($data));
         }
 
-        return $this;
+        return $wasBanned;
     }
 
     /**
@@ -114,10 +116,8 @@ class AdminService {
 
         if ($wasUnblocked)
         {
-            $this->history->create(array(
-                'account' => $id,
-                'event'   => 'unblocked',
-                'data'    => ''
+            $this->app['events']->fire('account.unblocked', array(
+                array('account' => $id),
             ));
         }
 

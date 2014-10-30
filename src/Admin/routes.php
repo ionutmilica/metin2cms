@@ -32,6 +32,10 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
             'as'    => 'admin.account.unblock',
             'uses'  => 'AccountController@doUnBlock'
         ));
+        Route::get('{id}/events', array(
+            'as'    => 'admin.account.events',
+            'uses'  => 'AccountController@events'
+        ));
     });
 
     Route::group(array('prefix' => 'staff'), function ()

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Metin2CMS\Core\Extensions\Auth\MetinAuthProvider;
+use Metin2CMS\Core\Extensions\History\History;
 
 class CoreServiceProvider extends ServiceProvider {
 
@@ -43,6 +44,9 @@ class CoreServiceProvider extends ServiceProvider {
         {
             $this->registerRepo($repository);
         }
+
+        /** Register compoentns */
+        $this->registerComponents();
     }
 
     /**
@@ -123,6 +127,17 @@ class CoreServiceProvider extends ServiceProvider {
             {
                 return $this->app['redirect']->guest('/');
             }
+        });
+    }
+
+    /**
+     * Register compoentns
+     */
+    public function registerComponents()
+    {
+        $this->app->bind('history', function ($app)
+        {
+            return new History($app['Metin2CMS\Core\Repositories\HistoryRepositoryInterface']);
         });
     }
 }
