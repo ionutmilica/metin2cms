@@ -1,4 +1,4 @@
-<?php namespace Metin2CMS\Admin\Forms;
+<?php namespace Metin2CMS\Admin\Forms\Staff;
 
 use Metin2CMS\Core\Validation\FormValidator;
 

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Metin2CMS\Admin\Services\StaffService;
-use Metin2CMS\Admin\Forms\Create;
+use Metin2CMS\Admin\Forms\Staff\Create;
 
 class StaffController extends BaseController {
     /**
