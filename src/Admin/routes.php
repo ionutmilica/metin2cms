@@ -45,6 +45,7 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
             'as'   => 'admin.staff.create',
             'uses' => 'StaffController@createForm'
         ));
+        Route::post('create', array('uses' => 'StaffController@doCreate'));
 
         Route::get('{id}/delete', array(
             'as'   => 'admin.staff.delete',

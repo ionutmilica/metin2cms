@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Metin2CMS\Admin\Services\StaffService;
+use Metin2CMS\Admin\Forms\Create;
 
 class StaffController extends BaseController {
     /**
@@ -11,11 +12,18 @@ class StaffController extends BaseController {
     private $staff;
 
     /**
-     * @param StaffService $staff
+     * @var Create
      */
-    public function __construct(StaffService $staff)
+    protected $createForm;
+
+    /**
+     * @param StaffService $staff
+     * @param Create $createForm
+     */
+    public function __construct(StaffService $staff, Create $createForm)
     {
         $this->staff = $staff;
+        $this->createForm = $createForm;
     }
 
     /**
@@ -36,6 +44,15 @@ class StaffController extends BaseController {
     public function createForm()
     {
         return $this->view('staff.create');
+    }
+
+    public function doCreate()
+    {
+        $input = Input::only('account', 'player', 'grade');
+
+        $this->createForm->validate($input);
+
+        return Redirect::route('admin.staff.index');
     }
 
     /**

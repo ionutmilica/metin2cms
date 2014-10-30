@@ -50,7 +50,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="{{ assetTheme('img/avatar2.png','admin') }}" class="img-circle" alt="User Image" />
+                                    <img src="{{ gravatar(Auth::user()->email) }}" class="img-circle" alt="User Image" />
                                     <p>{{ Auth::user()->login }} - Admin</p>
                                 </li>
 
