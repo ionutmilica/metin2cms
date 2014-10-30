@@ -20,7 +20,7 @@
                 <div class="box-body">
                     <div class="form-group @if ($errors->has('account')) has-error @endif">
                         <label for="account">Account name</label>
-                        <input type="text" name="account" placeholder="Enter account name" id="account" class="form-control">
+                        <input type="text" name="account" placeholder="Account name" id="account" class="form-control">
                         @if ($errors->has('account'))
                             <span class="help-block">{{ $errors->first('account') }} </span>
                         @endif
