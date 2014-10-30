@@ -2,6 +2,11 @@
 
 class AccountEventHandler extends AbstractEventHandler {
 
+    /**
+     * Do stuff on account block
+     *
+     * @param $event
+     */
     public function onAccountBlock($event)
     {
         $id = $event['account'];

@@ -72,13 +72,14 @@ class StaffService {
     public function create(array $data)
     {
         $account = $this->account->findByName($data['account']);
-        $player  = $this->player->findByName($data['player']);
 
         if ( ! $account)
         {
             throw new CreateFailedException('This account does not exist!');
         }
 
+        $player  = $this->player->findByName($data['player']);
+        
         if ( ! $player)
         {
             throw new CreateFailedException('This player does not exist!');
