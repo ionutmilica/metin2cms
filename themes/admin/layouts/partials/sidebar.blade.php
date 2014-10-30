@@ -11,18 +11,18 @@
                 <i class="fa fa-dashboard"></i> <span>Accounts</span>
             </a>
         </li>
-         <li class="treeview" {{ Route::currentRouteName() == 'admin.staff.index' ? 'class="active"' : '' }}>
+         <li class="treeview {{ Route::currentRouteName() == 'admin.staff.index' || Route::currentRouteName() == 'admin.staff.create' ? 'active' : '' }}">
             <a href="#">
                 <i class="fa fa-table"></i> <span>Ingame staff</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li>
+                <li {{ Route::currentRouteName() == 'admin.staff.index' ? 'class="active"' : '' }}>
                     <a href="{{ route('admin.staff.index')  }}">
                         <i class="fa fa-angle-double-right"></i> Staff list
                     </a>
                 </li>
-                <li>
+                <li {{ Route::currentRouteName() == 'admin.staff.create' ? 'class="active"' : '' }}>
                     <a href="{{ route('admin.staff.create')  }}">
                         <i class="fa fa-angle-double-right"></i> Add to staff
                     </a>
