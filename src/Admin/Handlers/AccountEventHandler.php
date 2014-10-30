@@ -2,6 +2,24 @@
 
 class AccountEventHandler extends AbstractEventHandler {
 
+    public function onAccountCreated($event)
+    {
+        $id = $event['id'];
+        $type = 'created';
+        $data = sprintf('Created with initial username: %s and email: %s.', $event['login'], $event['email']);
+
+        $this->app['history']->create($id, $type, $data);
+    }
+
+    public function onAccountConfirmed($event)
+    {
+        $id = $event['id'];
+        $type = 'confirmed';
+        $data = sprintf('Confirmed account with email %s !', $event['email']);
+
+        $this->app['history']->create($id, $type, $data);
+    }
+
     /**
      * Do stuff on account block
      *
@@ -34,6 +52,8 @@ class AccountEventHandler extends AbstractEventHandler {
      */
     public function subscribe($events)
     {
+        $this->listen($events, 'account.created', 'onAccountCreated');
+        $this->listen($events, 'account.confirmed', 'onAccountConfirmed');
         $this->listen($events, 'account.blocked', 'onAccountBlock');
         $this->listen($events, 'account.unblocked', 'onAccountUnBlock');
     }

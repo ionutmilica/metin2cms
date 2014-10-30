@@ -98,24 +98,24 @@ class AccountService {
             throw new ConfirmationFailedException('Your account or token is invalid !');
         }
 
-        if ($token === '' || $account['confirmation_token'] !== $token)
+        if ($token === '' || ! $account['confirmation_token'] || $account['confirmation_token'] !== $token)
         {
             return false;
         }
 
-        $this->app['events']->fire('account.confirming', $account);
+        $this->app['events']->fire('account.confirming', array($account));
 
-        $confirmation = (bool) $this->account->update(array('login' => $user), array(
+        $confirmation = (bool) $this->account->update(array('id' => $account['id']), array(
             'confirmation_token' => '',
             'status' => 'OK'
         ));
 
         if ($confirmation)
         {
-            $this->app['events']->fire('account.confirmed', $account);
-
-            return true;
+            $this->app['events']->fire('account.confirmed', array($account));
         }
+
+        return $confirmation;
     }
 
     /**
@@ -195,15 +195,17 @@ class AccountService {
 
         $reminder = $this->reminder->create($data, $token, $password);
 
-        // Prepare data for the event trigger
-        $reminder['email'] = $account['email'];
-        $reminder['password'] = $password;
+        if ($reminder)
+        {
+            $reminder['email'] = $account['email'];
+            $reminder['password'] = $password;
 
-        $this->app['events']->fire('account.remind.after', $reminder);
+            $this->app['events']->fire('account.remind.after', array($reminder));
 
-        $this->accountMailer->remanding($reminder)->send();
+            return true;
+        }
 
-        return true;
+        return false;
     }
 
     /**
@@ -275,7 +277,16 @@ class AccountService {
             throw new EmailFailedException('Your old email doesn\'t match with your current account.');
         }
 
-        return (bool) $this->account->changeEmail($user['id'], $data['new_email']);
+        $data['account'] = $user;
+
+        $wasEmailChanged = (bool) $this->account->changeEmail($user['id'], $data['new_email']);
+
+        if ($wasEmailChanged)
+        {
+            $this->app['events']->listen('account.email.changed', array($data));
+        }
+
+        return $wasEmailChanged;
     }
 
     /**

@@ -79,7 +79,7 @@ class StaffService {
         }
 
         $player  = $this->player->findByName($data['player']);
-        
+
         if ( ! $player)
         {
             throw new CreateFailedException('This player does not exist!');

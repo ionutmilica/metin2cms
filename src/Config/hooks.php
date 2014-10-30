@@ -39,3 +39,9 @@ Event::listen('account.created', function ($data)
         $mailer->confirmation($data)->send();
     }
 });
+
+Event::listen('account.remind.after', function ($data)
+{
+    $mailer = app()->make('Metin2CMS\Core\Mailers\AccountMailer');
+    $mailer->reminding($data)->send();
+});
