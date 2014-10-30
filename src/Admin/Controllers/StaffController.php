@@ -31,6 +31,14 @@ class StaffController extends BaseController {
     }
 
     /**
+     * @return mixed
+     */
+    public function createForm()
+    {
+        return $this->view('staff.create');
+    }
+
+    /**
      * Remove a staff member
      *
      * @param $id

@@ -15,7 +15,7 @@
           <div class="box">
              <div class="box-header">
                  <h3 class="box-title">Ingame Staff</h3>
-             </div><!-- /.box-header -->
+             </div>
              <div class="box-body table-responsive no-padding">
                  <table class="table table-hover">
                      <tr>
