@@ -1,4 +1,4 @@
-<?php namespace Metin2CMS\Core\Extensions;
+<?php namespace Metin2CMS\Core\Extensions\Auth;
 
 use \Illuminate\Auth\GenericUser as BaseGenericUser;
 

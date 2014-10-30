@@ -1,7 +1,7 @@
 <?php namespace Metin2CMS\Core;
 
 use Illuminate\Support\ServiceProvider;
-use Metin2CMS\Core\Extensions\MetinAuthProvider;
+use Metin2CMS\Core\Extensions\Auth\MetinAuthProvider;
 
 class CoreServiceProvider extends ServiceProvider {
 
@@ -36,7 +36,7 @@ class CoreServiceProvider extends ServiceProvider {
     public function register()
     {
         $repositories = array(
-            'Account', 'Player', 'Reminder', 'Guild', 'Safebox', 'Staff'
+            'Account', 'Player', 'Reminder', 'Guild', 'Safebox', 'Staff', 'History'
         );
 
         foreach ($repositories as $repository)
