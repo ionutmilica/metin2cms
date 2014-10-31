@@ -20,9 +20,11 @@
                         <div class="timeline-item">
                             <span class="time"><i class="fa fa-clock-o"></i> {{ Carbon::parse($event['created_at'])->diffForHumans() }}</span>
                             <h3 class="timeline-header"><a href="#">Dev</a> account confirmed</h3>
+                            @if ($event['data'] !== '')
                             <div class="timeline-body">
-                                @if ($event['event_type'] == 'unblocked') Unblocked @else {{ $event['data'] }} @endif
+                                 {{ $event['data'] }}
                             </div>
+                            @endif
                             <div class="timeline-footer">
                                 <a href="{{ route('admin.account.edit', $event['account_id']) }}" class="btn btn-primary btn-xs">Edit account</a>
                                 <a href="{{ route('admin.account.block', $event['account_id']) }}" class="btn btn-danger btn-xs">Block account</a>
