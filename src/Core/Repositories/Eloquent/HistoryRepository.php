@@ -1,6 +1,7 @@
 <?php namespace Metin2CMS\Core\Repositories\Eloquent;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Metin2CMS\Core\Entities\History;
 use Metin2CMS\Core\Repositories\HistoryRepositoryInterface;
 
@@ -40,6 +41,11 @@ class HistoryRepository extends AbstractRepository implements HistoryRepositoryI
      */
     public function findByAccount($id)
     {
-        return $this->toArray($this->model->where('account_id', $id)->get());
+        $query = DB::connection($this->model->getConnectionName())->table('history')
+                    ->select(array('login as account_name', 'created_at', 'data', 'account_id'))
+                    ->join('account.account', 'history.account_id', '=', 'account.id')
+                    ->where('account_id', $id);
+
+        return $this->toArray($this->model->hydrate($query->get()));
     }
 }

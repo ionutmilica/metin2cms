@@ -104,7 +104,7 @@ class StaffRepository extends AbstractRepository implements StaffRepositoryInter
     {
         $connection = $this->model->getConnectionName();
 
-        return DB::table($connection.'.gmlist')
+        return DB::connection($connection)->table('gmlist')
                     ->join('account.account', 'gmlist.mAccount', '=', 'account.login')
                     ->select('mID as id', 'account.id as account_id', 'login as username', 'mName as player_name', 'mAuthority as grade');
     }
