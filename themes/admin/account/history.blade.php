@@ -24,7 +24,8 @@
                             <h3 class="timeline-header">
                                 <a href="{{ route('admin.account.edit', $event['account_id']) }}">
                                     {{ $event['account_name']  }}
-                                </a> account confirmed
+                                </a>
+                                {{ $event['event_type'] }} {{-- Here we'll add language func --}}
                             </h3>
                             @if ($event['data'] !== '')
                             <div class="timeline-body">
@@ -38,8 +39,7 @@
                         </div>
                     </li>
                 @endforeach
-
             </ul>
-        </div><!-- /.col -->
+        </div>
     </div>
 @stop

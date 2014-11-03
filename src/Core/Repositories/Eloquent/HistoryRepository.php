@@ -42,8 +42,8 @@ class HistoryRepository extends AbstractRepository implements HistoryRepositoryI
     public function findByAccount($id)
     {
         $query = DB::connection($this->model->getConnectionName())->table('history')
-                    ->select(array('login as account_name', 'created_at', 'data', 'account_id'))
-                    ->join('account.account', 'history.account_id', '=', 'account.id')
+                    ->select(array('login as account_name', 'created_at', 'data', 'account_id', 'event_type'))
+                    ->join('account', 'history.account_id', '=', 'account.id')
                     ->where('account_id', $id);
 
         return $this->toArray($this->model->hydrate($query->get()));
