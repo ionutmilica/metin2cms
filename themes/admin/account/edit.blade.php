@@ -33,11 +33,10 @@
                         @endif
                     </div>
                 </div><!-- /.box-body -->
-
                 <div class="box-footer">
                     <button class="btn btn-primary" type="submit">Edit account</button>
                 </div>
             </form>
-        </div><!-- /.box -->
+        </div>
     </div>
 @stop

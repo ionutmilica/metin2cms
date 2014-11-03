@@ -56,4 +56,12 @@ Route::group(array('namespace' => 'Metin2CMS\Admin\Controllers', 'prefix' => 'ad
             'uses' => 'StaffController@delete'
         ));
     });
+
+    Route::group(array('prefix' => 'players'), function ()
+    {
+        Route::get('/', array(
+            'as'   => 'admin.player.index',
+            'uses' => 'PlayerController@index'
+        ));
+    });
 });
