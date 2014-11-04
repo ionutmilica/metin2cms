@@ -1,5 +1,6 @@
 <?php namespace Metin2CMS\Core\Repositories\Eloquent;
 
+use Illuminate\Support\Facades\DB;
 use Metin2CMS\Core\Entities\Guild;
 use Metin2CMS\Core\Repositories\GuildRepositoryInterface;
 
@@ -42,49 +43,61 @@ class GuildRepository extends AbstractRepository implements GuildRepositoryInter
     }
 
     /**
-     * @return mixed
-     */
-    public function countAll()
-    {
-        return $this->model->count();
-    }
-    /**
      * Get players for page $page with a given number of players per page
      *
      * @param $page
      * @param int $perPage
      * @return mixed
      */
-    public function highScoreForPage($page, $perPage = 10)
+    public function highscore($page, $perPage = 10)
     {
-        $limitStart = ($page - 1) * $perPage;
-        $limitEnd   = $perPage;
+        $query = DB::connection('player')->table('guild');
+        $query->select(array(
+            'guild.id',
+            'player.name as master_name',
+            'guild.master',
+            'player_index.empire',
+            'guild.name as guild_name',
+            'guild.win',
+            'ladder_point',
+            'guild.level'
+        ));
+        $query->whereNull('gmlist.mAuthority');
+        $query->orWhere('gmlist.mAuthority', 'LOW_WIZARD');
+        $query->orderBy('guild.ladder_point', 'DESC');
+        $query->orderBy('guild.win', 'DESC');
 
-        $query = $this->getHighScoreQuery($limitStart.','.$limitEnd);
+        // Generates the final query
+        $query = $this->guildQuery($query);
 
-        return $this->toArray($this->model->hydrateRaw($query));
+        return $query->paginate($perPage);
     }
 
     /**
-     * Generate a query for a specified limit
+     * Generatesx the whole sql
      *
-     * @param int $limit
-     * @return string
+     * @param $query
+     * @return mixed
      */
-    public function getHighScoreQuery($limit = 100)
+    public function guildQuery($query)
     {
-        return "SELECT id, name as guild_name, level, win, ladder_point, master_name, master, empire, rang
-        FROM (
-            SELECT id, name, level, win, ladder_point, master_name, master, empire, @num := @num +1 AS rang
-            FROM (
-                SELECT player.id, player.name as master_name, guild.name, guild.level, guild.win, guild.ladder_point, guild.master, player_index.empire, @num :=0
-                FROM player.guild
-                LEFT JOIN player.player ON guild.master = player.id
-                LEFT JOIN player.player_index ON player_index.id = player.account_id
-                WHERE player.name NOT LIKE '[%]%'
-                ORDER BY guild.ladder_point DESC , guild.level DESC
-            ) AS t1
-        ) AS t2
-        LIMIT $limit";
+        DB::connection('player')->statement("SET @rank:=0");
+
+        $query->leftJoin('player', 'guild.master', '=', 'player.id');
+        $query->leftJoin('player_index', 'player_index.id', '=', 'player.account_id');
+        $query->leftJoin('common.gmlist', 'gmlist.mName', '=', 'player.name');
+
+        $sql = '('.$query->toSql().') as x';
+        $sql = str_replace(array('%', '?'), array('"%%"', '"%s"'), $sql);
+        $sql = vsprintf($sql, $query->getBindings());
+
+        $query = DB::connection('player')->table('guild');
+        $query->select(array(
+            '*',
+            DB::raw('@rank := @rank + 1 as rank')
+        ));
+        $query->from(DB::raw($sql));
+
+        return $query;
     }
 }

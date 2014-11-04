@@ -42,7 +42,7 @@ Highscore - @parent
             <tbody>
             @foreach ($players as $player)
                 <tr>
-                    <td>{{ $player['rang'] }}</td>
+                    <td>{{ $player['rank'] }}</td>
                     <td>{{ $player['name'] }}</td>
                     <td>
                         <img src="{{ assetTheme('img/kindoms/'.$player['empire'].'.png') }}" alt="">

@@ -9,7 +9,7 @@ interface GuildRepositoryInterface {
      * @param int $perPage
      * @return array
      */
-    public function highscoreForPage($page, $perPage = 10);
+    public function highscore($page);
 
     /**
      * Creates a guild

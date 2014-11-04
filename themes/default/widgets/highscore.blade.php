@@ -21,7 +21,7 @@
                         <tbody>
                         @foreach ($playersMini as $player)
                         <tr>
-                            <td class="position" width="5">{{ $player['rang'] }}</td>
+                            <td class="position" width="5">{{ $player['rank'] }}</td>
                             <td class="name">{{ $player['name'] }}</td>
                             <td class="empire" width="10">
                                 <img src="{{ assetTheme('img/kindoms/'.$player['empire'].'.png') }}" alt="">
@@ -41,7 +41,7 @@
                         <tbody>
                         @foreach ($guildsMini as $guild)
                             <tr>
-                                <td width="5">{{ $guild['rang'] }}</td>
+                                <td width="5">{{ $guild['rank'] }}</td>
                                 <td>{{ $guild['guild_name'] }}</td>
                                 <td width="10">
                                     <img src="{{ assetTheme('img/kindoms/'.$guild['empire'].'.png') }}" alt="">

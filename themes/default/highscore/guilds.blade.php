@@ -42,7 +42,7 @@ Highscore - @parent
             <tbody>
             @foreach ($guilds as $guild)
             <tr>
-                <td>{{ $guild['rang'] }}</td>
+                <td>{{ $guild['rank'] }}</td>
                 <td>{{ $guild['guild_name'] }}</td>
                 <td>{{ $guild['master_name'] }}</td>
                 <td>

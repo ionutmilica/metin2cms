@@ -1,5 +1,6 @@
 <?php namespace Metin2CMS\Core\Repositories\Eloquent;
 
+use Illuminate\Support\Facades\DB;
 use Metin2CMS\Core\Entities\Player;
 use Metin2CMS\Core\Repositories\PlayerRepositoryInterface;
 
@@ -11,11 +12,6 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
     public function __construct(Player $model)
     {
         $this->model = $model;
-    }
-
-    public function countAll()
-    {
-        return $this->model->count();
     }
 
     /**
@@ -40,41 +36,54 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
     /**
      * Get players for page $page with a given number of players per page
      *
-     * @param $page
      * @param int $perPage
      * @return mixed
      */
-    public function highScoreForPage($page, $perPage = 10)
+    public function highScore($perPage = 10)
     {
-        $limitStart = ($page - 1) * $perPage;
-        $limitEnd   = $perPage;
+        $query = DB::connection('player')->table('player');
+        $query->select(array(
+            'player.id', 'name', 'level', 'exp', 'account_id',
+            'account.login as account_name',
+            'empire', 'gmlist.mAuthority as perm'
+        ));
+        $query->where('account.status', '!=', 'BLOCK');
+        $query->whereNull('gmlist.mAuthority');
+        $query->orWhere('gmlist.mAuthority', 'LOW_WIZARD');
+        $query->orderBy('player.level', 'DESC');
+        $query->orderBy('player.exp', 'DESC');
 
-        $query = $this->getHighScoreQuery($limitStart.','.$limitEnd);
+        // Generates the final query
+        $query = $this->playerQuery($query);
 
-        return $this->toArray($this->model->hydrateRaw($query));
+        return $query->paginate($perPage);
     }
 
     /**
-     * Generate a query for a specified limit
+     * Generate a big sql from query builder. Useful when we paginate and search by fields
      *
-     * @param int $limit
-     * @return string
+     * @param $query
+     * @return mixed
      */
-    protected function getHighScoreQuery($limit = 100)
+    protected function playerQuery($query)
     {
-        return "SELECT id, name, level, exp, empire, job, rang, perm
-                FROM (
-                    SELECT id, name, level, exp, empire, job, mAuthority as perm, @num := @num +1 AS rang
-                    FROM (
-                        SELECT player.id, player.name, player.level, player.exp, player_index.empire, player.job, gmlist.mAuthority, @num :=0
-                        FROM player.player
-                        LEFT JOIN player.player_index ON player_index.id = player.account_id
-                        INNER JOIN account.account ON account.id=player.account_id
-                        LEFT JOIN common.gmlist ON gmlist.mName = player.name
-                        WHERE account.status != 'BLOCK'
-                        ORDER BY player.level DESC , player.exp DESC
-                    ) AS t1
-                ) AS t2 WHERE perm IS NULL or perm = 'LOW_WIZARD'
-                LIMIT $limit";
+        DB::connection('player')->statement("SET @rank:=0");
+
+        $query->leftJoin('player_index', 'player_index.id', '=', 'player.account_id');
+        $query->join('account.account', 'account.id', '=', 'player.account_id');
+        $query->leftJoin('common.gmlist', 'gmlist.mName', '=', 'player.name');
+
+        $sql = '('.$query->toSql().') as x';
+        $sql = str_replace(array('%', '?'), array('"%%"', '"%s"'), $sql);
+        $sql = vsprintf($sql, $query->getBindings());
+
+        $query = DB::connection('player')->table('player');
+        $query->select(array(
+            '*',
+            DB::raw('@rank := @rank + 1 as rank')
+        ));
+        $query->from(DB::raw($sql));
+
+        return $query;
     }
 }

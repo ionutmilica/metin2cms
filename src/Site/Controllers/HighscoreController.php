@@ -27,9 +27,7 @@ class HighscoreController extends BaseController {
      */
     public function players()
     {
-        $data = $this->highscoreService->players(self::PLAYERS_PER_PAGE, Input::get('page'));
-
-        $players = Paginator::make($data['data'], $data['total'], self::PLAYERS_PER_PAGE);
+        $players = $this->highscoreService->players(self::PLAYERS_PER_PAGE);
 
         return $this->view('highscore.players', compact('players'));
     }
@@ -51,9 +49,7 @@ class HighscoreController extends BaseController {
      */
     public function guilds()
     {
-        $data = $this->highscoreService->guilds(self::GUILDS_PER_PAGE, Input::get('page'));
-
-        $guilds = Paginator::make($data['data'], $data['total'], self::GUILDS_PER_PAGE);
+        $guilds = $this->highscoreService->guilds(self::GUILDS_PER_PAGE);
 
         return $this->view('highscore.guilds', compact('guilds'));
 
