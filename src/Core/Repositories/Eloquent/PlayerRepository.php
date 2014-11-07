@@ -60,6 +60,11 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
             $query->where('player.ip', $data['ip']);
         }
 
+        if (isset($data['account_id']))
+        {
+            $query->where('account.id', $data['account_id']);
+        }
+
         $query = $this->playerQuery($query);
 
         return $query->paginate($perPage);

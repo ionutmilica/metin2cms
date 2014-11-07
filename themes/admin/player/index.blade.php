@@ -16,11 +16,14 @@
              <div class="box-header">
                  <h3 class="box-title">Players</h3>
                  <div class="box-tools">
-                 <form action="{{ route('admin.player.index') }}" method="get">
+                     <form action="{{ route('admin.player.index') }}" method="get">
                      <div class="input-group">
                          <input type="text" name="name" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
                          <div class="input-group-btn">
                              <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                             <a href="{{ route('admin.player.index') }}" class="btn btn-sm btn-default">
+                                <i class="fa fa-arrow-circle-o-left"></i>
+                             </a>
                          </div>
                      </div>
                   </form>
@@ -42,7 +45,7 @@
                          <td>{{ $player['id'] }}</td>
                          <td>{{ $player['name'] }}</td>
                          <td>
-                            <a href="{{ route('admin.account.edit', $player['account_id']) }}">
+                            <a href="{{ route('admin.player.index') }}?account_id={{ $player['account_id'] }}">
                                 {{ $player['account_name'] }}
                             </a>
                          </td>
@@ -54,6 +57,9 @@
                          <td>{{ $player['level'] }}</td>
                          <td>{{ $player['gold'] }}</td>
                          <td>
+                           <a class="btn btn-success" href="{{ route('admin.account.edit', $player['account_id']) }}">
+                                Account
+                            </a>
                             @if ($player['status'] !== 'BLOCK')
                                 <a class="btn btn-danger" href="{{ route('admin.account.block', array($player['account_id'])) }}">
                                     Block
