@@ -35,12 +35,13 @@ class AdminService {
     /**
      * Search in accounts
      *
+     * @param int $perPage
      * @param array $data
      * @return mixed
      */
-    public function search(array $data)
+    public function search(array $data = array(), $perPage = 10)
     {
-        return $this->account->search($data);
+        return $this->account->search($data, $perPage);
     }
 
     /**

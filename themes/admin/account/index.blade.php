@@ -21,6 +21,9 @@
                          <input type="text" name="username" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
                          <div class="input-group-btn">
                              <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                             <a href="{{ route('admin.account.index') }}" class="btn btn-sm btn-default">
+                                 <i class="fa fa-arrow-circle-o-left"></i>
+                             </a>
                          </div>
                      </div>
                   </form>
@@ -32,14 +35,20 @@
                          <th>Id</th>
                          <th>Username</th>
                          <th>Email</th>
+                         <th>Last Play</th>
                          <th>Status</th>
                          <th>Actions</th>
                      </tr>
                      @foreach ($accounts as $account)
                      <tr>
                          <td>{{ $account['id'] }}</td>
-                         <td>{{ $account['username'] }}</td>
-                         <td>{{ $account['email'] }}</td>
+                         <td>{{ $account['login'] }}</td>
+                         <td>
+                            <a href="{{ route('admin.account.index') }}?email={{ $account['email'] }}">
+                                {{ $account['email'] }}
+                            </a>
+                         </td>
+                         <td>{{ $account['last_play'] }}</td>
                          <td>
                             <span class="label label-{{ $account['status'] == 'OK' ? 'success' : 'danger' }}">{{ $account['status'] }}</span>
                          </td>
@@ -57,7 +66,7 @@
                  </table>
              </div><!-- /.box-body -->
              <div class="box-footer clearfix">
-                 {{ $accounts->links() }}
+                 {{ $accounts->appends(Input::except(array('page')))->links() }}
              </div>
          </div><!-- /.box -->
          </div>

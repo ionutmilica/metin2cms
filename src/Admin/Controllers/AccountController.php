@@ -45,6 +45,7 @@ class AccountController extends BaseController {
      * @param AccountTransformer $transformer
      * @param Edit $editForm
      * @param Block $blockForm
+     * @param History $history
      * @internal param AccountService $account
      */
     public function __construct(AdminService $admin, AccountService $account, AccountTransformer $transformer,
@@ -69,9 +70,6 @@ class AccountController extends BaseController {
     public function index()
     {
         $accounts = $this->admin->search(Input::all());
-        $accounts = $this->transformer->transformPagination($accounts);
-        $accounts = Paginator::make($accounts['data'], $accounts['total'], $accounts['perPage'])
-                            ->appends(array('username' => Input::get('username')));
 
         return $this->view('account.index', compact('accounts'));
     }

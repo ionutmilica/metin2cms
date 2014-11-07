@@ -15,6 +15,7 @@ class PlayerService {
      * Get all staff members
      *
      * @param array $data
+     * @param int $perPage
      * @return mixed
      */
     public function search(array $data = array(), $perPage = 10)
