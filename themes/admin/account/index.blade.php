@@ -48,7 +48,7 @@
                             @if ($account['status'] !== 'BLOCK')
                                 <a class="btn btn-danger" href="{{ route('admin.account.block', array($account['id'])) }}">Block</a>
                             @else
-                                <a class="btn btn-danger" href="{{ route('admin.account.unblock', array($account['id'])) }}">Unblock</a>
+                                <a class="btn btn-success" href="{{ route('admin.account.unblock', array($account['id'])) }}">Unblock</a>
                             @endif
                             <a class="btn btn-primary" href="{{ route('admin.account.history', array($account['id'])) }}">History</a>
                          </td>

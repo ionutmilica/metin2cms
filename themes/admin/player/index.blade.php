@@ -53,7 +53,7 @@
                                     Block
                                 </a>
                             @else
-                                <a class="btn btn-danger" href="{{ route('admin.account.unblock', array($player['account_id'])) }}">
+                                <a class="btn btn-success" href="{{ route('admin.account.unblock', array($player['account_id'])) }}">
                                     Unblock
                                 </a>
                             @endif
