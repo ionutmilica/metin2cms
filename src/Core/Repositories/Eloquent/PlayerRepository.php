@@ -44,7 +44,7 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
     {
         $query = DB::connection('player')->table('player');
         $query->select(array(
-            'player.id', 'name', 'status', 'level', 'exp', 'gold', 'account_id',
+            'player.id', 'name', 'status', 'ip', 'level', 'exp', 'gold', 'account_id',
             'account.login as account_name',
             'empire', 'gmlist.mAuthority as perm'
         ));
@@ -53,6 +53,11 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
         {
             $escape = DB::connection('player')->getPdo()->quote('%'.$data['name'].'%');
             $query->whereRaw('player.name LIKE ' . $escape);
+        }
+
+        if (isset($data['ip']))
+        {
+            $query->where('player.ip', $data['ip']);
         }
 
         $query = $this->playerQuery($query);

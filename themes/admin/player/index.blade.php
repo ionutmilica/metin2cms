@@ -32,6 +32,7 @@
                          <th>Id</th>
                          <th>Name</th>
                          <th>Account</th>
+                         <th>Ip</th>
                          <th>Level</th>
                          <th>Gold</th>
                          <th>Actions</th>
@@ -43,6 +44,11 @@
                          <td>
                             <a href="{{ route('admin.account.edit', $player['account_id']) }}">
                                 {{ $player['account_name'] }}
+                            </a>
+                         </td>
+                         <td>
+                            <a href="{{ route('admin.player.index') }}?ip={{ $player['ip'] }}">
+                                {{ $player['ip'] }}
                             </a>
                          </td>
                          <td>{{ $player['level'] }}</td>
