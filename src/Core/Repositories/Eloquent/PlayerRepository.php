@@ -34,6 +34,33 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
     }
 
     /**
+     * Search for players
+     *
+     * @param int $perPage
+     * @param array $data
+     * @return mixed
+     */
+    public function search($perPage = 10, array $data)
+    {
+        $query = DB::connection('player')->table('player');
+        $query->select(array(
+            'player.id', 'name', 'status', 'level', 'exp', 'gold', 'account_id',
+            'account.login as account_name',
+            'empire', 'gmlist.mAuthority as perm'
+        ));
+
+        if (isset($data['name']))
+        {
+            $escape = DB::connection('player')->getPdo()->quote('%'.$data['name'].'%');
+            $query->whereRaw('player.name LIKE ' . $escape);
+        }
+
+        $query = $this->playerQuery($query);
+
+        return $query->paginate($perPage);
+    }
+
+    /**
      * Get players for page $page with a given number of players per page
      *
      * @param int $perPage
@@ -43,7 +70,7 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
     {
         $query = DB::connection('player')->table('player');
         $query->select(array(
-            'player.id', 'name', 'level', 'exp', 'account_id',
+            'player.id', 'name', 'gold', 'level', 'exp', 'account_id',
             'account.login as account_name',
             'empire', 'gmlist.mAuthority as perm'
         ));
@@ -74,7 +101,7 @@ class PlayerRepository extends AbstractRepository implements PlayerRepositoryInt
         $query->leftJoin('common.gmlist', 'gmlist.mName', '=', 'player.name');
 
         $sql = '('.$query->toSql().') as x';
-        $sql = str_replace(array('%', '?'), array('"%%"', '"%s"'), $sql);
+        $sql = str_replace(array('%', '?'), array('%%', '"%s"'), $sql);
         $sql = vsprintf($sql, $query->getBindings());
 
         $query = DB::connection('player')->table('player');

@@ -1,13 +1,29 @@
 <?php namespace Metin2CMS\Admin\Controllers;
 
-class PlayerController extends BaseController {
+use Illuminate\Support\Facades\Input;
+use Metin2CMS\Admin\Services\PlayerService;
 
-    public function __construct()
+class PlayerController extends BaseController {
+    /**
+     * @var PlayerService
+     */
+    private $player;
+
+    /**
+     * @param PlayerService $player
+     */
+    public function __construct(PlayerService $player)
     {
+        $this->player = $player;
     }
 
+    /**
+     * @return mixed
+     */
     public function index()
     {
-        return $this->view('player.index');
+        $players = $this->player->search(Input::all());
+
+        return $this->view('player.index', compact('players'));
     }
 }
