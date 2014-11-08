@@ -37,7 +37,7 @@ class CoreServiceProvider extends ServiceProvider {
     public function register()
     {
         $repositories = array(
-            'Account', 'Player', 'Reminder', 'Guild', 'Safebox', 'Staff', 'History'
+            'Account', 'AccountMeta', 'Player', 'Reminder', 'Guild', 'Safebox', 'Staff', 'History'
         );
 
         foreach ($repositories as $repository)
