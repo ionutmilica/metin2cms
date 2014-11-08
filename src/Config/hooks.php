@@ -4,9 +4,11 @@
  * Listen before account creating. If the site doesn't ask for account confirmation
  * we confirm the account from here
  */
+use Carbon\Carbon;
+
 Event::listen('account.creating', function (&$data)
 {
-    if (Config::get('register.confirmation'))
+    if (Config::get('general.register.confirmation'))
     {
         $data['status'] = 'BLOCK';
         $data['confirmation_token'] = str_random(64);
@@ -22,9 +24,9 @@ Event::listen('account.creating', function (&$data)
  */
 Event::listen('account.creating', function (&$data)
 {
-    if (Config::get('register.closed') == true)
+    if (Config::get('general.register.closed') == true)
     {
-        throw new \Metin2CMS\Core\Exceptions\RegistrationFailedException(Config::get('register.message'));
+        throw new \Metin2CMS\Core\Exceptions\RegistrationFailedException(Config::get('general.register.message'));
     }
 });
 
@@ -33,7 +35,7 @@ Event::listen('account.creating', function (&$data)
  */
 Event::listen('account.created', function ($data)
 {
-    if (Config::get('register.confirmation') == true)
+    if (Config::get('general.register.confirmation') == true)
     {
         $mailer = app()->make('Metin2CMS\Core\Mailers\AccountMailer');
         $mailer->confirmation($data)->send();
@@ -44,4 +46,36 @@ Event::listen('account.remind.after', function ($data)
 {
     $mailer = app()->make('Metin2CMS\Core\Mailers\AccountMailer');
     $mailer->reminding($data)->send();
+});
+
+Event::listen('account.safebox.before', function ($data)
+{
+    $last_request = app()->make('Metin2CMS\Core\Repositories\AccountMetaRepositoryInterface')
+        ->get($data['id'], 'safebox_last');
+
+    $until = with(new Carbon($last_request))->timestamp + Config::get('general.flood.safebox');
+
+    if ($until > Carbon::now()->timestamp)
+    {
+        $message = sprintf('You must wait until %s to request your safebox password.',
+            Carbon::createFromTimestamp($until)->toDateTimeString());
+
+        throw new \Metin2CMS\Core\Exceptions\SafeboxException($message);
+    }
+});
+
+Event::listen('account.deletion_code.before', function ($data)
+{
+    $last_request = app()->make('Metin2CMS\Core\Repositories\AccountMetaRepositoryInterface')
+                         ->get($data['id'], 'deletion_last');
+
+    $until = with(new Carbon($last_request))->timestamp + Config::get('general.flood.deletion');
+
+    if ($until > Carbon::now()->timestamp)
+    {
+        $message = sprintf('You must wait until %s to reset your deletion code.',
+            Carbon::createFromTimestamp($until)->toDateTimeString());
+
+        throw new \Metin2CMS\Core\Exceptions\SafeboxException($message);
+    }
 });

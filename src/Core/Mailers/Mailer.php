@@ -47,7 +47,7 @@ abstract class Mailer {
      */
     public function send()
     {
-        $this->mailer->send($this->view, $this->data, function ($message)
+        return (bool) $this->mailer->send($this->view, $this->data, function ($message)
         {
             $message->to($this->email, $this->to)->subject($this->subject);
         });

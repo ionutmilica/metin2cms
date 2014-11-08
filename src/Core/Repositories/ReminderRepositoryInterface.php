@@ -6,11 +6,9 @@ interface ReminderRepositoryInterface {
      * Generate a reminder
      *
      * @param array $data
-     * @param $token
-     * @param $password
      * @return mixed
      */
-    public function create(array $data, $token, $password);
+    public function create(array $data);
 
     /**
      * Find reminder by token

@@ -168,6 +168,11 @@ class AccountService {
         return true;
     }
 
+    /**
+     * Logout user from the application
+     *
+     * @return bool
+     */
     public function logout()
     {
         $this->app['events']->fire('account.logout.before');
@@ -196,26 +201,27 @@ class AccountService {
             throw new RemindFailedException('Can\'t find account by the provided user and email.');
         }
 
-        // Clear all reminders that are already created but not used
         $this->reminder->deleteByUser($data['username']);
 
-        // Generate a token and a password
-        $token    = str_random(64);
-        $password = str_random(10);
+        $data = array(
+            'id'       => $account['id'],
+            'username' => $account['login'],
+            'email'    => $account['email'],
+            'login'    => $account['login'],
+            'token'    => str_random(64),
+            'password' => str_random(10),
+        );
 
-        $reminder = $this->reminder->create($data, $token, $password);
+        $this->app['events']->fire('account.remind.before', array($data));
 
-        if ($reminder)
+        $wasCreated = $this->reminder->create($data);
+
+        if ($wasCreated)
         {
-            $reminder['email'] = $account['email'];
-            $reminder['password'] = $password;
-
-            $this->app['events']->fire('account.remind.after', array($reminder));
-
-            return true;
+            $this->app['events']->fire('account.remind.after', array($data));
         }
 
-        return false;
+        return $wasCreated;
     }
 
     /**
@@ -240,10 +246,13 @@ class AccountService {
             throw new RemindFailedException('This user is invalid.', 'home');
         }
 
+        $this->app['events']->fire('account.password_confirm.before', array($reminder));
+
         $wasChanged = $this->account->changePassword($username, $reminder['password']);
 
         if ($wasChanged)
         {
+            $this->app['events']->fire('account.password_confirm.after', array($reminder));
             $this->reminder->deleteByToken($token);
         }
 
@@ -267,12 +276,14 @@ class AccountService {
             throw new PasswordFailedException('Your old password is incorrect.');
         }
 
+        $this->app['events']->fire('account.password.before', array($data));
+
         $wasChanged = $this->account->changePassword($user->login, mysqlHash($data['new_password']));
 
         if ($wasChanged)
         {
             $this->meta->set($user->id, 'password_last', Carbon::now());
-            $this->app['events']->listen('account.password.changed', array($data));
+            $this->app['events']->fire('account.password.after', array($data));
         }
 
         return $wasChanged;
@@ -297,12 +308,14 @@ class AccountService {
 
         $data['account'] = $user;
 
+        $this->app['events']->fire('account.email.before', array($data));
+
         $wasEmailChanged = (bool) $this->account->changeEmail($user['id'], $data['new_email']);
 
         if ($wasEmailChanged)
         {
             $this->meta->set($user['id'], 'email_last', Carbon::now());
-            $this->app['events']->listen('account.email.changed', array($data));
+            $this->app['events']->fire('account.email.after', array($data));
         }
 
         return $wasEmailChanged;
@@ -332,16 +345,23 @@ class AccountService {
         }
 
         $data = array(
+            'id'      => $account['id'],
             'login'   => $account['login'],
             'email'   => $account['email'],
             'safebox' => $safebox['password']
         );
 
-        $this->meta->set($user, 'safebox_last', Carbon::now());
+        $this->app['events']->fire('account.safebox.before', array($data));
 
-        $this->accountMailer->safebox($data)->send();
+        //$wasSent = $this->accountMailer->safebox($data)->send();
+        $wasSent = false;
+        if ($wasSent)
+        {
+            $this->meta->set($user, 'safebox_last', Carbon::now());
+            $this->app['events']->fire('account.safebox.after', array($data));
+        }
 
-        return true;
+        return $wasSent;
     }
 
     /**
@@ -361,12 +381,13 @@ class AccountService {
         }
 
         $data = array(
+            'id'           => $account['id'],
             'email'        => $account['email'],
             'login'        => $account['login'],
             'deletionCode' => str_random(7),
         );
 
-        $this->app['events']->listen('account.deletion_code.before', array($data));
+        $this->app['events']->fire('account.deletion_code.before', array($data));
 
         $wasUpdated = $this->account->update(array('id' => $user), array(
             'social_id' => $data['deletionCode']
@@ -374,7 +395,7 @@ class AccountService {
 
         if ($wasUpdated)
         {
-            $this->app['events']->listen('account.deletion_code.after', array($data));
+            $this->app['events']->fire('account.deletion_code.after', array($data));
 
             $this->meta->set($user, 'deletion_last', Carbon::now());
 

@@ -38,16 +38,14 @@ class ReminderRepository extends AbstractRepository implements ReminderRepositor
      * Creates the password reminder
      *
      * @param array $data
-     * @param $token
-     * @param $password
      * @return bool
      */
-    public function create(array $data, $token, $password)
+    public function create(array $data)
     {
         $account           = $this->getNew();
         $account->username = $data['username'];
-        $account->token    = $token;
-        $account->password = $password;
+        $account->token    = $data['token'];
+        $account->password = $data['password'];
         $account->save();
 
         return $this->toArray($account);
