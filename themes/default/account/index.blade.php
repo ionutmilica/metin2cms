@@ -47,7 +47,13 @@ Account overview - @parent
             <div class="list-group">
                 <a href="{{ route('account.safebox') }}" class="list-group-item active">
                     <h4 class="list-group-item-heading">Storekeeper</h4>
-                    <p class="list-group-item-text">Request StoreKeeper password</p>
+                    <p class="list-group-item-text">Request storekeeper password</p>
+                </a>
+            </div>
+            <div class="list-group">
+                <a href="{{ route('account.deletion_code') }}" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Display code</h4>
+                    <p class="list-group-item-text">Character deletion code</p>
                 </a>
             </div>
         </p>

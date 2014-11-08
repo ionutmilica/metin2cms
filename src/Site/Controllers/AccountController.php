@@ -87,6 +87,28 @@ class AccountController extends BaseController {
     }
 
     /**
+     * Deletion code form
+     *
+     * @return mixed
+     */
+    public function delCode()
+    {
+        return $this->view('account.deletion_code.form');
+    }
+
+    /**
+     * Send deletion code
+     *
+     * @return mixed
+     */
+    public function doDelCode()
+    {
+        $this->account->deletionCode(Auth::user()->id);
+
+        return $this->view('account.safebox.success');
+    }
+
+    /**
      * @return mixed
      */
     public function safebox()

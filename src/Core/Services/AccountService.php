@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Metin2CMS\Core\Exceptions\ConfirmationFailedException;
+use Metin2CMS\Core\Exceptions\DeletionCodeException;
 use Metin2CMS\Core\Exceptions\EmailFailedException;
 use Metin2CMS\Core\Exceptions\LoginFailedException;
 use Metin2CMS\Core\Exceptions\PasswordFailedException;
@@ -319,6 +320,42 @@ class AccountService {
         );
 
         $this->accountMailer->safebox($data)->send();
+
+        return true;
+    }
+
+    /**
+     * Generate a new deletion code and sends it to the email
+     *
+     * @param $user
+     * @return bool
+     * @throws DeletionCodeException
+     */
+    public function deletionCode($user)
+    {
+        $account = $this->account->findById($user);
+
+        if ( ! $account)
+        {
+            throw new DeletionCodeException('This account doesn\'t exists');
+        }
+
+        $data = array(
+            'email'        => $account['email'],
+            'login'        => $account['login'],
+            'deletionCode' => str_random(7),
+        );
+
+        $wasUpdated = $this->account->update(array('id' => $user), array(
+            'social_id' => $data['deletionCode']
+        ));
+
+        if ($wasUpdated)
+        {
+            $this->app['events']->listen('account.deletion_code.changed', array($data));
+
+            $this->accountMailer->deletionCode($data)->send();
+        }
 
         return true;
     }

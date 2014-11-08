@@ -95,6 +95,12 @@ Route::group(array('namespace' => 'Metin2CMS\Site\Controllers'), function()
         ));
         Route::post('safebox', array('uses' => 'AccountController@doSafebox'));
 
+        Route::get('deletion_code', array(
+            'as' => 'account.deletion_code',
+            'uses' => 'AccountController@delCode'
+        ));
+        Route::post('deletion_code', array('uses' => 'AccountController@doDelCode'));
+
         Route::get('characters', array(
             'as' => 'account.characters',
             'uses' => 'AccountController@characters'

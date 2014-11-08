@@ -48,4 +48,15 @@ class AccountMailer extends Mailer {
 
         return $this;
     }
+
+    public function deletionCode(array $data)
+    {
+        $this->view = 'emails.account.deletion_code';
+        $this->subject = 'Character deletion code';
+        $this->to = $data['email'];
+        $this->email = $data['email'];
+        $this->data = $data;
+
+        return $this;
+    }
 }
