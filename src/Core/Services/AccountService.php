@@ -306,7 +306,8 @@ class AccountService {
             throw new EmailFailedException('Your old email doesn\'t match with your current account.');
         }
 
-        $data['account'] = $user;
+        $data['id'] = $user['id'];
+        $data['account'] = $user['login'];
 
         $this->app['events']->fire('account.email.before', array($data));
 

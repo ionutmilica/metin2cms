@@ -24,7 +24,11 @@ class AccountMetaRepository extends AbstractRepository implements AccountMetaRep
     {
         $value = $this->model->where('account_id', $account)
                       ->where('meta_key', $metaKey)
-                      ->first(array('meta_value'))->toArray();
+                      ->first(array('meta_value'));
+
+        if ( ! $value ) return false;
+
+        $value = $value->toArray();
 
         return $value['meta_value'];
     }

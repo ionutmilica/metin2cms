@@ -55,7 +55,7 @@ Event::listen('account.safebox.before', function ($data)
 
     $until = with(new Carbon($last_request))->timestamp + Config::get('general.flood.safebox');
 
-    if ($until > Carbon::now()->timestamp)
+    if ($last_request && $until > Carbon::now()->timestamp)
     {
         $message = sprintf('You must wait until %s to request your safebox password.',
             Carbon::createFromTimestamp($until)->toDateTimeString());
@@ -71,11 +71,27 @@ Event::listen('account.deletion_code.before', function ($data)
 
     $until = with(new Carbon($last_request))->timestamp + Config::get('general.flood.deletion');
 
-    if ($until > Carbon::now()->timestamp)
+    if ($last_request && $until > Carbon::now()->timestamp)
     {
         $message = sprintf('You must wait until %s to reset your deletion code.',
             Carbon::createFromTimestamp($until)->toDateTimeString());
 
-        throw new \Metin2CMS\Core\Exceptions\SafeboxException($message);
+        throw new \Metin2CMS\Core\Exceptions\DeletionCodeException($message);
+    }
+});
+
+Event::listen('account.email.before', function ($data)
+{
+    $last_request = app()->make('Metin2CMS\Core\Repositories\AccountMetaRepositoryInterface')
+        ->get($data['id'], 'email_last');
+
+    $until = with(new Carbon($last_request))->timestamp + Config::get('general.flood.email');
+
+    if ($last_request && $until > Carbon::now()->timestamp)
+    {
+        $message = sprintf('You must wait until %s change your email address.',
+            Carbon::createFromTimestamp($until)->toDateTimeString());
+
+        throw new \Metin2CMS\Core\Exceptions\EmailFailedException($message);
     }
 });

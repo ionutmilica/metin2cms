@@ -9,5 +9,6 @@ return array(
     'flood' => array(
         'safebox'  => 7200,
         'deletion' => 7200,
+        'email'    => 24 * 3600,
     )
 );
