@@ -20,12 +20,17 @@ class SiteServiceProvider extends ServiceProvider {
 	{
 		$this->package('metin2cms/site', 'metin2cms/site', __DIR__);
 
-        // Load default routes
-        require __DIR__ . '/routes.php';
-
-        // Load default filters
+        $this->registerRoutes();
 
         require __DIR__ . '/filters.php';
+    }
+
+    public function registerRoutes()
+    {
+        $this->app['router']->group(array('namespace' => 'Metin2CMS\Site\Controllers'), function()
+        {
+            require __DIR__ . '/routes.php';
+        });
     }
 
 	/**

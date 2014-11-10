@@ -29,12 +29,25 @@ class AdminServiceProvider extends ServiceProvider {
 
         $this->registerSubscribers();
 
-        // Load default routes
-        require __DIR__ . '/routes.php';
+        $this->registerRoutes();
 
         // Load default filters
 
         require __DIR__ . '/filters.php';
+    }
+
+    /**
+     * Register admin routes
+     */
+    public function registerRoutes()
+    {
+        $this->app['router']->group(array(
+            'namespace' => 'Metin2CMS\Admin\Controllers',
+            'prefix' => 'admin',
+            'before' => 'admin.auth'), function()
+        {
+            require __DIR__ . '/routes.php';
+        });
     }
 
     /**

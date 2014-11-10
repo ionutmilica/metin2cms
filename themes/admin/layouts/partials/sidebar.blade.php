@@ -51,15 +51,24 @@
             </a>
             <ul class="treeview-menu">
                 <li>
-                    <a href="{{ route('admin.staff.index')  }}">
-                        <i class="fa fa-angle-double-right"></i> Staff list
+                    <a href="{{ '' }}">
+                        <i class="fa fa-angle-double-right"></i> General
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.staff.create')  }}">
-                        <i class="fa fa-angle-double-right"></i> Add to staff
+                    <a href="{{ '' }}">
+                        <i class="fa fa-angle-double-right"></i> Email
                     </a>
                 </li>
+                <li>
+                    <a href="{{ '' }}">
+                        <i class="fa fa-angle-double-right"></i> Modules
+                    </a>
+                </li>
+                {{--
+                    Here at the end of the navbar we should fire
+                    and event that adds link for every modules.
+                --}}
             </ul>
         </li>
     </ul>
