@@ -25,7 +25,7 @@ class AdminServiceProvider extends ServiceProvider {
 	{
 		$this->package('metin2cms/admin', 'metin2cms/admin', __DIR__);
 
-        $this->registerViews();
+        $this->registerResources();
 
         $this->registerSubscribers();
 
@@ -51,14 +51,6 @@ class AdminServiceProvider extends ServiceProvider {
     }
 
     /**
-     * Register admin views
-     */
-    public  function registerViews()
-    {
-        $this->app['view.finder']->addNamespace('admin', array(__DIR__ . '/../../themes/admin'));
-    }
-
-    /**
      * Register admin event subscribers
      */
     public function registerSubscribers()
@@ -66,6 +58,27 @@ class AdminServiceProvider extends ServiceProvider {
         $app = $this->app;
 
         $this->app['events']->subscribe(new AccountEventHandler($app));
+    }
+
+    /**
+     * Register admin resources
+     */
+    public function registerResources()
+    {
+        $this->app['view.finder']->addNamespace('admin', $this->getResourcePath('views'));
+        $this->app['config']->addNamespace('admin', $this->getResourcePath('config'));
+        $this->app['translator']->addNamespace('admin', $this->getResourcePath('lang'));
+    }
+
+    /**
+     * Prepare a path for the resources
+     *
+     * @param $resource
+     * @return string
+     */
+    protected function getResourcePath($resource)
+    {
+        return __DIR__ . '/Resources/'.$resource.'/';
     }
 
 	/**

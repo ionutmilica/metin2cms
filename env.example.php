@@ -27,7 +27,7 @@ return array(
 	'MAIL_USER' 	  => '',
 	'MAIL_PASS' 	  => '',
 	'MAIL_PORT' 	  => 25,
-	'SITE_MAIL'		  => 'noreply@metin2cms.com',
+	'SITE_MAIL'       => 'noreply@metin2cms.com',
 	'SITE_MAIL_NAME'  => 'Metin2CMS.com',
 	'MAIL_PRETEND'    => true,
 );
