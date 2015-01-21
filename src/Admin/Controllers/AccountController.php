@@ -163,16 +163,17 @@ class AccountController extends BaseController {
         return Redirect::route('admin.account.index');
     }
 
+    /**
+     * History for every account
+     *
+     * @param $id
+     * @return mixed
+     */
     public function history($id)
     {
         $history = $this->history->find($id);
 
-        if ($history)
-        {
-            return $this->view('account.history', compact('history', 'id'));
-        }
-
-        return Redirect::route('admin.account.index');
+        return $this->view('account.history', compact('history', 'id'));
     }
 
     /**
