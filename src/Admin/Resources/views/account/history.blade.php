@@ -14,6 +14,13 @@
         <div class="col-md-12">
             <!-- The time line -->
             <ul class="timeline">
+                @if (count($history) == 0)
+                    <li>
+                        <div class="timeline-item">
+                            No history data for this user !
+                        </div>
+                    </li>
+                @else
                 @foreach($history as $event)
                     <li>
                         <i class="fa fa-user bg-aqua"></i>
@@ -34,11 +41,16 @@
                             @endif
                             <div class="timeline-footer">
                                 <a href="{{ route('admin.account.edit', $event['account_id']) }}" class="btn btn-primary btn-xs">Edit account</a>
-                                <a href="{{ route('admin.account.block', $event['account_id']) }}" class="btn btn-danger btn-xs">Block account</a>
+                                @if ($event['event_type'] != 'blocked')
+                                    <a href="{{ route('admin.account.block', $event['account_id']) }}" class="btn btn-danger btn-xs">Block account</a>
+                                @else
+                                    <a href="{{ route('admin.account.unblock', $event['account_id']) }}" class="btn btn-success btn-xs">Unblock account</a>
+                                @endif
                             </div>
                         </div>
                     </li>
                 @endforeach
+                @endif
             </ul>
         </div>
     </div>
