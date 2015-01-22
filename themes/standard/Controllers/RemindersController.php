@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Input;
 use Metin2CMS\Core\Services\AccountService;
+use Metin2CMS\Core\Services\Forms\Recovery;
 use Metin2CMS\Core\Services\RemindFailedException;
 
 class RemindersController extends BaseController {
@@ -10,15 +11,21 @@ class RemindersController extends BaseController {
      * @var \Metin2CMS\Core\Services\AccountService
      */
     protected $account;
+    /**
+     * @var Recovery
+     */
+    private $recovery;
 
     /**
      * @param AccountService $account
+     * @param Recovery $recovery
      */
-    public function __construct(AccountService $account)
+    public function __construct(AccountService $account, Recovery $recovery)
     {
         parent::__construct();
 
         $this->account = $account;
+        $this->recovery = $recovery;
     }
 
     /**
@@ -40,8 +47,7 @@ class RemindersController extends BaseController {
     {
         $input = Input::only('username', 'email');
 
-        app('Metin2CMS\Core\Services\Forms\Recovery')->validate($input);
-
+        $this->recovery->validate($input);
         $this->account->remind($input);
 
         return $this->view('account.password-reset.success');
