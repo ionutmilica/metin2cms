@@ -26,7 +26,8 @@
                         <i class="fa fa-user bg-aqua"></i>
                         <div class="timeline-item">
                             <span class="time">
-                                <i class="fa fa-clock-o"></i> {{ Carbon::parse($event['created_at'])->diffForHumans() }}
+                                <i class="fa fa-clock-o"></i>
+                                {{ Carbon::parse($event['created_at'])->diffForHumans() }}
                             </span>
                             <h3 class="timeline-header">
                                 <a href="{{ route('admin.account.edit', $event['account_id']) }}">
