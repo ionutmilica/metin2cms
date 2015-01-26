@@ -22,7 +22,7 @@
                         <label for="theme">Themes:</label>
                         <select id="theme" name="theme">
                             @foreach ($themes as $theme)
-                                <option value="{{ $theme['name'] }}">{{ $theme['name'] }}</option>
+                                <option value="{{ $theme['name'] }}" @if($current == $theme['name']) selected @endif>{{ $theme['name'] }}</option>
                             @endforeach
                         </select>
                     </div>

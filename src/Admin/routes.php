@@ -69,4 +69,8 @@ Route::group(array('prefix' => 'settings'), function ()
         'as'   => 'admin.settings.general',
         'uses' => 'SettingController@general'
     ));
+    Route::post('general', array(
+        'as'   => 'admin.settings.general',
+        'uses' => 'SettingController@doGeneral'
+    ));
 });
