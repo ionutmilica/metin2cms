@@ -51,7 +51,7 @@
             </a>
             <ul class="treeview-menu">
                 <li>
-                    <a href="{{ '' }}">
+                    <a href="{{ route('admin.settings.general') }}">
                         <i class="fa fa-angle-double-right"></i> General
                     </a>
                 </li>

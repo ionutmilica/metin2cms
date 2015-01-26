@@ -62,3 +62,11 @@ Route::group(array('prefix' => 'players'), function ()
         'uses' => 'PlayerController@index'
     ));
 });
+
+Route::group(array('prefix' => 'settings'), function ()
+{
+    Route::get('general', array(
+        'as'   => 'admin.settings.general',
+        'uses' => 'SettingController@general'
+    ));
+});
