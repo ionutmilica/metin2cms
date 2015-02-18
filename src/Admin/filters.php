@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Redirect;
 /**
  * Exceptions.
  */
-
+/*
 App::error(function (\Metin2CMS\Core\Validation\FormValidationException $e)
 {
     return Redirect::back()->withInput()->withErrors($e->getErrors());
@@ -27,7 +27,7 @@ App::error(function (\Metin2CMS\Core\Exceptions\AbstractException $e)
     return $redirect->withInput()->withErrors(array(
         'global' => $e->getMessage()
     ));
-});
+});*/
 
 /**
  * Maintenance mode custom page

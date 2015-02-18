@@ -18,7 +18,7 @@ class ApiServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('metin2cms/api', 'metin2cms/api', __DIR__);
+		//$this->package('metin2cms/api', 'metin2cms/api', __DIR__);
 		
         // Load default routes
         require __DIR__ . '/routes.php';

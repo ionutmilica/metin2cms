@@ -23,7 +23,7 @@ class AdminServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('metin2cms/admin', 'metin2cms/admin', __DIR__);
+		//$this->package('metin2cms/admin', 'metin2cms/admin', __DIR__);
 
         $this->registerResources();
 
@@ -44,7 +44,7 @@ class AdminServiceProvider extends ServiceProvider {
         $this->app['router']->group(array(
             'namespace' => 'Metin2CMS\Admin\Controllers',
             'prefix' => 'admin',
-            'before' => 'admin.auth'), function()
+            /*'before' => 'admin.auth'*/), function()
         {
             require __DIR__ . '/routes.php';
         });
@@ -65,8 +65,7 @@ class AdminServiceProvider extends ServiceProvider {
      */
     public function registerResources()
     {
-        $this->app['view.finder']->addNamespace('admin', $this->getResourcePath('views'));
-        $this->app['config']->addNamespace('admin', $this->getResourcePath('config'));
+        $this->app['view']->addNamespace('admin', $this->getResourcePath('views'));
         $this->app['translator']->addNamespace('admin', $this->getResourcePath('lang'));
     }
 

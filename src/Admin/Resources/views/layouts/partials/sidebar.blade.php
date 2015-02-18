@@ -1,6 +1,6 @@
 <section class="sidebar">
     <ul class="sidebar-menu">
-        <a href="{{ route('home') }}" class="btn btn-primary btn-lg" style="margin: 10px 0 10px 50px; color: #ffffff;" target="_blank">View Site</a>
+        <a href="{{ route('admin.home') }}" class="btn btn-primary btn-lg" style="margin: 10px 0 10px 50px; color: #ffffff;" target="_blank">View Site</a>
         <li {{ Route::is('admin.home') ? 'class="active"' : '' }}>
             <a href="{{ route('admin.home') }}">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>

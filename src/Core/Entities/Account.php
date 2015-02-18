@@ -1,9 +1,10 @@
 <?php namespace Metin2CMS\Core\Entities;
 
 use Illuminate\Auth\UserInterface;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model implements UserInterface {
+class Account extends Model implements Authenticatable {
 
     /**
      * Account table name

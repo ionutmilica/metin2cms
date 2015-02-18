@@ -75,7 +75,7 @@
                  </table>
              </div><!-- /.box-body -->
              <div class="box-footer clearfix">
-                 {{ $players->appends(Input::except(array('page')))->links() }}
+                 {{ $players->appends(Input::except(array('page')))->render() }}
              </div>
          </div><!-- /.box -->
          </div>

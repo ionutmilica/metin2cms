@@ -1,10 +1,10 @@
 <?php namespace Metin2CMS\Core\Extensions\Auth;
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\UserProviderInterface;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\UserProvider;
 use Metin2CMS\Core\Entities\Account;
 
-class MetinAuthProvider implements UserProviderInterface{
+class MetinAuthProvider implements UserProvider {
 
     /**
      * Account model
@@ -23,7 +23,7 @@ class MetinAuthProvider implements UserProviderInterface{
 
     /**
      * @param mixed $id
-     * @return GenericUser|UserInterface|null
+     * @return GenericUser|null
      */
     public function retrieveById($id)
     {
@@ -79,11 +79,11 @@ class MetinAuthProvider implements UserProviderInterface{
     /**
      * Check user password
      *
-     * @param UserInterface $user
+     * @param Authenticatable $user
      * @param array $credentials
      * @return bool
      */
-    public function validateCredentials(UserInterface $user, array $credentials)
+    public function validateCredentials(Authenticatable $user, array $credentials)
     {
         $credentials['password'] = mysqlHash($credentials['password']);
 
@@ -116,10 +116,10 @@ class MetinAuthProvider implements UserProviderInterface{
     /**
      * Update the remember token
      *
-     * @param UserInterface $user
+     * @param Authenticatable $user
      * @param string $token
      */
-    public function updateRememberToken(UserInterface $user, $token)
+    public function updateRememberToken(Authenticatable $user, $token)
     {
         $this->account->where('id', $user->id)->update(array(
             $user->getRememberTokenName() => $token

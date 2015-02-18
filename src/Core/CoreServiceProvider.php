@@ -20,7 +20,7 @@ class CoreServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('metin2cms/core', 'metin2cms/core', __DIR__);
+        //$this->package('metin2cms/core', 'metin2cms/core', __DIR__);
 
         $this->bootAuthProvider();
 

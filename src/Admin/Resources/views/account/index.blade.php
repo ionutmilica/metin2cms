@@ -66,7 +66,7 @@
                  </table>
              </div><!-- /.box-body -->
              <div class="box-footer clearfix">
-                 {{ $accounts->appends(Input::except(array('page')))->links() }}
+                 {{ $accounts->appends(Input::except(array('page')))->render() }}
              </div>
          </div><!-- /.box -->
          </div>

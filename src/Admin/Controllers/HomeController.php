@@ -15,6 +15,13 @@ class HomeController extends BaseController {
     public function __construct(AccountService $account)
     {
         $this->account = $account;
+
+        var_dump($account->authenticate([
+            'username' => 'ionut',
+            'password' => 'dev',
+            'remember' => true,
+        ]));
+       // var_dump(\Auth::user());
     }
     /**
      * @return mixed

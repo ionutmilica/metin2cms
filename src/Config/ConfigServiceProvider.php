@@ -18,7 +18,7 @@ class ConfigServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('metin2cms/config', 'metin2cms/config', __DIR__);
+		//$this->package('metin2cms/config', 'metin2cms/config', __DIR__);
 		
         require __DIR__ . '/hooks.php';
     }
