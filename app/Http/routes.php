@@ -21,6 +21,6 @@ Route::controllers([
 ]);
 */
 
-Route::get('/', function () {
-    return '<h1>Hello world!</h1>';
-});
+Route::get('/', 'WelcomeController@index');
+
+Route::get('home', 'HomeController@index');

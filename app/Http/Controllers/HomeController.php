@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Exceptions\Handler;
+
 class HomeController extends Controller {
 
 	/*
@@ -13,24 +15,22 @@ class HomeController extends Controller {
 	|
 	*/
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
+    /**
+     * Create a new controller instance.
+     *
+     * @param Handler $handler
+     */
+	public function __construct(Handler $handler)
 	{
 		$this->middleware('auth');
 	}
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
+    /**
+     * Show the application dashboard to the user.
+     */
 	public function index()
 	{
-		return view('home');
+		//return view('home');
 	}
 
 }
