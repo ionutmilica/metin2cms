@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Metin2CMS
+        psr4_prefix: Metin2CMS
+        src_path: app

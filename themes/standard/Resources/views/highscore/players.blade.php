@@ -12,7 +12,7 @@ Highscore - @parent
     <div class="panel-body">
         <div class="jumbotron">
             <form class="form-inline" role="form" action="{{ route('highscore.players') }}" method="post">
-                {{ Form::token() }}
+                {!! Form::token() !!}
                 <div class="form-group">
                     <select name="job" class="form-control">
                         <option>all</option>
@@ -53,7 +53,7 @@ Highscore - @parent
             @endforeach
             </tbody>
         </table>
-        {{ $players->links() }}
+        {{ $players->render() }}
     </div>
 </div>
 @stop

@@ -8,7 +8,7 @@
     <div class="panel-body">
         @include('standard::layouts.partials.global_error')
         <form role="form" action="{{ route('account.email') }}" method="post">
-            {{ Form::token() }}
+            {!! Form::token() !!}
             <div class="form-group @if ($errors->has('old_email')) has-error @endif">
                 <label for="old_email">Old email address</label>
                 <input type="email" class="form-control" name="old_email" id="old_email" placeholder="Enter your old email">
