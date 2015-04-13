@@ -5,7 +5,7 @@
     </div>
     <div class="panel-body">
         <form class="form-signin" role="form" action="{{ route('account.login') }}" method="post">
-            {{ Form::token() }}
+            {!! Form::token() !!}
             <div class="form-group">
                 <input type="username" name="username" class="form-control" placeholder="Username" required>
             </div>
@@ -16,7 +16,7 @@
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
             </div>
         </form>
-        {{ link_to_route('account.password-reset', 'Forgot password?') }}
+        {!! link_to_route('account.password-reset', 'Forgot password?') !!}
     </div>
 </div>
 <hr>

@@ -9,7 +9,7 @@
         @include('standard::layouts.partials.global_error')
         Due to security reasons and to avoid missconduct, you can only delete a character with the input of a specific code
         <form role="form" action="{{ route('account.deletion_code') }}" method="post">
-            {{ Form::token() }}
+            {!! Form::token() !!}
             <button type="submit" class="btn btn-primary">Send deletion code</button>
         </form>
     </div>

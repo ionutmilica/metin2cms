@@ -1,4 +1,4 @@
-<?php namespace App\Providers;
+<?php namespace Metin2CMS\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

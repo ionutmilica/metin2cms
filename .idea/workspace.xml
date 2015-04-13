@@ -2,9 +2,221 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9040f23e-eeda-428f-8774-1e36d502b01c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\.env.example" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\app\Http\Controllers\Auth\AuthController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\app\Http\Controllers\Auth\PasswordController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\app\Http\Controllers\HomeController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\app\Http\Controllers\WelcomeController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\app\Services\Registrar.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\app\User.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\resources\views\app.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\resources\views\auth\login.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\resources\views\auth\password.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\resources\views\auth\register.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\resources\views\auth\reset.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\resources\views\home.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\resources\views\welcome.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\AdminServiceProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Controllers\.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Forms\Block.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Forms\Edit.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Forms\Staff\Create.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\config\.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\lang\.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\filters.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\routes.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Api\ApiServiceProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Api\Transformers\AccountTransformer.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Api\Transformers\GuildHighScoreTransformer.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Api\Transformers\PlayerHighScoreTransformer.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Api\filters.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Api\routes.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Config\ConfigServiceProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\CoreServiceProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Services\Forms\Email.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Services\Forms\Login.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Services\Forms\Password.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Services\Forms\Recovery.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Services\Forms\Registration.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Validation\FormValidationException.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Validation\FormValidator.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\src\list.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Controllers\AccountController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Controllers\BaseController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Controllers\HighscoreController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Controllers\HomeController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Controllers\RegistrationController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Controllers\RemindersController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Controllers\SessionsController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\config\.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\lang\.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\deletion_code\form.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\deletion_code\success.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\email\form.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\email\success.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\index.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\login\form.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\password-reset\confirm.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\password-reset\form.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\password-reset\success.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\password\form.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\password\success.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\register\confirm.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\register\fail.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\register\form.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\register\success.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\safebox\form.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\account\safebox\success.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\highscore\guilds.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\highscore\players.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\layouts\default.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\layouts\partials\alerts.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\layouts\partials\global_error.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\pages\home.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\pages\maintenance.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\pages\tos.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\widgets\download.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\widgets\highscore.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\Resources\views\widgets\login.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\ThemeServiceProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\filters.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\routes.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\official\theme.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\filters.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\routes.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\theme.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/AccountTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/AccountTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/BusServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/BusServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Commands/Command.php" afterPath="$PROJECT_DIR$/app/Commands/Command.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/ConfigServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/ConfigServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/Event.php" afterPath="$PROJECT_DIR$/app/Events/Event.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Commands/Inspire.php" afterPath="$PROJECT_DIR$/app/Console/Commands/Inspire.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Kernel.php" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/Request.php" afterPath="$PROJECT_DIR$/app/Http/Requests/Request.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/standard/ThemeServiceProvider.php" afterPath="$PROJECT_DIR$/themes/standard/ThemeServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap/app.php" afterPath="$PROJECT_DIR$/bootstrap/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/app.php" afterPath="$PROJECT_DIR$/config/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/auth.php" afterPath="$PROJECT_DIR$/config/auth.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\account\deletion_code\form.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/account/deletion_code/form.blade.php" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\account\email\form.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/account/email/form.blade.php" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\account\login\form.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/account/login/form.blade.php" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\account\password\form.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/account/password/form.blade.php" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\account\password-reset\form.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/account/password-reset/form.blade.php" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\account\register\form.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/account/register/form.blade.php" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\account\safebox\form.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/account/safebox/form.blade.php" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\highscore\guilds.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/highscore/guilds.blade.php" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\widgets\login.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/widgets/login.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phpspec.yml" afterPath="$PROJECT_DIR$/phpspec.yml" />
+      <change type="MODIFICATION" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\resources\views\highscore\players.blade.php" afterPath="$PROJECT_DIR$/themes/standard/resources/views/highscore/players.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\css\bootstrap.min.css" afterPath="$PROJECT_DIR$/public/assets/standard/css/bootstrap.min.css" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\css\todc-bootstrap.min.css" afterPath="$PROJECT_DIR$/public/assets/standard/css/todc-bootstrap.min.css" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\fonts\glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/public/assets/standard/fonts/glyphicons-halflings-regular.eot" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\fonts\glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/public/assets/standard/fonts/glyphicons-halflings-regular.svg" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\fonts\glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/public/assets/standard/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\fonts\glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/public/assets/standard/fonts/glyphicons-halflings-regular.woff" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\img\checkmark.png" afterPath="$PROJECT_DIR$/public/assets/standard/img/checkmark.png" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\img\guild.png" afterPath="$PROJECT_DIR$/public/assets/standard/img/guild.png" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\img\kindoms\1.png" afterPath="$PROJECT_DIR$/public/assets/standard/img/kindoms/1.png" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\img\kindoms\2.png" afterPath="$PROJECT_DIR$/public/assets/standard/img/kindoms/2.png" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\img\kindoms\3.png" afterPath="$PROJECT_DIR$/public/assets/standard/img/kindoms/3.png" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\img\player.png" afterPath="$PROJECT_DIR$/public/assets/standard/img/player.png" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\js\asyncLoader.min.js" afterPath="$PROJECT_DIR$/public/assets/standard/js/asyncLoader.min.js" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\js\bootstrap.min.js" afterPath="$PROJECT_DIR$/public/assets/standard/js/bootstrap.min.js" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\js\jquery.min.js" afterPath="$PROJECT_DIR$/public/assets/standard/js/jquery.min.js" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\public\assets\default\js\jquery.min.map" afterPath="$PROJECT_DIR$/public/assets/standard/js/jquery.min.map" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Controllers\AccountController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AccountController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Controllers\BaseController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BaseController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Controllers\HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Controllers\PlayerController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayerController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Controllers\SettingController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Controllers\StaffController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StaffController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Exceptions\CreateFailedException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Admin/CreateFailedException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Exceptions\LowPermissionException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Admin/LowPermissionException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Handlers\AbstractEventHandler.php" afterPath="$PROJECT_DIR$/app/Handlers/Events/Admin/AbstractEventHandler.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Handlers\AccountEventHandler.php" afterPath="$PROJECT_DIR$/app/Handlers/Events/Admin/AccountEventHandler.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\account\block.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/account/block.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\account\edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/account/edit.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\account\history.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/account/history.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\account\index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/account/index.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\layouts\master.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/master.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\layouts\partials\alerts.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/partials/alerts.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\layouts\partials\global_error.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/partials/global_error.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\layouts\partials\sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/partials/sidebar.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\player\index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/player/index.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\settings\general.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/settings/general.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\staff\create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/staff/create.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views\staff\index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/staff/index.blade.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Services\AdminService.php" afterPath="$PROJECT_DIR$/app/Services/Admin/AdminService.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Services\PlayerService.php" afterPath="$PROJECT_DIR$/app/Services/Admin/PlayerService.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Admin\Services\StaffService.php" afterPath="$PROJECT_DIR$/app/Services/Admin/StaffService.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Api\Controllers\Admin\AccountController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Admin/AccountController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Api\Controllers\ApiController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ApiController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Api\Controllers\HighScoreController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/HighScoreController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Config\hooks.php" afterPath="$PROJECT_DIR$/app/hooks.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Entities\Account.php" afterPath="$PROJECT_DIR$/app/Entities/Account.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Entities\AccountMeta.php" afterPath="$PROJECT_DIR$/app/Entities/AccountMeta.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Entities\Guild.php" afterPath="$PROJECT_DIR$/app/Entities/Guild.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Entities\History.php" afterPath="$PROJECT_DIR$/app/Entities/History.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Entities\Player.php" afterPath="$PROJECT_DIR$/app/Entities/Player.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Entities\Reminder.php" afterPath="$PROJECT_DIR$/app/Entities/Reminder.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Entities\Safebox.php" afterPath="$PROJECT_DIR$/app/Entities/Safebox.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Entities\Staff.php" afterPath="$PROJECT_DIR$/app/Entities/Staff.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Exceptions\AbstractException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Core/AbstractException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Exceptions\ConfirmationFailedException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Core/ConfirmationFailedException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Exceptions\DeletionCodeException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Core/DeletionCodeException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Exceptions\EmailFailedException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Core/EmailFailedException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Exceptions\LoginFailedException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Core/LoginFailedException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Exceptions\PasswordFailedException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Core/PasswordFailedException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Exceptions\RegistrationFailedException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Core/RegistrationFailedException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Exceptions\RemindFailedException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Core/RemindFailedException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Exceptions\SafeboxException.php" afterPath="$PROJECT_DIR$/app/Exceptions/Core/SafeboxException.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Extensions\Auth\GenericUser.php" afterPath="$PROJECT_DIR$/app/Extensions/Auth/GenericUser.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Extensions\Auth\MetinAuthProvider.php" afterPath="$PROJECT_DIR$/app/Extensions/Auth/MetinAuthProvider.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Extensions\History\History.php" afterPath="$PROJECT_DIR$/app/Services/HistoryService.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Helpers\Helpers.php" afterPath="$PROJECT_DIR$/app/helpers.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Mailers\AccountMailer.php" afterPath="$PROJECT_DIR$/app/Mailers/AccountMailer.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Mailers\Mailer.php" afterPath="$PROJECT_DIR$/app/Mailers/Mailer.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\AccountMetaRepositoryInterface.php" afterPath="$PROJECT_DIR$/app/Repositories/AccountMetaRepositoryInterface.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\AccountRepositoryInterface.php" afterPath="$PROJECT_DIR$/app/Repositories/AccountRepositoryInterface.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\Eloquent\AbstractRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/Eloquent/AbstractRepository.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\Eloquent\AccountMetaRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/Eloquent/AccountMetaRepository.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\Eloquent\AccountRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/Eloquent/AccountRepository.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\Eloquent\GuildRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/Eloquent/GuildRepository.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\Eloquent\HistoryRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/Eloquent/HistoryRepository.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\Eloquent\PlayerRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/Eloquent/PlayerRepository.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\Eloquent\ReminderRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/Eloquent/ReminderRepository.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\Eloquent\SafeboxRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/Eloquent/SafeboxRepository.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\Eloquent\StaffRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/Eloquent/StaffRepository.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\GuildRepositoryInterface.php" afterPath="$PROJECT_DIR$/app/Repositories/GuildRepositoryInterface.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\HistoryRepositoryInterface.php" afterPath="$PROJECT_DIR$/app/Repositories/HistoryRepositoryInterface.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\PlayerRepositoryInterface.php" afterPath="$PROJECT_DIR$/app/Repositories/PlayerRepositoryInterface.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\ReminderRepositoryInterface.php" afterPath="$PROJECT_DIR$/app/Repositories/ReminderRepositoryInterface.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\SafeboxRepositoryInterface.php" afterPath="$PROJECT_DIR$/app/Repositories/SafeboxRepositoryInterface.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Repositories\StaffRepositoryInterface.php" afterPath="$PROJECT_DIR$/app/Repositories/StaffRepositoryInterface.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Services\AccountService.php" afterPath="$PROJECT_DIR$/app/Services/AccountService.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Services\HighscoreService.php" afterPath="$PROJECT_DIR$/app/Services/HighscoreService.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\src\Core\Transformers\AbstractTransformer.php" afterPath="$PROJECT_DIR$/app/Transformers/AbstractTransformer.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\Controllers\AccountController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/AccountController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\Controllers\BaseController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/BaseController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\Controllers\HighscoreController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/HighscoreController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\Controllers\HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/HomeController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\Controllers\RegistrationController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/RegistrationController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\Controllers\RemindersController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/RemindersController.php" />
+      <change type="MOVED" beforePath="D:\Web\wamp\www\metin2cms\themes\standard\Controllers\SessionsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/SessionsController.php" />
     </list>
     <ignored path="metin2cms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +240,28 @@
     <favorites_list name="metin2cms" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="phpunit.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phpunit.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.53797466" vertical-offset="0" max-vertical-offset="948">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,57 +269,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/layouts/default.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/pages/home.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/pages/tos.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/highscore/players.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/highscore/guilds.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/email/success.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/deletion_code/success.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/password/success.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/password-reset/confirm.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/password-reset/success.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/register/confirm.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/register/fail.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/register/success.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/register/form.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/password-reset/form.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/password/form.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/login/form.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/email/form.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/deletion_code/form.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/index.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/safebox/success.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Resources/views/account/safebox/form.blade.php" />
-        <option value="$PROJECT_DIR$/themes/standard/Controllers/RemindersController.php" />
-        <option value="$PROJECT_DIR$/src/Config/hooks.php" />
-        <option value="$PROJECT_DIR$/src/Admin/Controllers/SettingController.php" />
-        <option value="$PROJECT_DIR$/src/Admin/Resources/views/settings/general.blade.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/sql/common.sql" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_07_144529_CreateGmlistTable.php" />
-        <option value="$PROJECT_DIR$/vendor/ionutmilica/themes/src/Ionutmilica/Themes/ThemesServiceProvider.php" />
-        <option value="$PROJECT_DIR$/src/Core/CoreServiceProvider.php" />
-        <option value="$PROJECT_DIR$/src/Admin/filters.php" />
-        <option value="$PROJECT_DIR$/src/Core/Entities/Account.php" />
-        <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php" />
-        <option value="$PROJECT_DIR$/src/Admin/routes.php" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminServiceProvider.php" />
-        <option value="$PROJECT_DIR$/config/database.php" />
-        <option value="$PROJECT_DIR$/config/auth.php" />
-        <option value="$PROJECT_DIR$/src/Core/Extensions/Auth/MetinAuthProvider.php" />
-        <option value="$PROJECT_DIR$/database/seeds/AccountTableSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-        <option value="$PROJECT_DIR$/src/Admin/Resources/views/layouts/partials/sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/src/Admin/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/src/list.php" />
-        <option value="$PROJECT_DIR$/src/Api/ApiServiceProvider.php" />
-        <option value="$PROJECT_DIR$/src/Config/ConfigServiceProvider.php" />
-        <option value="$PROJECT_DIR$/src/Api/filters.php" />
-        <option value="$PROJECT_DIR$/src/Admin/Resources/views/account/index.blade.php" />
-        <option value="$PROJECT_DIR$/src/Admin/Resources/views/player/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/account/history.blade.php" />
+        <option value="$PROJECT_DIR$/app/Services/Admin/AdminService.php" />
+        <option value="$PROJECT_DIR$/app/Services/Admin/PlayerService.php" />
+        <option value="$PROJECT_DIR$/app/Services/Admin/StaffService.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayerController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/StaffController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/AccountController.php" />
+        <option value="$PROJECT_DIR$/app/Core/Services/HistoryService.php" />
+        <option value="$PROJECT_DIR$/app/Core/Services/AccountService.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Admin/CreateFailedException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Admin/LowPermissionException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Core/AbstractException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Core/ConfirmationFailedException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Core/DeletionCodeException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Core/EmailFailedException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Core/LoginFailedException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Core/PasswordFailedException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Core/RegistrationFailedException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Core/RemindFailedException.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Core/SafeboxException.php" />
         <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/themes/standard/filters.php" />
+        <option value="$PROJECT_DIR$/app/Core/Services/Forms/Email.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/RegistrationRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/Request.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/ChangeEmailRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/ChangePasswordRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/RecoverPasswordRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/AuthRequest.php" />
+        <option value="$PROJECT_DIR$/app/Core/Transformers/AbstractTransformer.php" />
+        <option value="$PROJECT_DIR$/themes/standard/Controllers/SessionsController.php" />
+        <option value="$PROJECT_DIR$/themes/standard/Controllers/RegistrationController.php" />
+        <option value="$PROJECT_DIR$/themes/standard/Controllers/RemindersController.php" />
+        <option value="$PROJECT_DIR$/themes/standard/Controllers/HighscoreController.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/app/Extensions/Auth/GenericUser.php" />
+        <option value="$PROJECT_DIR$/app/Extensions/Auth/MetinAuthProvider.php" />
+        <option value="$PROJECT_DIR$/app/Core/CoreServiceProvider.php" />
+        <option value="$PROJECT_DIR$/app/Handlers/Events/Admin/AbstractEventHandler.php" />
+        <option value="$PROJECT_DIR$/app/Services/HistoryService.php" />
+        <option value="$PROJECT_DIR$/app/Handlers/Events/Admin/AccountEventHandler.php" />
+        <option value="$PROJECT_DIR$/app/Mailers/Mailer.php" />
+        <option value="$PROJECT_DIR$/app/Config/hooks.php" />
+        <option value="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes/site.php" />
+        <option value="$PROJECT_DIR$/themes/standard/ThemeServiceProvider.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Site/AccountController.php" />
+        <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -95,9 +328,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="width" value="2046" />
-    <option name="height" value="1104" />
+    <option name="x" value="-9" />
+    <option name="width" value="2048" />
+    <option name="height" value="1122" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -122,6 +355,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -150,57 +384,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="metin2cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="metin2cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seeds" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="metin2cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="metin2cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="metin2cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="metin2cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Providers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -219,6 +403,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metin2cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metin2cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -258,13 +464,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Exceptions" />
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Site" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -274,17 +487,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Web\wamp\www\metin2cms\app\database\migrations" />
-      <recent name="D:\Web\wamp\www\metin2cms\src\Admin\Resources\views" />
-      <recent name="D:\Web\wamp\www\metin2cms\themes\standard\Resources\config" />
-      <recent name="D:\Web\wamp\www\metin2cms\src\Admin\Resources\config" />
       <recent name="D:\Web\wamp\www\metin2cms" />
+      <recent name="D:\Web\wamp\www\metin2cms\app\Http\routes" />
+      <recent name="D:\Web\wamp\www\metin2cms\app\Http\Requests" />
+      <recent name="D:\Web\wamp\www\metin2cms\app\Core\Services" />
+      <recent name="D:\Web\wamp\www\metin2cms\app\Http\Requests\Admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Web\wamp\www\metin2cms\app\views" />
-      <recent name="D:\Web\wamp\www\metin2cms\themes\standard" />
-      <recent name="D:\Web\wamp\www\metin2cms\themes\standard\Controllers" />
-      <recent name="D:\Web\wamp\www\metin2cms\src\Admin\Resources" />
+      <recent name="D:\Web\wamp\www\metin2cms\app" />
+      <recent name="D:\Web\wamp\www\metin2cms\app\Http\Controllers\Site" />
+      <recent name="D:\Web\wamp\www\metin2cms\app\Services" />
+      <recent name="D:\Web\wamp\www\metin2cms\app\Services\Core" />
+      <recent name="D:\Web\wamp\www\metin2cms\app\Exceptions\Core" />
     </key>
   </component>
   <component name="RunManager">
@@ -330,23 +544,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="0" width="2046" height="1104" extended-state="0" />
-    <editor active="false" />
+    <frame x="-9" y="0" width="2048" height="1122" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875368" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3195266" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3192118" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919848" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -372,365 +586,443 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php</url>
+          <line>2</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/security-core/Symfony/Component/Security/Core/Authentication/AuthenticationManagerInterface.php">
+    <entry file="file://$PROJECT_DIR$/app/Exceptions/Core/RemindFailedException.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45209903" vertical-offset="0" max-vertical-offset="990">
-          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="651">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/GenericUser.php">
+    <entry file="file://$PROJECT_DIR$/app/Exceptions/Core/SafeboxException.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.1011841" vertical-offset="2881" max-vertical-offset="3810">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/AuthManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9397202" vertical-offset="2731" max-vertical-offset="3660">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/AuthServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0667385" vertical-offset="991" max-vertical-offset="2370">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Extensions/Auth/GenericUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.769231" vertical-offset="0" max-vertical-offset="1350">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Entities/AccountMeta.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="968">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Contracts/Auth/UserProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.67922497" vertical-offset="691" max-vertical-offset="1620">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/EloquentUserProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.0769231" vertical-offset="0" max-vertical-offset="3870">
-          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Entities/Account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="53.871796" vertical-offset="2221" max-vertical-offset="3150">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/View/ViewFinderInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.3562971" vertical-offset="331" max-vertical-offset="1800">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/View/View.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.133188" vertical-offset="11114" max-vertical-offset="12030">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Contracts/View/Factory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2280">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.484716" vertical-offset="5940" max-vertical-offset="11550">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Bus/MarshalException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="955">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68675995" vertical-offset="4852" max-vertical-offset="8370">
-          <caret line="184" column="42" selection-start-line="184" selection-start-column="42" selection-end-line="184" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/official/Controllers/AccountController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.897436" vertical-offset="464" max-vertical-offset="3900">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/official/Controllers/SessionsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="23.871796" vertical-offset="931" max-vertical-offset="1950">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7692308" vertical-offset="0" max-vertical-offset="2460">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/CoreServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="23.435898" vertical-offset="1514" max-vertical-offset="4410">
-          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6666665" vertical-offset="1051" max-vertical-offset="3180">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.051282" vertical-offset="2071" max-vertical-offset="4590">
-          <caret line="86" column="10" selection-start-line="86" selection-start-column="10" selection-end-line="86" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6923075" vertical-offset="90" max-vertical-offset="2190">
-          <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/Authenticatable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.064585574" vertical-offset="0" max-vertical-offset="1860">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/AccountTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.8461537" vertical-offset="0" max-vertical-offset="1530">
-          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.230769" vertical-offset="0" max-vertical-offset="900">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/filters.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.93649083" vertical-offset="0" max-vertical-offset="1500">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Services/AccountService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="96.15385" vertical-offset="3870" max-vertical-offset="12060">
-          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/Resources/views/layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="16.153847" vertical-offset="630" max-vertical-offset="3240">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Extensions/Auth/MetinAuthProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2114" max-vertical-offset="4020">
-          <caret line="85" column="55" selection-start-line="85" selection-start-column="55" selection-end-line="85" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.384615" vertical-offset="60" max-vertical-offset="1440">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="690">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Api/ApiServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1650">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/Resources/views/account/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2270741" vertical-offset="0" max-vertical-offset="2370">
-          <caret line="68" column="76" selection-start-line="68" selection-start-column="76" selection-end-line="68" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Api/filters.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5166846" vertical-offset="0" max-vertical-offset="929">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/Resources/views/player/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63973796" vertical-offset="1724" max-vertical-offset="2640">
-          <caret line="77" column="75" selection-start-line="77" selection-start-column="75" selection-end-line="77" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.25941873" vertical-offset="241" max-vertical-offset="1440">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.29063508" vertical-offset="270" max-vertical-offset="1650">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/Resources/views/staff/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1680">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/Resources/views/layouts/partials/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06550218" vertical-offset="0" max-vertical-offset="2400">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Config/ConfigServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.589744" vertical-offset="31" max-vertical-offset="1500">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="968">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/ConfigServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="968">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/BusServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.25941873" vertical-offset="241" max-vertical-offset="1170">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Events/Event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="968">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.13024758" vertical-offset="121" max-vertical-offset="1140">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.538462" vertical-offset="0" max-vertical-offset="690">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8073197" vertical-offset="360" max-vertical-offset="3810">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.3076923" vertical-offset="180" max-vertical-offset="1260">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/EventServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.6410255" vertical-offset="181" max-vertical-offset="1110">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="651">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.564102" vertical-offset="524" max-vertical-offset="1440">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        <state vertical-scroll-proportion="-3.8461537" vertical-offset="0" max-vertical-offset="1860">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2015-02-18.log">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.742857" vertical-offset="19929" max-vertical-offset="72600">
+          <caret line="671" column="46" selection-start-line="671" selection-start-column="46" selection-end-line="671" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2015-04-12.log">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.742857" vertical-offset="14799" max-vertical-offset="66360">
+          <caret line="500" column="46" selection-start-line="500" selection-start-column="46" selection-end-line="500" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/RegistrationRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.6923075" vertical-offset="0" max-vertical-offset="540">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/ChangeEmailRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1538463" vertical-offset="0" max-vertical-offset="510">
+          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/ChangePasswordRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3076923" vertical-offset="0" max-vertical-offset="510">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/RecoverPasswordRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06335797" vertical-offset="0" max-vertical-offset="947">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12671594" vertical-offset="0" max-vertical-offset="947">
+          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/FormRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3576017" vertical-offset="4646" max-vertical-offset="6930">
+          <caret line="174" column="26" selection-start-line="174" selection-start-column="26" selection-end-line="174" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/AuthRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15839493" vertical-offset="0" max-vertical-offset="947">
+          <caret line="5" column="63" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/master.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32334048" vertical-offset="1258" max-vertical-offset="3240">
+          <caret line="52" column="49" selection-start-line="52" selection-start-column="49" selection-end-line="52" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.29883844" vertical-offset="283" max-vertical-offset="1230">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Transformers/AbstractTransformer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15839493" vertical-offset="0" max-vertical-offset="1500">
+          <caret line="5" column="61" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Site/SessionsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06335797" vertical-offset="0" max-vertical-offset="1890">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="e#50#90#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Site/RemindersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06335797" vertical-offset="0" max-vertical-offset="2040">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="e#50#101#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Site/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.062302005" vertical-offset="1" max-vertical-offset="2070">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="e#50#98#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Site/HighscoreController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06335797" vertical-offset="0" max-vertical-offset="2100">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Entities/Account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="3090">
+          <caret line="0" column="34" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5343189" vertical-offset="1483" max-vertical-offset="2430">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/AccountMetaRepositoryInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="840">
+          <caret line="0" column="38" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/Eloquent/AbstractRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.09503696" vertical-offset="90" max-vertical-offset="1890">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.846154" vertical-offset="0" max-vertical-offset="1560">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Extensions/Auth/MetinAuthProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0865893" vertical-offset="3073" max-vertical-offset="4020">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#44#90#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Extensions/Auth/GenericUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
+          <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.26715946" vertical-offset="253" max-vertical-offset="1650">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12671594" vertical-offset="0" max-vertical-offset="1500">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.55227035" vertical-offset="523" max-vertical-offset="1470">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Handlers/Events/Admin/AbstractEventHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41182682" vertical-offset="0" max-vertical-offset="947">
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Handlers/Events/Admin/AccountEventHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.895075" vertical-offset="0" max-vertical-offset="2400">
+          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Mailers/AccountMailer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.74234426" vertical-offset="1063" max-vertical-offset="2010">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Mailers/Mailer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1800">
+          <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/EventServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6788009" vertical-offset="236" max-vertical-offset="1170">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#38#103#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/ConfigServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.846154" vertical-offset="3870" max-vertical-offset="6180">
+          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.230769" vertical-offset="0" max-vertical-offset="720">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes/site.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.74359" vertical-offset="2293" max-vertical-offset="3360">
+          <caret line="106" column="3" selection-start-line="106" selection-start-column="3" selection-end-line="106" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/standard/ThemeServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4496788" vertical-offset="0" max-vertical-offset="934">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/HistoryService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0769231" vertical-offset="0" max-vertical-offset="1530">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Site/AccountController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.153847" vertical-offset="900" max-vertical-offset="3960">
+          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/AccountRepositoryInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5343189" vertical-offset="1774" max-vertical-offset="2760">
+          <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/AccountService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.153846" vertical-offset="7926" max-vertical-offset="12450">
+          <caret line="280" column="46" selection-start-line="280" selection-start-column="46" selection-end-line="280" selection-end-column="46" />
+          <folding>
+            <element signature="e#37#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/hooks.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="22.205128" vertical-offset="2036" max-vertical-offset="2970">
+          <caret line="42" column="3" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2917115" vertical-offset="271" max-vertical-offset="1200">
+        <state vertical-scroll-proportion="-13.076923" vertical-offset="810" max-vertical-offset="3120">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="e#38#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpspec.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpunit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.example">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53797466" vertical-offset="0" max-vertical-offset="948">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

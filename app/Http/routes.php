@@ -10,17 +10,18 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-/*
-Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::group([
+    'namespace' => 'Admin',
+    'prefix' => 'admin',
+    'before' => 'admin.auth'], function()
+{
+    require __DIR__ . '/routes/admin.php';
+});
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-*/
-
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
+Route::group([
+    'namespace' => 'Site',
+    'before' => 'auth'], function()
+{
+    require __DIR__ . '/routes/site.php';
+});

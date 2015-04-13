@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace Metin2CMS\Commands;
 
 abstract class Command {
 

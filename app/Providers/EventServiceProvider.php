@@ -1,7 +1,8 @@
-<?php namespace App\Providers;
+<?php namespace Metin2CMS\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Metin2CMS\Handlers\Events\Admin\AccountEventHandler;
 
 class EventServiceProvider extends ServiceProvider {
 
@@ -26,7 +27,7 @@ class EventServiceProvider extends ServiceProvider {
 	{
 		parent::boot($events);
 
-		//
+        $this->app['events']->subscribe($this->app->make('Metin2CMS\Handlers\Events\Admin\AccountEventHandler'));
 	}
 
 }

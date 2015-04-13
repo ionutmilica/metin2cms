@@ -1,7 +1,10 @@
-<?php namespace App\Exceptions;
+<?php namespace Metin2CMS\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Redirect;
+use Metin2CMS\Exceptions\Core\AbstractException;
+use Metin2CMS\Core\Validation\FormValidationException;
 
 class Handler extends ExceptionHandler {
 
@@ -36,6 +39,17 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+        //Temp
+        if ($e instanceof FormValidationException) {
+            return Redirect::back()->withInput()->withErrors($e->getErrors());
+        }
+
+        if ($e instanceof AbstractException) {
+            return Redirect::route($e->getRedirection())->withInput()->withErrors(array(
+                'global' => $e->getMessage()
+            ));
+        }
+
 		return parent::render($request, $e);
 	}
 
