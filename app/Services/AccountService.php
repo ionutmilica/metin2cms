@@ -1,7 +1,9 @@
 <?php namespace Metin2CMS\Services;
 
 use Carbon\Carbon;
-use Illuminate\Foundation\Application;
+use Illuminate\Contracts\Auth\Guard as AuthContract;
+use Illuminate\Contracts\Events\Dispatcher as EventContract;
+use Illuminate\Session\Store as SessionContract;
 use Metin2CMS\Exceptions\Core\ConfirmationFailedException;
 use Metin2CMS\Exceptions\Core\DeletionCodeException;
 use Metin2CMS\Exceptions\Core\EmailFailedException;
@@ -44,28 +46,46 @@ class AccountService {
      * @var AccountMetaRepositoryInterface
      */
     private $meta;
+    /**
+     * @var Dispatcher
+     */
+    private $events;
+    /**
+     * @var Guard
+     */
+    private $auth;
+    /**
+     * @var Store
+     */
+    private $session;
 
     /**
-     * @param Application $app
-     * @param \Metin2CMS\Repositories\AccountRepositoryInterface $account
-     * @param \Metin2CMS\Repositories\ReminderRepositoryInterface $reminder
-     * @param \Metin2CMS\Repositories\SafeboxRepositoryInterface $safebox
+     * @param \Metin2CMS\Repositories\AccountRepositoryInterface     $account
+     * @param \Metin2CMS\Repositories\ReminderRepositoryInterface    $reminder
+     * @param \Metin2CMS\Repositories\SafeboxRepositoryInterface     $safebox
      * @param \Metin2CMS\Repositories\AccountMetaRepositoryInterface $meta
-     * @param \Metin2CMS\Mailers\AccountMailer $accountMailer
+     * @param AccountMailer                                          $mailer
+     * @param EventContract                                          $events
+     * @param AuthContract                                           $auth
+     * @param SessionContract                                        $session
      */
-    public function __construct(Application $app,
-                                AccountRepositoryInterface $account,
+    public function __construct(AccountRepositoryInterface $account,
                                 ReminderRepositoryInterface $reminder,
                                 SafeboxRepositoryInterface $safebox,
                                 AccountMetaRepositoryInterface $meta,
-                                AccountMailer $accountMailer)
+                                AccountMailer $mailer,
+                                EventContract $events,
+                                AuthContract $auth,
+                                SessionContract $session)
     {
-        $this->app = $app;
         $this->account = $account;
         $this->reminder = $reminder;
         $this->safebox = $safebox;
-        $this->accountMailer = $accountMailer;
         $this->meta = $meta;
+        $this->accountMailer = $mailer;
+        $this->events = $events;
+        $this->auth = $auth;
+        $this->session = $session;
     }
 
     /**
@@ -78,13 +98,13 @@ class AccountService {
     {
         $data['login'] = $data['username'];
 
-        $this->app['events']->fire('account.creating', array(&$data));
+        $this->events->fire('account.creating', array(&$data));
 
         $account = $this->account->create($data);
 
         if ($account)
         {
-            $this->app['events']->fire('account.created', array($account));
+            $this->events->fire('account.created', array($account));
             return $account;
         }
 
@@ -113,7 +133,7 @@ class AccountService {
             return false;
         }
 
-        $this->app['events']->fire('account.confirming', array($account));
+        $this->events->fire('account.confirming', array($account));
 
         $wasConfirmed = (bool) $this->account->update(array('id' => $account['id']), array(
             'confirmation_token' => '',
@@ -122,7 +142,7 @@ class AccountService {
 
         if ($wasConfirmed)
         {
-            $this->app['events']->fire('account.confirmed', array($account));
+            $this->events->fire('account.confirmed', array($account));
         }
 
         return $wasConfirmed;
@@ -137,7 +157,7 @@ class AccountService {
      */
     public function authenticate(array $data)
     {
-        $this->app['events']->fire('account.login.before', array($data));
+        $this->events->fire('account.login.before', array($data));
 
         $remember = isset($data['remember']) && $data['remember'] != null ? true : false;
 
@@ -151,19 +171,19 @@ class AccountService {
             throw new LoginFailedException('Your account is not activated yet.');
         }
 
-        $auth = $this->app['auth']->attempt(array(
+        $auth = $this->auth->attempt(array(
             'username' => $data['username'],
             'password' => $data['password']
         ), $remember);
 
         if ( ! $auth)
         {
-            $this->app['events']->fire('account.login.fail', array($data));
+            $this->events->fire('account.login.fail', array($data));
 
             throw new LoginFailedException('Username or password is incorrect.');
         }
 
-        $this->app['events']->fire('account.login.success', array($data));
+        $this->events->fire('account.login.success', array($data));
 
         return true;
     }
@@ -175,12 +195,12 @@ class AccountService {
      */
     public function logout()
     {
-        $this->app['events']->fire('account.logout.before');
+        $this->events->fire('account.logout.before');
 
-        $this->app['auth']->logout();
-        $this->app['session.store']->flush();
+        $this->auth->logout();
+        $this->session->flush();
 
-        $this->app['events']->fire('account.logout.after');
+        $this->events->fire('account.logout.after');
 
         return true;
     }
@@ -212,13 +232,13 @@ class AccountService {
             'password' => str_random(10),
         );
 
-        $this->app['events']->fire('account.remind.before', array($data));
+        $this->events->fire('account.remind.before', array($data));
 
         $wasCreated = $this->reminder->create($data);
 
         if ($wasCreated)
         {
-            $this->app['events']->fire('account.remind.after', array($data));
+            $this->events->fire('account.remind.after', array($data));
         }
 
         return $wasCreated;
@@ -246,13 +266,13 @@ class AccountService {
             throw new RemindFailedException('This user is invalid.', 'home');
         }
 
-        $this->app['events']->fire('account.password_confirm.before', array($reminder));
+        $this->events->fire('account.password_confirm.before', array($reminder));
 
         $wasChanged = $this->account->changePassword($username, $reminder['password']);
 
         if ($wasChanged)
         {
-            $this->app['events']->fire('account.password_confirm.after', array($reminder));
+            $this->events->fire('account.password_confirm.after', array($reminder));
             $this->reminder->deleteByToken($token);
         }
 
@@ -276,14 +296,14 @@ class AccountService {
             throw new PasswordFailedException('Your old password is incorrect.');
         }
 
-        $this->app['events']->fire('account.password.before', array($data));
+        $this->events->fire('account.password.before', array($data));
 
         $wasChanged = $this->account->changePassword($user->login, mysqlHash($data['new_password']));
 
         if ($wasChanged)
         {
             $this->meta->set($user->id, 'password_last', Carbon::now());
-            $this->app['events']->fire('account.password.after', array($data));
+            $this->events->fire('account.password.after', array($data));
         }
 
         return $wasChanged;
@@ -309,14 +329,14 @@ class AccountService {
         $data['id'] = $user['id'];
         $data['account'] = $user['login'];
 
-        $this->app['events']->fire('account.email.before', array($data));
+        $this->events->fire('account.email.before', array($data));
 
         $wasEmailChanged = (bool) $this->account->changeEmail($user['id'], $data['new_email']);
 
         if ($wasEmailChanged)
         {
             $this->meta->set($user['id'], 'email_last', Carbon::now());
-            $this->app['events']->fire('account.email.after', array($data));
+            $this->events->fire('account.email.after', array($data));
         }
 
         return $wasEmailChanged;
@@ -352,14 +372,13 @@ class AccountService {
             'safebox' => $safebox['password']
         );
 
-        $this->app['events']->fire('account.safebox.before', array($data));
+        $this->events->fire('account.safebox.before', array($data));
 
-        //$wasSent = $this->accountMailer->safebox($data)->send();
-        $wasSent = false;
+        $wasSent = $this->accountMailer->safebox($data)->send();
         if ($wasSent)
         {
             $this->meta->set($user, 'safebox_last', Carbon::now());
-            $this->app['events']->fire('account.safebox.after', array($data));
+            $this->events->fire('account.safebox.after', array($data));
         }
 
         return $wasSent;
@@ -388,7 +407,7 @@ class AccountService {
             'deletionCode' => str_random(7),
         );
 
-        $this->app['events']->fire('account.deletion_code.before', array($data));
+        $this->events->fire('account.deletion_code.before', array($data));
 
         $wasUpdated = $this->account->update(array('id' => $user), array(
             'social_id' => $data['deletionCode']
@@ -396,7 +415,7 @@ class AccountService {
 
         if ($wasUpdated)
         {
-            $this->app['events']->fire('account.deletion_code.after', array($data));
+            $this->events->fire('account.deletion_code.after', array($data));
 
             $this->meta->set($user, 'deletion_last', Carbon::now());
 
@@ -405,5 +424,6 @@ class AccountService {
 
         return $wasUpdated;
     }
+
 }
 

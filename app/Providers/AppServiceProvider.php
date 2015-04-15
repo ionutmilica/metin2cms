@@ -51,10 +51,9 @@ class AppServiceProvider extends ServiceProvider {
      */
     protected function bootAuthProvider()
     {
+
         $this->app['auth']->extend('metin', function ($app) {
-            return new MetinAuthProvider(
-                $app->make('Metin2CMS\Entities\Account')
-            );
+            return $app->make('\Metin2CMS\Extensions\Auth\MetinAuthProvider');
         });
     }
 

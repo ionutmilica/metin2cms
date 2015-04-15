@@ -38,18 +38,14 @@ class AbstractRepository {
      */
     public function toArray($data)
     {
-        if (is_object($data))
-        {
-            if (($data instanceof \StdClass))
-            {
+        if (is_object($data)) {
+            if (($data instanceof \StdClass)) {
                 return (array) $data;
             }
-
             return $data->toArray();
         }
 
-        if (is_null($data))
-        {
+        if (is_null($data)) {
             return false;
         }
 

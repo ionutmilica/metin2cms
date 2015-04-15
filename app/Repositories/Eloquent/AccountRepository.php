@@ -68,6 +68,24 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
     }
 
     /**
+     * Find account with password in it
+     *
+     * @param $id
+     * @return array|bool
+     */
+    public function findByIdWithPassword($id)
+    {
+        $user = $this->model->find($id);
+        $data = false;
+        if ($user) {
+            $data = $user->toArray();
+        }
+        $data['password'] = $user->password;
+
+        return $data;
+    }
+
+    /**
      * Find user by name
      *
      * @param $name
@@ -87,6 +105,25 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
     public function findByIdOrName($key)
     {
         return is_int($key) ? $this->findById($key) : $this->findByName($key);
+    }
+
+    /**
+     * Find account by some provided conditions
+     *
+     * @param array $conditions
+     * @return array
+     */
+    public function findByConditions(array $conditions)
+    {
+        $account = $this->getFirstByConditions($conditions);
+        $data = null;
+
+        if ($account) {
+            $data = $account->toArray();
+            $data['password'] = $account->password;
+        }
+
+        return $data;
     }
 
     /**
@@ -118,7 +155,7 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
      * @param array $info
      * @return mixed
      */
-    public function update($conditions, array $info)
+    public function update(array $conditions, array $info)
     {
         $account = $this->getNew();
 
@@ -205,6 +242,22 @@ class AccountRepository extends AbstractRepository implements AccountRepositoryI
         return $this->toArray($account->update(array(
             'email' => $email
         )));
+    }
+
+    /**
+     * Get first account by conditions
+     *
+     * @param array $conditions
+     */
+    protected function getFirstByConditions(array $conditions)
+    {
+        $account = $this->getNew();
+
+        foreach ($conditions as $condition => $value) {
+            $account = $account->where($condition, $value);
+        }
+
+        return $account->first();
     }
 
     /**

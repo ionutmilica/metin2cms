@@ -17,7 +17,7 @@ interface AccountRepositoryInterface {
      * @param array $data
      * @return mixed
      */
-    public function update($conditions, array $data);
+    public function update(array $conditions, array $data);
 
     /**
      * Get all accounts
@@ -51,6 +51,22 @@ interface AccountRepositoryInterface {
     public function findByIdOrName($key);
 
     /**
+     * Get account by id but also containing the password
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function findByIdWithPassword($id);
+
+    /**
+     * Find account by some provided conditions
+     *
+     * @param array $conditions
+     * @return array
+     */
+    public function findByConditions(array $conditions);
+
+    /**
      * Check if an account is disabled
      *
      * @param $user
@@ -71,7 +87,6 @@ interface AccountRepositoryInterface {
      *
      * @param $user
      * @param $password
-     * @internal param array $data
      * @return mixed
      */
     public function changePassword($user, $password);

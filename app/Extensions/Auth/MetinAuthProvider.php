@@ -2,21 +2,19 @@
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
-use Metin2CMS\Entities\Account;
+use Metin2CMS\Repositories\AccountRepositoryInterface;
 
 class MetinAuthProvider implements UserProvider {
 
     /**
-     * Account model
-     *
-     * @var Account
+     * @var AccountRepositoryInterface
      */
-    protected $account;
+    private $account;
 
     /**
-     * @param Account $account
+     * @param AccountRepositoryInterface $account
      */
-    public function __construct(Account $account)
+    public function __construct(AccountRepositoryInterface $account)
     {
         $this->account = $account;
     }
@@ -27,14 +25,10 @@ class MetinAuthProvider implements UserProvider {
      */
     public function retrieveById($id)
     {
-        $account = $this->account->find($id);
+        $account = $this->account->findByIdWithPassword($id);
 
-        if ( ! is_null($account))
-        {
-            $accountArr = $account->toArray();
-            $accountArr['password'] = $account->password;
-
-            return new GenericUser($accountArr);
+        if ( ! is_null($account)) {
+            return new GenericUser($account);
         }
 
         return null;
@@ -48,29 +42,20 @@ class MetinAuthProvider implements UserProvider {
      */
     public function retrieveByCredentials(array $credentials)
     {
-        $account = $this->account->newInstance();
+        $conditions = [];
 
         foreach ($credentials as $key => $value)
         {
-            if ($key == 'username')
-            {
-                $key = 'login';
-            }
-
-            if ( ! str_contains($key, 'password'))
-            {
-                $account = $account->where($key, $value);
+            if ($key == 'username') $key = 'login';
+            if ( ! str_contains($key, 'password')) {
+                $conditions[$key] = $value;
             }
         }
 
-       $user = $account->first();
+        $user = $this->account->findByConditions($conditions);
 
-        if ( ! is_null($user))
-        {
-            $userArr = $user->toArray();
-            $userArr['password'] = $user->password;
-
-            return new GenericUser($userArr);
+        if ( ! is_null($user)) {
+            return new GenericUser($user);
         }
 
         return null;
@@ -99,16 +84,10 @@ class MetinAuthProvider implements UserProvider {
      */
     public function retrieveByToken($identifier, $token)
     {
-        $result = $this->account->where($this->account->getKeyName(), $identifier)
-                ->where($this->account->getRememberTokenName(), $token)
-                ->first();
-
-        if ($result)
-        {
-            $account = $result->toArray();
-            $account['password'] = $result->password;
-            $result = $account;
-        }
+        $result = $this->account->findByConditions([
+            $this->account->getKeyName() => $identifier,
+            $this->account->getRememberTokenName() => $token
+        ]);
 
         return new GenericUser($result);
     }
@@ -121,9 +100,7 @@ class MetinAuthProvider implements UserProvider {
      */
     public function updateRememberToken(Authenticatable $user, $token)
     {
-        $this->account->where('id', $user->id)->update(array(
-            $user->getRememberTokenName() => $token
-        ));
+        $this->account->update(['id' => $user->id], [$user->getRememberTokenName() => $token]);
     }
 
 }

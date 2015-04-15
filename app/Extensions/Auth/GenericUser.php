@@ -15,7 +15,7 @@ class GenericUser extends BaseGenericUser {
      */
     public function isGameMaster()
     {
-        return self::GM == 2;
+        return self::GM == $this->getAccountType();
     }
 
     /**
@@ -25,7 +25,7 @@ class GenericUser extends BaseGenericUser {
      */
     public function isModerator()
     {
-        return self::MOD == 1;
+        return self::MOD == $this->getAccountType();
     }
 
     /**
@@ -35,6 +35,19 @@ class GenericUser extends BaseGenericUser {
      */
     public function isAdmin()
     {
-        return self::ADMIN == 9;
+        return self::ADMIN == $this->getAccountType();
+    }
+
+    /**
+     * Get account type
+     *
+     * @return int
+     */
+    protected function getAccountType()
+    {
+        if ( ! isset($this->type)) {
+            return -1;
+        }
+        return (int) $this->type;
     }
 }
