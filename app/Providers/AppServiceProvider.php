@@ -28,16 +28,16 @@ class AppServiceProvider extends ServiceProvider {
      */
     protected $repositoryDriver = 'Eloquent';
 
-	/**
-	 * Bootstrap any application services.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
         require __DIR__ . '/../helpers.php';
 
-		$this->loadViewsFrom(base_path('resources/views/admin'), 'admin');
+        $this->loadViewsFrom(base_path('resources/views/admin'), 'admin');
 
         $this->bootAuthProvider();
 
@@ -53,38 +53,26 @@ class AppServiceProvider extends ServiceProvider {
     {
         $this->app['auth']->extend('metin', function ($app) {
             return new MetinAuthProvider(
-                $this->app->make('Metin2CMS\Entities\Account')
+                $app->make('Metin2CMS\Entities\Account')
             );
         });
     }
 
     /**
-     * Register the filters
+     * Register any application services.
+     *
+     * This service provider is a great spot to register your various container
+     * bindings with the application. As you can see, we are registering our
+     * "Registrar" implementation here. You can add your own bindings too!
+     *
+     * @return void
      */
-    public function registerFilters()
+    public function register()
     {
-        $this->app['router']->filter('admin.auth', function() {
-            if ( ! $this->app['auth']->check() || ! $this->app['auth']->user()->isAdmin()) {
-                return $this->app['redirect']->guest('/');
-            }
-        });
-    }
-
-	/**
-	 * Register any application services.
-	 *
-	 * This service provider is a great spot to register your various container
-	 * bindings with the application. As you can see, we are registering our
-	 * "Registrar" implementation here. You can add your own bindings too!
-	 *
-	 * @return void
-	 */
-	public function register()
-	{
-		$this->app->bind(
-			'Illuminate\Contracts\Auth\Registrar',
-			'Metin2CMS\Services\Registrar'
-		);
+        $this->app->bind(
+            'Illuminate\Contracts\Auth\Registrar',
+            'Metin2CMS\Services\Registrar'
+        );
 
         foreach ($this->repositories as $name)
         {
@@ -93,6 +81,6 @@ class AppServiceProvider extends ServiceProvider {
                 'Metin2CMS\Repositories\\'.$this->repositoryDriver.'\\'.$name.'Repository'
             );
         }
-	}
+    }
 
 }

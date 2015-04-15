@@ -13,7 +13,7 @@ class CreateAccountMeta extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('account_meta', function (Blueprint $table)
+        Schema::create('account_meta', function (Blueprint $table)
         {
             $table->increments('id');
             $table->integer('account_id')->unsigned();

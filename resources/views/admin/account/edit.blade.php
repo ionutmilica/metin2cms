@@ -17,6 +17,7 @@
             </div><!-- /.box-header -->
 
             <form role="form" method="post" action="{{ route('admin.account.edit', $id) }}">
+                {!! Form::token() !!}
                 <div class="box-body">
                     <div class="form-group @if ($errors->has('username')) has-error @endif">
                         <label for="username">Username</label>

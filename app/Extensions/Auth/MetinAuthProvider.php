@@ -51,7 +51,7 @@ class MetinAuthProvider implements UserProvider {
         $account = $this->account->newInstance();
 
         foreach ($credentials as $key => $value)
-		{
+        {
             if ($key == 'username')
             {
                 $key = 'login';
@@ -65,7 +65,7 @@ class MetinAuthProvider implements UserProvider {
 
        $user = $account->first();
 
-		if ( ! is_null($user))
+        if ( ! is_null($user))
         {
             $userArr = $user->toArray();
             $userArr['password'] = $user->password;

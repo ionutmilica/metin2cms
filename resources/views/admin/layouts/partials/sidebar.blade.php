@@ -65,11 +65,12 @@
                         <i class="fa fa-angle-double-right"></i> Modules
                     </a>
                 </li>
-                {{--
-                    Here at the end of the navbar we should fire
-                    and event that adds link for every modules.
-                --}}
+
             </ul>
         </li>
+        {{--
+            Here at the end of the navbar we should fire
+            and event that adds link for every modules.
+        --}}
     </ul>
 </section>

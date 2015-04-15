@@ -1,7 +1,6 @@
 <?php namespace Metin2CMS\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
-use Metin2CMS\Entities\Guild;
 
 class AbstractRepository {
 
@@ -16,9 +15,9 @@ class AbstractRepository {
      * @param Model $model
      */
     public function __construct(Model $model)
-	{
-		$this->model = $model;
-	}
+    {
+        $this->model = $model;
+    }
 
     /**
      * Generate a new model instance
@@ -27,9 +26,9 @@ class AbstractRepository {
      * @return Model|static
      */
     public function getNew(array $args = array())
-	{
-		return $this->model->newInstance($args);
-	}
+    {
+        return $this->model->newInstance($args);
+    }
 
     /**
      * Transform a collection into an array

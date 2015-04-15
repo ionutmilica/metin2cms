@@ -1,12 +1,9 @@
 <?php namespace Metin2CMS\Http\Controllers\Site;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
 use Metin2CMS\Http\Requests\ChangeEmailRequest;
 use Metin2CMS\Http\Requests\ChangePasswordRequest;
 use Metin2CMS\Services\AccountService;
-use Metin2CMS\Services\Forms\Password;
-use Metin2CMS\Services\Forms\Email;
 
 class AccountController extends BaseController {
 
