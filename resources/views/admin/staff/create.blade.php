@@ -18,6 +18,7 @@
             </div><!-- /.box-header -->
 
             <form role="form" method="post" action="{{ route('admin.staff.create') }}">
+                {!! Form::token() !!}
                 <div class="box-body">
                     <div class="form-group @if ($errors->has('account')) has-error @endif">
                         <label for="account">Account name</label>

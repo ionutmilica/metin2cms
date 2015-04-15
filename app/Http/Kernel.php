@@ -25,6 +25,7 @@ class Kernel extends HttpKernel {
 	 */
 	protected $routeMiddleware = [
 		'auth' => 'Metin2CMS\Http\Middleware\Authenticate',
+        'auth.admin' => 'Metin2CMS\Http\Middleware\AdminAuthenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Metin2CMS\Http\Middleware\RedirectIfAuthenticated',
 	];

@@ -1,7 +1,7 @@
 <?php namespace Metin2CMS\Services\Admin;
 
 use Illuminate\Foundation\Application;
-use Metin2CMS\Admin\Exceptions\LowPermissionException;
+use Metin2CMS\Exceptions\Admin\LowPermissionException;
 use Metin2CMS\Repositories\AccountRepositoryInterface;
 use Metin2CMS\Repositories\HistoryRepositoryInterface;
 
@@ -75,14 +75,14 @@ class AdminService {
      *
      * @param $id
      * @param array $data
-     * @throws LowPermissionException
      * @return bool
+     * @throws LowPermissionException
      */
     public function blockAccount($id, array $data)
     {
         $account = $this->account->findById($id);
 
-        if ($account['type'] == 9/** Admin */)
+        if ($account['type'] == 9/** Admin, @todo: Reduce hardcoding */)
         {
             throw new LowPermissionException('You cannot block this account.', '');
         }

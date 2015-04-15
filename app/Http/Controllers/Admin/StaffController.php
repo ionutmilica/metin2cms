@@ -46,11 +46,10 @@ class StaffController extends BaseController {
      *
      * @param CreateStaffRequest $request
      * @return mixed
-     * @throws \Metin2CMS\Admin\Exceptions\CreateFailedException
      */
     public function doCreate(CreateStaffRequest $request)
     {
-        $input = Input::only('account', 'player', 'grade');
+        $input = $request->only('account', 'player', 'grade');
 
         $this->staff->create($input);
 

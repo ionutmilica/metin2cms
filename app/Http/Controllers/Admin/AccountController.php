@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Metin2CMS\Services\AccountService;
-use Metin2CMS\Core\Extensions\History\History;
 use Metin2CMS\Http\Requests\Admin\BlockAccountRequest;
 use Metin2CMS\Http\Requests\Admin\EditAccountRequest;
 use Metin2CMS\Services\Admin\AdminService;
+use Metin2CMS\Services\HistoryService;
 
 class AccountController extends BaseController {
     /**
@@ -27,13 +27,12 @@ class AccountController extends BaseController {
     /**
      * @param AdminService $admin
      * @param AccountService $account
-     * @param History $history
+     * @param HistoryService $history
      * @internal param AccountService $account
      */
-    public function __construct(AdminService $admin, AccountService $account, History $history)
+    public function __construct(AdminService $admin, AccountService $account, HistoryService $history)
     {
         $this->admin       = $admin;
-        #$this->transformer = $transformer;
         $this->account     = $account;
         $this->account     = $account;
         $this->history     = $history;
@@ -78,7 +77,7 @@ class AccountController extends BaseController {
      */
     public function doEdit(EditAccountRequest $request, $id)
     {
-        $input = Input::only('username', 'email');
+        $input = $request->only('username', 'email');
 
         $this->admin->editAccount($id, $input);
 
@@ -113,7 +112,7 @@ class AccountController extends BaseController {
      */
     public function doBlock(BlockAccountRequest $request, $id)
     {
-        $input = Input::only('reason', 'expiration');
+        $input = $request->only('reason', 'expiration');
 
         $this->admin->blockAccount($id, $input);
 

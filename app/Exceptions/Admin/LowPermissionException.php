@@ -1,4 +1,4 @@
-<?php namespace Metin2CMS\Admin\Exceptions;
+<?php namespace Metin2CMS\Exceptions\Admin;
 
 use Metin2CMS\Exceptions\Core\AbstractException;
 

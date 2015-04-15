@@ -3,7 +3,7 @@
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
-class Authenticate {
+class AdminAuthenticate {
 
 	/**
 	 * The Guard implementation.
@@ -31,7 +31,7 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->guest())
+		if ($this->auth->guest() || ! $this->auth->user()->isAdmin())
 		{
 			if ($request->ajax())
 			{

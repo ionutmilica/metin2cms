@@ -11,17 +11,12 @@
 |
 */
 
-Route::group([
-    'namespace' => 'Admin',
-    'prefix' => 'admin',
-    'before' => 'admin.auth'], function()
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth.admin'], function()
 {
     require __DIR__ . '/routes/admin.php';
 });
 
-Route::group([
-    'namespace' => 'Site',
-    'before' => 'auth'], function()
+Route::group(['namespace' => 'Site'], function()
 {
     require __DIR__ . '/routes/site.php';
 });

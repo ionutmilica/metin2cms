@@ -1,9 +1,9 @@
 <?php namespace Metin2CMS\Services\Admin;
 
+use Metin2CMS\Exceptions\Admin\CreateFailedException;
 use Metin2CMS\Repositories\StaffRepositoryInterface;
 use Metin2CMS\Repositories\AccountRepositoryInterface;
 use Metin2CMS\Repositories\PlayerRepositoryInterface;
-use Metin2CMS\Admin\Exceptions\CreateFailedException;
 
 class StaffService {
     /**
@@ -12,7 +12,7 @@ class StaffService {
     private $staff;
 
     /**
-     * @var AccountRepositoryInterfac
+     * @var AccountRepositoryInterface
      */
     private $account;
 
