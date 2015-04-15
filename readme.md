@@ -1,5 +1,6 @@
 Metin2CMS
 =========
+[![Build Status](https://travis-ci.org/ionutmilica/metin2cms.svg)](https://travis-ci.org/ionutmilica/metin2cms)
 
 Metin2CMS it's a full-stack site with admin panel and apis for anyone who wants to start a server without bothering with the website. It's designed to be complex and flexible.
 
