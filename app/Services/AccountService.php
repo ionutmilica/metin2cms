@@ -250,7 +250,7 @@ class AccountService {
             throw new RemindFailedException('This token is invalid.', 'home');
         }
 
-        if ( $reminder['username'] !== $username) {
+        if ($reminder['username'] !== $username) {
             throw new RemindFailedException('This user is invalid.', 'home');
         }
 

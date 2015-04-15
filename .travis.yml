@@ -1,0 +1,22 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+
+before_script:
+  - cp .env.travis .env
+  - mysql -e 'create database account;'
+  - mysql -e 'create database player;'
+  - mysql -e 'create database common;'
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source
+  - chmod -R 777 storage
+  - php artisan migrate:install --no-interaction -vvv
+
+script:
+  - php artisan migrate --no-interaction -vvv
+  - php artisan db:seed --no-interaction -vvv
+  - phpunit
