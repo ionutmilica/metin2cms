@@ -1,7 +1,7 @@
 <?php namespace Metin2CMS\Services;
 
 use Carbon\Carbon;
-use Illuminate\Contracts\Auth\Guard as AuthContract;
+use Illuminate\Contracts\Auth\Guard as Auth;
 use Illuminate\Contracts\Events\Dispatcher as EventContract;
 use Illuminate\Session\Store as SessionContract;
 use Metin2CMS\Exceptions\Core\ConfirmationFailedException;
@@ -47,15 +47,15 @@ class AccountService {
      */
     private $meta;
     /**
-     * @var Dispatcher
+     * @var EventContract
      */
     private $events;
     /**
-     * @var Guard
+     * @var Auth
      */
     private $auth;
     /**
-     * @var Store
+     * @var SessionContract
      */
     private $session;
 
@@ -66,7 +66,7 @@ class AccountService {
      * @param \Metin2CMS\Repositories\AccountMetaRepositoryInterface $meta
      * @param AccountMailer                                          $mailer
      * @param EventContract                                          $events
-     * @param AuthContract                                           $auth
+     * @param Auth                                                   $auth
      * @param SessionContract                                        $session
      */
     public function __construct(AccountRepositoryInterface $account,
@@ -75,7 +75,7 @@ class AccountService {
                                 AccountMetaRepositoryInterface $meta,
                                 AccountMailer $mailer,
                                 EventContract $events,
-                                AuthContract $auth,
+                                Auth $auth,
                                 SessionContract $session)
     {
         $this->account = $account;
@@ -98,13 +98,12 @@ class AccountService {
     {
         $data['login'] = $data['username'];
 
-        $this->events->fire('account.creating', array(&$data));
+        $this->events->fire('account.creating', [&$data]);
 
         $account = $this->account->create($data);
 
-        if ($account)
-        {
-            $this->events->fire('account.created', array($account));
+        if ($account) {
+            $this->events->fire('account.created', [$account]);
             return $account;
         }
 
@@ -123,26 +122,23 @@ class AccountService {
     {
         $account = $this->account->findByName($user);
 
-        if ( ! $account)
-        {
+        if ( ! $account) {
             throw new ConfirmationFailedException('Your account or token is invalid !');
         }
 
-        if ($token === '' || ! $account['confirmation_token'] || $account['confirmation_token'] !== $token)
-        {
+        if ($token === '' || ! $account['confirmation_token'] || $account['confirmation_token'] !== $token) {
             return false;
         }
 
-        $this->events->fire('account.confirming', array($account));
+        $this->events->fire('account.confirming', [$account]);
 
-        $wasConfirmed = (bool) $this->account->update(array('id' => $account['id']), array(
+        $wasConfirmed = (bool) $this->account->update(['id' => $account['id']], [
             'confirmation_token' => '',
             'status' => 'OK'
-        ));
+        ]);
 
-        if ($wasConfirmed)
-        {
-            $this->events->fire('account.confirmed', array($account));
+        if ($wasConfirmed) {
+            $this->events->fire('account.confirmed', [$account]);
         }
 
         return $wasConfirmed;
@@ -157,33 +153,29 @@ class AccountService {
      */
     public function authenticate(array $data)
     {
-        $this->events->fire('account.login.before', array($data));
+        $this->events->fire('account.login.before', [$data]);
 
-        $remember = isset($data['remember']) && $data['remember'] != null ? true : false;
+        $remember = isset($data['remember']) && $data['remember'];
 
-        if ($this->account->isBlocked($data['username']))
-        {
+        if ($this->account->isBlocked($data['username'])) {
             throw new LoginFailedException('Your account is blocked.');
         }
 
-        if ($this->account->isDisabled($data['username']))
-        {
+        if ($this->account->isDisabled($data['username'])) {
             throw new LoginFailedException('Your account is not activated yet.');
         }
 
-        $auth = $this->auth->attempt(array(
+        $auth = $this->auth->attempt([
             'username' => $data['username'],
             'password' => $data['password']
-        ), $remember);
+        ], $remember);
 
-        if ( ! $auth)
-        {
-            $this->events->fire('account.login.fail', array($data));
-
+        if ( ! $auth) {
+            $this->events->fire('account.login.fail', [$data]);
             throw new LoginFailedException('Username or password is incorrect.');
         }
 
-        $this->events->fire('account.login.success', array($data));
+        $this->events->fire('account.login.success', [$data]);
 
         return true;
     }
@@ -216,29 +208,27 @@ class AccountService {
     {
         $account = $this->account->findByName($data['username']);
 
-        if ( ! $account || $account['email'] != $data['email'])
-        {
+        if ( ! $account || $account['email'] !== $data['email']) {
             throw new RemindFailedException('Can\'t find account by the provided user and email.');
         }
 
         $this->reminder->deleteByUser($data['username']);
 
-        $data = array(
+        $data = [
             'id'       => $account['id'],
             'username' => $account['login'],
             'email'    => $account['email'],
             'login'    => $account['login'],
             'token'    => str_random(64),
             'password' => str_random(10),
-        );
+        ];
 
-        $this->events->fire('account.remind.before', array($data));
+        $this->events->fire('account.remind.before', [$data]);
 
         $wasCreated = $this->reminder->create($data);
 
-        if ($wasCreated)
-        {
-            $this->events->fire('account.remind.after', array($data));
+        if ($wasCreated) {
+            $this->events->fire('account.remind.after', [$data]);
         }
 
         return $wasCreated;
@@ -256,23 +246,20 @@ class AccountService {
     {
         $reminder = $this->reminder->findByToken($token);
 
-        if ( ! $reminder || $reminder['token'] != $token)
-        {
+        if ( ! $reminder || $reminder['token'] !== $token) {
             throw new RemindFailedException('This token is invalid.', 'home');
         }
 
-        if ( $reminder['username'] !== $username)
-        {
+        if ( $reminder['username'] !== $username) {
             throw new RemindFailedException('This user is invalid.', 'home');
         }
 
-        $this->events->fire('account.password_confirm.before', array($reminder));
+        $this->events->fire('account.password_confirm.before', [$reminder]);
 
         $wasChanged = $this->account->changePassword($username, $reminder['password']);
 
-        if ($wasChanged)
-        {
-            $this->events->fire('account.password_confirm.after', array($reminder));
+        if ($wasChanged) {
+            $this->events->fire('account.password_confirm.after', [$reminder]);
             $this->reminder->deleteByToken($token);
         }
 
@@ -291,19 +278,17 @@ class AccountService {
     {
         $hashed_pass = mysqlHash($data['old_password']);
 
-        if ($hashed_pass !== $this->account->authPassword($user->id))
-        {
+        if ($hashed_pass !== $this->account->authPassword($user->id)) {
             throw new PasswordFailedException('Your old password is incorrect.');
         }
 
-        $this->events->fire('account.password.before', array($data));
+        $this->events->fire('account.password.before', [$data]);
 
         $wasChanged = $this->account->changePassword($user->login, mysqlHash($data['new_password']));
 
-        if ($wasChanged)
-        {
+        if ($wasChanged) {
             $this->meta->set($user->id, 'password_last', Carbon::now());
-            $this->events->fire('account.password.after', array($data));
+            $this->events->fire('account.password.after', [$data]);
         }
 
         return $wasChanged;
@@ -321,22 +306,20 @@ class AccountService {
     {
         $user = $this->account->findById($user);
 
-        if ($data['old_email'] != $user['email'])
-        {
+        if ($data['old_email'] !== $user['email']) {
             throw new EmailFailedException('Your old email doesn\'t match with your current account.');
         }
 
         $data['id'] = $user['id'];
         $data['account'] = $user['login'];
 
-        $this->events->fire('account.email.before', array($data));
+        $this->events->fire('account.email.before', [$data]);
 
         $wasEmailChanged = (bool) $this->account->changeEmail($user['id'], $data['new_email']);
 
-        if ($wasEmailChanged)
-        {
+        if ($wasEmailChanged) {
             $this->meta->set($user['id'], 'email_last', Carbon::now());
-            $this->events->fire('account.email.after', array($data));
+            $this->events->fire('account.email.after', [$data]);
         }
 
         return $wasEmailChanged;
@@ -353,32 +336,30 @@ class AccountService {
     {
         $account = $this->account->findById($user);
 
-        if ( ! $account)
-        {
+        if ( ! $account) {
             throw new SafeboxException('This account doesn\'t exists');
         }
 
         $safebox = $this->safebox->findByAccount($account['id']);
 
-        if ( ! $safebox)
-        {
+        if ( ! $safebox) {
             throw new SafeboxException('Your current account doesn\'t have a safebox.');
         }
 
-        $data = array(
+        $data = [
             'id'      => $account['id'],
             'login'   => $account['login'],
             'email'   => $account['email'],
             'safebox' => $safebox['password']
-        );
+        ];
 
-        $this->events->fire('account.safebox.before', array($data));
+        $this->events->fire('account.safebox.before', [$data]);
 
         $wasSent = $this->accountMailer->safebox($data)->send();
-        if ($wasSent)
-        {
+
+        if ($wasSent) {
             $this->meta->set($user, 'safebox_last', Carbon::now());
-            $this->events->fire('account.safebox.after', array($data));
+            $this->events->fire('account.safebox.after', [$data]);
         }
 
         return $wasSent;
@@ -395,27 +376,25 @@ class AccountService {
     {
         $account = $this->account->findById($user);
 
-        if ( ! $account)
-        {
+        if ( ! $account) {
             throw new DeletionCodeException('This account doesn\'t exists');
         }
 
-        $data = array(
+        $data = [
             'id'           => $account['id'],
             'email'        => $account['email'],
             'login'        => $account['login'],
             'deletionCode' => str_random(7),
-        );
+        ];
 
         $this->events->fire('account.deletion_code.before', array($data));
 
-        $wasUpdated = $this->account->update(array('id' => $user), array(
+        $wasUpdated = $this->account->update(['id' => $user], [
             'social_id' => $data['deletionCode']
-        ));
+        ]);
 
-        if ($wasUpdated)
-        {
-            $this->events->fire('account.deletion_code.after', array($data));
+        if ($wasUpdated) {
+            $this->events->fire('account.deletion_code.after', [$data]);
 
             $this->meta->set($user, 'deletion_last', Carbon::now());
 
